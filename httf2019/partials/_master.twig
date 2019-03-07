@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script defer src="{{ asset('js/fa-brands.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/fa-solid.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/fontawesome.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/tether.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/popper.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/bootstrap.min.js', 'theme') }}"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="{{ asset('css/theme.css', 'theme') }}">
+        <link href="{{ asset('css/academicons.min.css', 'theme') }}" rel="stylesheet">
+        <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+                {{ config.get('general/sitename') -}}
+            {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
+        </title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png', 'theme') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png', 'theme') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png', 'theme') }}">
+        <link rel="manifest" href="{{ asset('img/site.webmanifest', 'theme') }}">
+        <link rel="mask-icon" href="{{ asset('img/safari-pinned-tab.svg" color="#F29420', 'theme') }}">
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico', 'theme') }}">
+        <meta name="msapplication-TileColor" content="#F29420">
+        <meta name="msapplication-config" content="{{ asset('img/browserconfig.xml', 'theme') }}">
+        <meta name="theme-color" content="#F29420">
+        <meta name="apple-mobile-web-app-title" content="HttF 2019">
+        <meta name="application-name" content="HttF 2019">
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+        <!-- Theme copyright Martin Porcheron - www.porcheron.uk - Porcheronv3 -->
+    </head>
+    <body>
+        <div class="header-wrapper">
+            <header>
+                <button class="navbar-toggler navbar-toggler-right d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-caret-up"></i>
+                    {{ app.config.get('general/payoff') }}
+                </button>
+
+                <h1 class="sitetitle d-none d-md-inline-block">
+                    <a href="{{ path('homepage') }}" title="{{ app.config.get('general/sitename') }}">
+                        <img src="{{ asset('img/logo.svg', 'theme') }}" alt="{{ app.config.get('general/sitename') }}">
+                    </a>
+                </h1>
+
+                <h2 class="payoff d-none d-md-inline-block">
+                    {{ app.config.get('general/payoff') }}
+                </h2>
+
+            </header>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="navbar-wrapper">
+            <nav class="navbar navbar-expand-md navbar-inverse">
+                <div class="collapse navbar-collapse" id="navbar">
+                    {{ menu(template='partials/_sub_menu.twig') }}
+
+                    <form method="get" action="{{ path('search') }}" class="form-inline nav-search">
+                        <input type="search" class="form-control nav-search-input" name="search" placeholder="Search" value="{{ search|default() }}">
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+        {% block main %}
+        {% endblock %}
+
+        <div class="page-footer-wrapper">
+            <footer class="page-footer logos">
+                {% setcontent block = 'blocks/logos' %}
+                {{ block.content }}
+            </footer>
+            <footer class="page-footer">
+                {% setcontent block = 'blocks/footer' %}
+                {{ block.content }}
+            </footer>
+        </div>
+    </body>
+</html>

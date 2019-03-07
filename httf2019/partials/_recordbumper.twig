@@ -1,0 +1,8 @@
+{% if record.contenttype.singular_slug == "blog" %}
+<div class="record-bumper">
+    {{ __('general.phrase.written-by-on', {
+        '%name%': record.user.displayname|default(__('Unknown')),
+        '%date%': record.datepublish|localedatetime("%A %B %e, %Y")
+    }) }}
+</div>
+{% endif %}

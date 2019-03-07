@@ -1,0 +1,62 @@
+
+<div class="page-sections-wrapper">
+{% if bumpers is defined %}
+{% include 'partials/_recordbumper.twig' with {'record': record} %}
+{% endif %}
+
+{% if record.teaser is not empty %}
+    <div class="page-section page-section-text">
+        {{ record.teaser|markdown }}
+    </div>
+{% endif %}
+
+{% for group in record.blocks %}
+{% if group.block == 'twigsection' %}
+    <div class="page-section page-section-text">
+        {{ group.twig|raw }}
+    </div>
+{% elseif group.block == 'textsection' %}
+    <div class="page-section page-section-text {{ group.class }}">
+        {{ group.text|markdown }}
+    </div>
+{% elseif group.block == 'text2colsection' %}
+    <div class="page-section page-section-text twocoltext {{ group.class }}">
+        <div class="page-section-2coltext-left">
+            {{ group.textleft|markdown }}
+        </div>
+        <div class="page-section-2coltext-right">
+            {{ group.textright|markdown }}
+        </div>
+    </div>
+{% elseif group.block == 'imagesection' %}
+    {% if group.image.file is not empty %}
+    <div class="page-section page-section-media-wrapper media-{{ group.imagestyle|default('center') }}">
+        <div class="page-section-media">
+            <img src="{{ image(group.image) }}" alt="{{ group.alt }}" />
+            {% if group.caption is not empty %}
+            <div class="page-section-caption">
+                {{ group.caption|markdown }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% elseif group.block == 'videosection' %}
+    {% if group.video.html is not empty %}
+    <div class="page-section page-section-media-wrapper media-{{ group.videostyle|default('center') }}">
+        <div class="page-section-media">
+            <div class="page-section-media-video">
+                {{ group.video.html|raw }}
+            </div>
+            {% if group.caption is not empty %}
+            <div class="page-section-caption">
+                {{ group.caption|markdown }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+
+{% endfor %}
+</div>

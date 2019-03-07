@@ -1,0 +1,19 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+    {% if search is not empty %}
+        {{ __('general.phrase.search-results-for-variable', { '%search%': search }) }}
+    {% else %}
+        {{ __('general.phrase.search') }}
+    {% endif %}
+    </h1>
+</div>
+
+<div class="page-sections-wrapper">
+	{% include 'partials/_listing.twig' with {'title': title, 'records': records, 'record_display':'excerpt'} %}
+	{{ pager(template='partials/_sub_pager.twig') }}
+</div>
+
+{% endblock %}

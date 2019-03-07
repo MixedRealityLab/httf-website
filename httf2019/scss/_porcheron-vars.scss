@@ -1,0 +1,250 @@
+// Bootstrap variable overrides
+
+$spacer:                       2rem;
+$grid-gutter-width:            2*$spacer;
+
+// colors
+$theme-colors: (
+  primary:                    #F39D24,
+  primary-gloss:              #ED7E15,
+  primary-complement:         #7F4D10,
+  accent:                     #F29420,
+  background:                 #F7F7F7
+);
+
+$font-color:                  $black;
+
+$input-border-color:           map-get($theme-colors, accent);
+
+$shadow-length:                10px;
+$shadow-length-neg:            -$shadow-length;
+$shadow-spread:                -10px;
+
+$border-radius:                0.5rem;
+
+$a-color:                      #0000EE !default;
+$a-decoration:                 none !default;
+$a-hover-color:                #000075 !default;
+$a-hover-decoration:           underline !default;
+
+
+// Fonts
+$font-family-sans-serif:       Helvetica, Arial, sans-serif;
+$font-family-serif:            Georgia, "Cambria", "Times New Roman", Times, serif;
+$font-family-monospace:        Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:             $font-family-sans-serif;
+
+$headings-font-family:         $font-family-sans-serif;
+$headings-margin-top:          $spacer*2;
+$headings-margin-bottom:       $spacer/2;
+
+$font-size-base:               1rem;
+$h1-font-size:                 $font-size-base * 1.85;
+$h2-font-size:                 $font-size-base * 1.35;
+$h3-font-size:                 $font-size-base * 1.1;
+$h4-font-size:                 $font-size-base * 1;
+$h5-font-size:                 $font-size-base * 1;
+$h6-font-size:                 $font-size-base;
+
+$headings-font-family:         $font-family-sans-serif;
+
+$h2-color:                      map-get($theme-colors, primary);
+
+
+// Line Height
+$line-height-base:             1.7;
+
+
+
+// Containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1000px
+);
+
+
+
+
+// HEADER //////////////////////////////////////////////////////////////////////
+
+$sitetitle-color:              $white;
+$sitetitle-font-size:          $font-size-base * 1.3;
+$sitetitle-md-font-size:       $font-size-base * 1.7;
+$sitetitle-font-weight:        bold;
+
+$header-bg-end:                map-get($theme-colors, primary-gloss);
+$header-bg-start:              map-get($theme-colors, primary);
+$header-height:                $sitetitle-font-size * 2.5;
+$header-md-height:             $sitetitle-font-size * 8;
+
+$payoff-color:                 $black;
+$payoff-font-size:             $font-size-base;
+$payoff-font-weight:           $sitetitle-font-weight;
+$payoff-margin-left:           .75rem;
+
+
+// GDPR BAR ////////////////////////////////////////////////////////////////////
+
+$gdprbar-color:                $black;
+$gdprbar-bg:                   map-get($theme-colors, background);
+$gdprbar-border:               5px solid map-get($theme-colors, accent);
+$gdprbar-margin:               $spacer/2;
+$gdprbar-padding:              $spacer/2;
+$gdprbar-btn-offset:           -2rem;
+$gdprbar-shadow:               0 0 $shadow-length -$shadow-spread $gray-700;
+
+
+// NAVIGATION BAR //////////////////////////////////////////////////////////////
+
+$navbar-bg:                    $header-bg-end;
+$navbar-shadow:                0 1rem 1rem 2rem $gray-500;
+$navbar-font-family:           $font-family-sans-serif;
+$navbar-font-weight:           normal;
+$navbar-padding-y:             .5rem;
+$navbar-shadow:                0 $shadow-length $shadow-length $shadow-spread $gray-500;
+
+$navbar-toggler-color:         $black;
+$navbar-toggler-margin:        .6rem 1rem 0 0;
+
+$navbar-toggler-border-width:  2px;
+$navbar-toggler-border-radius: 0;
+$navbar-toggler-right:         $spacer;
+$navbar-toggler-bg:            transparent;
+$navbar-toggler-border:        $navbar-toggler-border-width solid $white;
+$navbar-toggler-icon:          str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$white}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-toggler-bg-inv:        map-get($theme-colors, primary-complement);
+$navbar-toggler-border-inv:    $navbar-toggler-border-width solid $white;
+$navbar-toggler-icon-inv:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$white}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-toggler-offset-y:      ($header-height - 3rem) / 2; // 2.625 = height of toggler image
+
+$nav-link-color:               $black;
+$nav-link-active-color:        $white;
+$nav-link-hover-color:         $white;
+$nav-link-sm-active-bg:        map-get($theme-colors, primary-complement);
+$nav-link-sm-hover-bg:         $black;
+$nav-link-sm-border:           1px solid $black;
+
+$nav-dd-border:                none;
+$nav-dd-link-color:            $black;
+$nav-dd-link-active-color:     $black;
+$nav-dd-link-hover-color:      $white;
+$nav-dd-width:                 15rem;
+
+$nav-link-chip-height:         14px;
+$nav-link-chip-width:          15px;
+$nav-link-chip-size:           $nav-link-chip-height/2 $nav-link-chip-width/2 0 $nav-link-chip-width/2;
+
+$nav-search-border-color:      map-get($theme-colors, accent);
+$nav-search-radius:            1rem;
+$nav-search-padding-x:         $input-btn-padding-y * 1.5;
+$nav-search-width:             250px;
+
+$nav-search-md-width:          200px;
+$nav-search-lg-width:          300px;
+
+
+// PAGE TITLE //////////////////////////////////////////////////////////////////
+
+$page-title-color:             $black;
+$page-title-margin:            1em 0 .5rem 0;
+$page-title-md-margin:         1.5em 0 .5rem 0;
+$page-title-font-size:         $h1-font-size;
+$page-title-font-weight:       $sitetitle-font-weight;
+$page-title-none-padding:      $spacer;
+
+
+// PAGE CONTENTS LAYOUT ////////////////////////////////////////////////////////
+
+$pagecontents-padding:         $spacer 0;
+
+$recordbumper-color:           $gray-600;
+$recordbumper-title-offset:    -2.10rem;
+$recordbumper-title-padding-b: 0.4rem;
+
+$recordbetween-color:          $gray-500;
+$recordbetween-padding:        $spacer/2 0;
+
+
+// PAGE SECTIONS ///////////////////////////////////////////////////////////////
+
+$sec-font-family:              $font-family-sans-serif;
+$sec-font-size:                $font-size-base;
+
+$sec-media-bg:                 $white;
+$sec-media-padding:            15px;
+$sec-media-video-padding:      10px;
+$sec-media-caption-font-family:$font-family-sans-serif;
+$sec-media-caption-align:      center;
+$sec-media-shadow:             .5rem .5rem .5rem -.25rem $gray-500;
+$sec-media-align-sm-max-width: 50%;
+$sec-media-align-md-max-width: 40%;
+$sec-media-align-lg-max-width: 40%;
+
+$sec-media-col-sm-width:       150px;
+$sec-media-col-md-width:       250px;
+$sec-media-col-lg-width:       250px;
+
+$sec-outline-bg:               $white;
+
+$sec-media-col-icon-width:     30px;
+
+$sec-between:                  15px;
+
+$sec-author-background:        #f1f1f1;
+$sec-author-bg-start:          #f1f1f1;
+$sec-author-bg-end:            #e1e1e1;
+$sec-author-border:            1px solid #ccc;
+$sec-author-margin:            2rem;
+$sec-author-padding:           1rem;
+
+$contacts-border:              5px solid $white;
+$contacts-font-family:         $font-family-sans-serif;
+$contacts-desc-font-size:      $font-size-base;
+$contacts-icon-size:           4rem;
+$contacts-icon-padding:        16px 0;
+$contacts-size:                100%;
+$contacts-font-size:           $h2-font-size;
+$contacts-sm-size:             50%;
+$contacts-sm-title-font-size:  1.4rem;
+$contacts-sm-desc-font-size:   1rem;
+$contacts-md-size:             20%;
+$contacts-md-title-font-size:  1.2rem;
+$contacts-md-desc-font-size:   .8rem;
+$contacts-lg-size:             20%;
+$contacts-lg-title-font-size:   1.4rem;
+$contacts-lg-desc-font-size:    1rem;
+
+$paper-bg:                      $white;
+$paper-border:                  1px solid #ccc;
+$paper-type-font-size:          $font-size-base * .7;
+$paper-type-font-weight:        bold;
+$paper-type-transform:          uppercase;
+$paper-type-fg:                 #333;
+$paper-authors-fg:              $gray-700;
+$paper-title-margin-top:        -$font-size-base * 1.35;
+$paper-type-width:              4.5rem;
+$paper-title-margin-left:       5rem;
+$paper-text-margin-top:         1rem;
+
+$paper-record-intro-margin:     1rem 0 1rem 0;
+$paper-record-intro-md-margin:  3rem 0 -.5rem 0;
+$paper-record-outro-padding-b:  3rem;
+$paper-record-outro-md-padding-b:3rem;
+$paper-record-border-bottom:    1px solid map-get($theme-colors, accent);
+
+$record-bumper-font-family:    $font-family-sans-serif;
+$record-bumper-color:          $gray-600;
+$record-between-color:         $gray-400;
+
+
+// PAGE FOOTER /////////////////////////////////////////////////////////////////
+
+$page-footer-font-family:       $font-family-sans-serif;
+$page-footer-margin:            $spacer*1.5;
+
+$page-footer-logo-gap:          $spacer/2;
+$page-footer-logo-opacity:      .5;
+$page-footer-logo-max-width:    10rem;
+$page-footer-logo-opacity-tr:   .25s;

@@ -1,0 +1,6 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+{% setcontent record = 'page/404-not-found' %}
+{% include 'partials/_record.twig' with {'record': record} %}
+{% endblock %}

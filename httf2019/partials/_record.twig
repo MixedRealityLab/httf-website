@@ -1,0 +1,31 @@
+
+{% block main %}
+    {% if record is defined %}
+        <div class="page-title-wrapper">
+            <h1 class="page-title">{{ record.title }}</h1>
+        </div>
+
+        {% if record.blocks|length > 0 %}
+        {% include 'partials/_sub_blocks.twig' with {'record': record, 'bumpers': true} %}
+        {% elseif record.sections|length > 0 %}
+        {% include 'partials/_sub_sections.twig' with {'record': record, 'bumpers': true} %}
+        {% else %}
+        <div class="page-sections-wrapper">
+            {% if bumpers is defined %}
+            {% include 'partials/_recordbumper.twig' with {'record': record} %}
+            {% endif %}
+
+            {% if record.teaser is not empty %}
+                <div class="page-section page-section-text">
+                    {{ record.teaser|markdown }}
+                </div>
+            {% endif %}
+
+            <div class="page-section page-section-text">
+                {{ record.body|markdown }}
+            </div>
+
+        </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

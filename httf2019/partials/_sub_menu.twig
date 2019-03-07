@@ -1,0 +1,72 @@
+
+
+{# Make sure the setting for the submenus is defined. #}
+{% if withsubmenus is not defined %}
+    {% set withsubmenus = true %}
+{% endif %}
+
+{# The 'recursive' macro, for inserting one menu item. If it has a submenu, it
+   invokes itself to insert the items of the submenus. #}
+{% macro display_menu_item(item, loop, extraclass, withsubmenus) %}
+    {% from _self import display_menu_item %}
+    {% spaceless %}
+    {% if item.submenu is defined and withsubmenus or item.list|default(false) %}
+        {% set hassubmenus = 1 %}
+    {% else %}
+        {% set hassubmenus = 0 %}
+    {% endif %}
+    {% if item.submenu|default is empty %}
+        <li class="nav-item {{ item.submenu is defined ? 'dropdown' }} {{ item|current ? ' active' }} col-md-auto">
+            <a href="{{ hassubmenus ? '#' : item.link }}" title='{{ item.title|default('')|escape }}' class='nav-link {{ item|current ? 'is-active' }} {{ item.class|default('') }}{{ hassubmenus ? 'dropdown-toggle' }}' {{ hassubmenus ? 'role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false id=navbar' ~ item.class }}><span><span>
+                {{- item.label|default('-') -}}
+            </span></span></a>
+            <span class="nav-link-chip-wrapper hidden-md-down"><span class="nav-link-chip"></span></span>
+
+             {% set list = [] %}
+
+            {% if item.submenu is defined and withsubmenus %}
+            <div class="navbar-item
+                {{ (item.submenu|default(false) and withsubmenus) ? ' dropdown' -}}">
+
+
+                <a href="{{ item.link }}" title='{{ item.title|default('')|escape }}' class='navbar-link {{ item|current ? 'is-active' }}{{ item.class|default('') }}'><span><span>
+                    {{- item.label|default('-') -}}
+                </span></span></a>
+                <div class="navbar-dropdown">
+                    {% for submenu in item.submenu|default %}
+                        a{{ display_menu_item(submenu, loop) }}
+                    {% endfor %}
+                </div>
+            </div>
+            {% elseif item.list|default(false) %}
+                {% setcontent listedcontent = item.list.contenttype where item.list.where %}
+                {% for listitem in listedcontent %}
+                    {% set list = list|merge([{title: listitem.title, link: listitem.link, label: listitem.title}]) %}
+                {% endfor %}
+                {% if list is not empty %}
+                <ul class="dropdown-menu" aria-labelledby="navbar{{ item.class }}">
+                    {% for submenu in list %}
+                     {{ display_menu_item(submenu, loop) }}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endif %}
+
+    {% endspaceless %}
+{% endmacro %}
+
+{# Make the macro available for use #}
+{% from _self import display_menu_item %}
+
+{# The main menu loop: Iterates over the items, calling `display_menu_item` #}
+
+<ul class="navbar-nav row">
+{% for item in menu %}
+    {% if item.label is defined %}
+        {{ display_menu_item(item, loop, '', withsubmenus) }}
+    {% endif %}
+{% endfor %}
+</ul>
+

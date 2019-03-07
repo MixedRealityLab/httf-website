@@ -1,0 +1,30 @@
+{% block listing %}
+<div class="page-title-wrapper">
+    <h1 class="page-title">{{ title }}</h1>
+</div>
+
+<div class="page-sections-wrapper">
+{% for record in records %}
+    <div class="page-section page-section-text">
+        <h2><a href="{{ record.link }}" title="Read '{{ record.title }}'">{{ record.title }}</a></h2>
+        {% include 'partials/_recordbumper.twig' with {'record': record} %}
+        {% if record_display is not defined or record_display == "introduction" %}
+        {{ record.teaser|markdown }}
+        {% elseif record_display == "excerpt" %}
+        {{ record.teaser|excerpt(300)|markdown }}
+        {% endif %}
+        <p>
+            <a href="{{ record.link }}" title="Read more of '{{ record.title }}'">Read more &xrarr;</a>
+        </p>
+     </div>
+    <div class="record-between"><div></div></div>
+{% else %}
+    <div class="page-section page-section-text">
+        <h2>{{ __('general.phrase.no-content-found') }}</h2>
+        <p>Unfortunately, no content could be found.</p>
+    </div>
+{% endfor %}
+</div>
+
+{{ pager(template='partials/_sub_pager.twig') }}
+{% endblock %}

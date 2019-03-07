@@ -1,0 +1,38 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+{% setcontent record = 'page/themes' %}
+{% include 'partials/_record.twig' with {'record': record} %}
+
+{% setcontent panels = 'panels' orderby 'datetime' %}
+{% setcontent papers = 'programme' where { types: 'theme-setting' } %}
+{% set panelsperside = (panels|length // 2) - 1%}
+<div class="page-section page-section-text twocoltext">
+    <div class="page-section-2coltext-left">
+    {% for panel in panels %}
+        <div>
+            <h2>{{ panel.title }}</h2>
+            {% for paper in papers if panel.id in paper.relation.panels %}
+            <div class="page-section-text">
+                <a href="{{ paper.link }}" title="Read {{ paper.title }}">
+                    {{ paper.title }}
+                </a>
+                <em>{{ paper.authors|markdown }}</em>
+            </div>
+            {% else %}
+            <div>
+                <p><em>Unfortunately, no theme-setting papers were found in this panel.</em></p>
+            </div>
+            {% endfor %}
+        </div>
+        {% if loop.index0 == panelsperside %}
+            </div>
+            <div class="page-section-2coltext-right">
+        {% endif %}
+    {% else %}
+        <p><em>Unfortunately, no panels were be found.</em></p>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

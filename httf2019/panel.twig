@@ -1,0 +1,50 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+<div class="page-title-wrapper">
+    <h1 class="page-title">{{ record.title }}</h1>
+</div>
+
+{% if record.teaser is not empty %}
+    <div class="page-section page-section-text">
+        {{ record.teaser|markdown }}
+    </div>
+{% endif %}
+
+<div class="page-section page-section-text">
+    {% if record.datetime is not empty %}
+    <p>The panel will take place on <strong>{{ record.datetime|date('l jS') }}</strong> at <strong>{{ record.datetime|date('g.i a') }}</strong>.</p>{% endif %}
+    {% setcontent papers = 'programme' where { 'relation.panels': record.id, types: '!theme-setting' } %}
+    {% for paper in papers if record.id in paper.relation.panels %}
+    <div class="page-section-text">
+        <div class="page-section-paper card">
+            <div class="paper-type">
+                {{ paper|taxonomy.types|first }}
+           </div>
+           <div class="paper-title">
+                <a href="{{ paper.link }}" title="Read {{ paper.title }}">
+                    {{ paper.title }}
+                </a>
+            </div>
+            <div class="paper-authors italic">
+                {{ paper.authors|markdown }}
+            </div>
+            <div class="paper-text">
+                {{ paper.teaser|markdown }}
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <p><em>Unfortunately, no accepted papers could be found in this panel.</em></p>
+    {% endfor %}
+    <p>
+                    <!--
+                    <a href="{{ path('contentlisting', {contenttypeslug: 'programme'}) }}" title="Browse the complete HttF programme.">Browse the complete programme</a>.<br />-->
+                    <a href="{{ path('contentlink', {contenttypeslug: 'page', slug: 'cfp'}) }}" title="Browse the complete HttF programme.">Read the Call for Papers</a>.
+                    </p>
+    </p>
+</div>
+
+{% endblock %}
+

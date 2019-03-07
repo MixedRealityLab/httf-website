@@ -1,0 +1,12 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+{% set title = '' %}
+{% if taxonomytype is defined %}
+    {% set title = __('general.phrase.overview-for') ~ taxonomy.options[slug]|default(slug) %}
+    {% if not taxonomy.has_sortorder %}
+        {% set records = records|order(app.config.get('general/listing_sort')) %}
+    {% endif %}
+{% endif %}
+{% include 'partials/_listing.twig' with {'title': title, 'records': records} %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    {% if record is defined %}
+        <div class="page-title-wrapper">
+            <h1 class="page-title">{{ record.title }}</h1>
+        </div>
+
+        {% if record.blocks|length > 0 %}
+        {% include 'partials/_sub_blocks.twig' with {'record': record, 'bumpers': true} %}
+        {% elseif record.sections|length > 0 %}
+        {% include 'partials/_sub_sections.twig' with {'record': record, 'bumpers': true} %}
+        {% else %}
+        <div class="page-contents-wrapper">
+            <div class="page-contents">
+                <div class="container">
+                    {% if record.image is defined %}
+                        <img src="{{ image(record.image) }}" class="img-fluid" />
+                    {% endif %}
+
+                    {{ record.body }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+	"name": "Research Highlights",
+	"icons": [
+		{
+			"src": "https:\/\/highlights.cdt.horizon.ac.uk\/theme\/horizoncdt-2018\/img\/android-chrome-192x192.png?v=gdfgfgegdfg",
+			"sizes": "192x192",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#132477",
+	"display": "standalone"
+}
