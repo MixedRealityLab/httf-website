@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/theme.css', 'theme') }}">
         <link href="{{ asset('css/academicons.min.css', 'theme') }}" rel="stylesheet">
         <title>
-            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+            {%- if record.title is defined and record.title != config.get('general/sitename') %}{{ record.title|striptags }} | {% endif -%}
                 {{ config.get('general/sitename') -}}
             {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
         </title>
