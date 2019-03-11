@@ -764,6 +764,9 @@ noscript > .gdprbar {
     padding-right: $spacer;
   }*/
 
+  &.page-section-text.twocoltext.nogap .page-section-2coltext-left *:last-child {
+    margin-bottom: 0
+  }
 }
 
 .page-sections-wrapper .media-fullwidth:first-child, .page-sections-wrapper .media-left-col:first-child, .page-sections-wrapper .media-right-col:first-child {
@@ -969,12 +972,12 @@ noscript > .gdprbar {
     & .page-section-2coltext-right > * {
       margin-left: 50%;
       width: auto;
-
     }
 
     & .page-section-2coltext-left {
       float: left;
       width: 50%;
+
 
       & .page-section-paper {
         margin-right: $spacer/2;

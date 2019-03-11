@@ -9072,6 +9072,9 @@ noscript > .gdprbar {
   margin-left: 45px;
   width: auto;
 }
+.page-section.page-section-text.twocoltext.nogap .page-section-2coltext-left *:last-child {
+  margin-bottom: 0;
+}
 
 .page-sections-wrapper .media-fullwidth:first-child, .page-sections-wrapper .media-left-col:first-child, .page-sections-wrapper .media-right-col:first-child {
   margin-top: 1rem;
