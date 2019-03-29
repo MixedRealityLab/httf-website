@@ -8899,6 +8899,9 @@ noscript > .gdprbar {
   border-top: 3px solid #F39D24;
   border-bottom: 3px solid #F39D24;
 }
+.page-section.page-section-text.outline h1:first-child, .page-section.page-section-text.outline h2:first-child {
+  margin-top: 0.5rem;
+}
 .page-section.page-section-text.center, .page-section.page-section-text.outline.center {
   text-align: center;
 }

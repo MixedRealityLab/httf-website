@@ -585,12 +585,17 @@ noscript > .gdprbar {
   &.page-section-text.center , &.page-section-text.outline.center {
     text-align: center;
   }
+
   &.page-section-text.outline {
     background: $sec-outline-bg;
     margin-bottom: $spacer/2;
     padding-top: $spacer/2;
     border-top: 3px solid map-get($theme-colors, primary);
     border-bottom: 3px solid map-get($theme-colors, primary);
+
+    & h1:first-child, & h2:first-child {
+      margin-top: $spacer/4
+    }
   }
 
   &.page-section-text.center , &.page-section-text.outline.center {
