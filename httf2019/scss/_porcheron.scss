@@ -672,7 +672,7 @@ noscript > .gdprbar {
   }
 
   &.media-left-col .page-section-media, &.media-left-col img, &.media-right-col .page-section-media, &.media-right-col img {
-    border-radius: 20%;
+    border-radius: 50%;
   }
 
   &.media-fullwidth, &.media-left,  &.media-left-col, &.media-center, &.media-right, &.media-right-col {
@@ -871,16 +871,16 @@ noscript > .gdprbar {
 
     &.media-left .page-section-media, &.media-left-col .page-section-media, &.media-center .page-section-media,
     &.media-right .page-section-media, &.media-right-col .page-section-media {
-      padding-left: $spacer/2;
-      padding-right: $spacer/2;
+      padding: $spacer/3;
     }
 
-    &.media-left-col ~ .page-section-text:not(.clear) > p {
+
+    &.media-left-col ~ .page-section-text:not(.clear) > p, &.media-left-col ~ .page-section-text:not(.clear) > h2 {
       margin-left: $sec-media-col-sm-width + $sec-media-padding*2 + $sec-between;
       width: auto;
     }
 
-    &.media-right-col ~ .page-section-text:not(.clear) > p {
+    &.media-right-col ~ .page-section-text:not(.clear) > p, &.media-right-col ~ .page-section-text:not(.clear) > h2 {
       margin-right: $sec-media-col-sm-width + $sec-media-padding*2 + $sec-between;
       width: auto;
     }
@@ -1056,6 +1056,7 @@ h2 + .record-bumper {
     -moz-transition: opacity $page-footer-logo-opacity-tr ease-in-out;
     -webkit-transition: opacity $page-footer-logo-opacity-tr ease-in-out;
     max-width: $page-footer-logo-max-width;
+    max-height: $page-footer-logo-max-height;
   }
 
   & .logos img:hover {
