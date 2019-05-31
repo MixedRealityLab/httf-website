@@ -37,18 +37,23 @@
             <header>
                 <button class="navbar-toggler navbar-toggler-right d-md-none collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-caret-up"></i>
-                    {{ app.config.get('general/payoff') }}
+                    {{ app.config.get('general/sitename') }}
                 </button>
 
-                <h1 class="sitetitle d-none d-md-inline-block">
+                <div class="sitelogo d-none d-md-inline-block">
                     <a href="{{ path('homepage') }}" title="{{ app.config.get('general/sitename') }}">
-                        <img src="{{ asset('img/logo.svg', 'theme') }}" alt="{{ app.config.get('general/sitename') }}">
+                        <img src="{{ asset('img/logo-square.svg', 'theme') }}" alt="{{ app.config.get('general/sitename') }}">
                     </a>
-                </h1>
+                </div>
 
-                <h2 class="payoff d-none d-md-inline-block">
-                    {{ app.config.get('general/payoff') }}
-                </h2>
+                <div class="sitetitle d-none d-md-inline-block">
+                    <h1>
+                        {{ app.config.get('general/sitename') }}
+                    </h1>
+                    <p class="payoff">
+                        {{ app.config.get('general/payoff') }}
+                    </p>
+                </div>
 
             </header>
             <div class="clearfix"></div>

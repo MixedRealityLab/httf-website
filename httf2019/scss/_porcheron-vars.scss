@@ -69,20 +69,24 @@ $container-max-widths: (
 
 // HEADER //////////////////////////////////////////////////////////////////////
 
-$sitetitle-color:              $white;
+$sitelogo-margin-top:         $spacer*.6;
+
+$sitetitle-color:              $black;
 $sitetitle-font-size:          $font-size-base * 1.3;
 $sitetitle-md-font-size:       $font-size-base * 1.7;
+$sitetitle-margin-top:         3rem;
+$sitetitle-margin-left:         $spacer;
 $sitetitle-font-weight:        bold;
+
+$payoff-color:                 $black;
+$payoff-font-size:             $font-size-base;
+$payoff-font-weight:           normal;
+$payoff-margin-left:           .75rem;
 
 $header-bg-end:                map-get($theme-colors, primary-gloss);
 $header-bg-start:              map-get($theme-colors, primary);
 $header-height:                $sitetitle-font-size * 2.5;
 $header-md-height:             $sitetitle-font-size * 8;
-
-$payoff-color:                 $black;
-$payoff-font-size:             $font-size-base;
-$payoff-font-weight:           $sitetitle-font-weight;
-$payoff-margin-left:           .75rem;
 
 
 // GDPR BAR ////////////////////////////////////////////////////////////////////
@@ -106,7 +110,7 @@ $navbar-padding-y:             .5rem;
 $navbar-shadow:                0 $shadow-length $shadow-length $shadow-spread $gray-500;
 
 $navbar-toggler-color:         $black;
-$navbar-toggler-margin:        .6rem 1rem 0 0;
+$navbar-toggler-margin:        .6rem -1rem 0 0;
 
 $navbar-toggler-border-width:  2px;
 $navbar-toggler-border-radius: 0;

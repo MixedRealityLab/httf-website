@@ -25,7 +25,7 @@ h1, h2, h3, h4 {
   font-weight: bold;
 }
 
-h1, h2 {
+h2 {
   margin-top: $headings-margin-top;
 }
 
@@ -78,15 +78,15 @@ header {
   @include make-container-max-widths();
 }
 
-.sitetitle {
+.sitelogo, .sitetitle {
   color: $sitetitle-color;
   font-size: $sitetitle-md-font-size;
   font-weight: $sitetitle-font-weight;
   margin: 0 !important;
-  line-height: $header-height;
+  float: left;
 }
 
-.sitetitle a {
+.sitelogo a, .sitetitle a {
   color: $sitetitle-color;
 
   &:hover, &:active, &:link {
@@ -99,12 +99,9 @@ header {
 }
 
 .payoff {
-  color: $payoff-color;
-  font-size: $sitetitle-font-size;
+  font-size: $payoff-font-size;
   font-weight: $payoff-font-weight;
-  line-height: $header-height;
   margin: 0;
-  text-align: center;
 }
 
 @include media-breakpoint-up(md) {
@@ -112,13 +109,18 @@ header {
     @include size(100%, $header-md-height);
   }
 
+  .sitelogo {
+    margin-top: $sitelogo-margin-top !important;
+  }
+
   .sitetitle {
-    line-height: $header-md-height;
+    font-size: $sitetitle-md-font-size;
+    margin-top: $sitetitle-margin-top !important;
+    margin-left: $sitetitle-margin-left !important;
   }
 
   .payoff {
-    float: right;
-    line-height: $header-md-height;
+    font-size: $payoff-font-size;
   }
 }
 

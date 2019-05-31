@@ -8258,7 +8258,7 @@ h1, h2, h3, h4 {
   font-weight: bold;
 }
 
-h1, h2 {
+h2 {
   margin-top: 4rem;
 }
 
@@ -8331,31 +8331,28 @@ header {
   }
 }
 
-.sitetitle {
-  color: #fff;
+.sitelogo, .sitetitle {
+  color: #000;
   font-size: 1.7rem;
   font-weight: bold;
   margin: 0 !important;
-  line-height: 3.25rem;
+  float: left;
 }
 
-.sitetitle a {
-  color: #fff;
+.sitelogo a, .sitetitle a {
+  color: #000;
 }
-.sitetitle a:hover, .sitetitle a:active, .sitetitle a:link {
-  color: #fff;
+.sitelogo a:hover, .sitelogo a:active, .sitelogo a:link, .sitetitle a:hover, .sitetitle a:active, .sitetitle a:link {
+  color: #000;
 }
-.sitetitle a img {
+.sitelogo a img, .sitetitle a img {
   height: 7.8rem;
 }
 
 .payoff {
-  color: #000;
-  font-size: 1.3rem;
-  font-weight: bold;
-  line-height: 3.25rem;
+  font-size: 1rem;
+  font-weight: normal;
   margin: 0;
-  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -8364,13 +8361,18 @@ header {
     height: 10.4rem;
   }
 
+  .sitelogo {
+    margin-top: 1.2rem !important;
+  }
+
   .sitetitle {
-    line-height: 10.4rem;
+    font-size: 1.7rem;
+    margin-top: 3rem !important;
+    margin-left: 2rem !important;
   }
 
   .payoff {
-    float: right;
-    line-height: 10.4rem;
+    font-size: 1rem;
   }
 }
 .gdprbar-container {
@@ -8726,7 +8728,7 @@ noscript > .gdprbar {
   cursor: pointer;
   cursor: hand;
   font-size: 1.3rem;
-  margin: 0.6rem 1rem 0 0;
+  margin: 0.6rem -1rem 0 0;
   outline: none;
 }
 .navbar-toggler .navbar-toggler:hover {
