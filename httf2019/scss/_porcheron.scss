@@ -721,7 +721,11 @@ noscript > .gdprbar {
   &.media-left-col, &.media-right-col {
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 49%;
+  }
+
+  &.media-right-col {
+    margin-left: 2%;
   }
 
   &.media-left-col ~ & > h2, &.media-right-col ~ & > h2, &.media-left-col ~ & > h3, &.media-right-col ~ & > h3, &.media-left-col ~ & > h4, &.media-right-col ~ & > h4 {
@@ -976,13 +980,13 @@ noscript > .gdprbar {
     }
 
     & .page-section-2coltext-right > * {
-      margin-left: 50%;
+      margin-left: 51%;
       width: auto;
     }
 
     & .page-section-2coltext-left {
       float: left;
-      width: 50%;
+      width: 49%;
 
 
       & .page-section-paper {
@@ -1001,6 +1005,10 @@ noscript > .gdprbar {
 .page-sections-wrapper > .record-bumper, .record-between {
   @include make-container();
   @include make-container-max-widths();
+}
+
+.panelgap + .panelgap {
+  margin-top: $spacer;
 }
 
 .record-bumper {

@@ -9,11 +9,11 @@
             {% set panel = record.related('panels')|first %}
             {% set papertype = record|taxonomy.types|first|lower %}
             {% if papertype == "keynote" %}
-                A <strong>{{ record|taxonomy.types|first|lower }}</strong> in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'panels', slug: panel.slug}) }}">{{ panel.title }}</a></strong> session{% if panel.datetime is not empty %} on <strong>{{ panel.datetime|date('l jS') }}</strong> at <strong>{{ panel.datetime|date('g.i a') }}</strong>{% endif %}.
+                A <strong>{{ record|taxonomy.types|first|lower }}</strong> in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'panels', slug: panel.slug}) }}">{{ panel.title }}</a></strong> session{% if panel.starttime is not empty %} on <strong>{{ panel.starttime|date('l jS') }}</strong> at <strong>{{ panel.starttime|date('g.i a') }}</strong>{% endif %}.
             {% elseif papertype == "theme-setting" %}
-                The <strong>theme setting</strong> paper for the <strong><a href="{{ path('contentlink', {contenttypeslug: 'panels', slug: panel.slug}) }}">{{ panel.title }}</a></strong> session{% if panel.datetime is not empty %} on <strong>{{ panel.datetime|date('l jS') }}</strong> at <strong>{{ panel.datetime|date('g.i a') }}</strong>{% endif %}.
+                The <strong>theme setting</strong> paper for the <strong><a href="{{ path('contentlink', {contenttypeslug: 'panels', slug: panel.slug}) }}">{{ panel.title }}</a></strong> session{% if panel.starttime is not empty %} on <strong>{{ panel.starttime|date('l jS') }}</strong> at <strong>{{ panel.starttime|date('g.i a') }}</strong>{% endif %}.
             {% else %}
-                A <strong>{{ record|taxonomy.types|first|lower }}</strong> paper in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'panels', slug: panel.slug}) }}">{{ panel.title }}</a></strong> session{% if panel.datetime is not empty %} on <strong>{{ panel.datetime|date('l jS') }}</strong> at <strong>{{ panel.datetime|date('g.i a') }}</strong>{% endif %}.
+                A <strong>{{ record|taxonomy.types|first|lower }}</strong> paper in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'panels', slug: panel.slug}) }}">{{ panel.title }}</a></strong> session{% if panel.starttime is not empty %} on <strong>{{ panel.starttime|date('l jS') }}</strong> at <strong>{{ panel.starttime|date('g.i a') }}</strong>{% endif %}.
             {% endif %}
             </p>
        </div>
@@ -62,9 +62,9 @@
                     <a href="{{ record.pdflink }}" title="Read {{ record.title }}">Download a copy of this paper</a>.<br />
                     {% endif %}
                     <a href="{{ panel.link }}">Browse other papers in this session</a>.
-                    <!--<br />
-                    <a href="{{ path('contentlisting', {contenttypeslug: 'programme'}) }}" title="Browse the complete HttF programme.">Browse the complete programme</a>.--><br />
-                    <a href="{{ path('contentlink', {contenttypeslug: 'page', slug: 'cfp'}) }}" title="Browse the complete HttF programme.">Read the Call for Papers</a>.
+                    <br />
+                    <a href="{{ path('contentlisting', {contenttypeslug: 'programme'}) }}" title="Browse the complete HttF programme">Browse the complete programme</a>.<br />
+                    <a href="{{ path('contentlink', {contenttypeslug: 'page', slug: 'cfp'}) }}" title="Read the Call for Papers">Read the Call for Papers</a>.
                     </p>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 {% setcontent record = 'page/themes' %}
 {% include 'partials/_record.twig' with {'record': record} %}
 
-{% setcontent panels = 'panels' orderby 'datetime' %}
+{% setcontent panels = 'panels' orderby 'starttime' %}
 {% setcontent papers = 'programme' where { types: 'theme-setting' } %}
 {% set panelsperside = (panels|length // 2) - 1%}
 <div class="page-section page-section-text twocoltext">

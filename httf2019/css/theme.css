@@ -8997,7 +8997,10 @@ noscript > .gdprbar {
 .page-section.media-left-col, .page-section.media-right-col {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 49%;
+}
+.page-section.media-right-col {
+  margin-left: 2%;
 }
 .page-section.media-left-col ~ .page-section > h2, .page-section.media-right-col ~ .page-section > h2, .page-section.media-left-col ~ .page-section > h3, .page-section.media-right-col ~ .page-section > h3, .page-section.media-left-col ~ .page-section > h4, .page-section.media-right-col ~ .page-section > h4 {
   margin-top: 0;
@@ -9286,12 +9289,12 @@ noscript > .gdprbar {
     margin-right: 295px;
   }
   .page-section .page-section-2coltext-right > * {
-    margin-left: 50%;
+    margin-left: 51%;
     width: auto;
   }
   .page-section .page-section-2coltext-left {
     float: left;
-    width: 50%;
+    width: 49%;
   }
   .page-section .page-section-2coltext-left .page-section-paper {
     margin-right: 1rem;
@@ -9326,6 +9329,10 @@ noscript > .gdprbar {
   .page-sections-wrapper > .record-bumper, .record-between {
     max-width: 1000px;
   }
+}
+
+.panelgap + .panelgap {
+  margin-top: 2rem;
 }
 
 .record-bumper {

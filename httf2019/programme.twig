@@ -8,14 +8,14 @@
 {{ redirect(path('contentlink', {contenttypeslug: 'page', slug: '404-not-found'})) }}
 {% endif %}
 
-{% setcontent panels = 'panels' orderby 'datetime' %}
+{% setcontent panels = 'panels' orderby 'starttime' %}
 {% setcontent papers = 'programme' where { types: '!theme-setting' } %}
 {% set panelsperside = (panels|length // 2) - 1%}
 <div class="page-section page-section-text twocoltext">
     <div class="page-section-2coltext-left">
     {% for panel in panels %}
-        <div>
-            <h2><a href="{{ panel.link }}" class="nolinkcolour" title="Read abstracts for papers in the {{ panel.title }} panel">{{ panel.title }}</a>{% if panel.datetime %} <small><span class="badge badge-pill badge-dark">{{ record.datetime|date('l') }} at {{ record.datetime|date('g.i a') }}{% endif %}</span></small></h2>
+        <div class="panelgap">
+            <h2><a href="{{ panel.link }}" class="nolinkcolour" title="Read abstracts for papers in the {{ panel.title }} panel">{{ panel.title }}</a>{% if panel.starttime %} <small><span class="badge badge-pill badge-dark">{{ panel.starttime|date('l') }} at {{ panel.starttime|date('g.i a') }}{% endif %}</span></small></h2>
             {% for paper in papers if panel.id in paper.relation.panels %}
             <div class="page-section-text">
                 <div class="page-section-paper card">
@@ -34,7 +34,7 @@
             </div>
             {% else %}
             <div>
-                <p>Unfortunately, no accepted papers could be found in this panel.</p>
+                <p>Unfortunately, no accepted papers could be found in this session.</p>
             </div>
             {% endfor %}
         </div>
@@ -43,7 +43,7 @@
             <div class="page-section-2coltext-right">
         {% endif %}
     {% else %}
-        <p>Unfortunately, no panels were be found.</p>
+        <p>Unfortunately, no session were be found.</p>
     {% endfor %}
     </div>
 </div>
