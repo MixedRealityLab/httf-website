@@ -8849,9 +8849,8 @@ noscript > .gdprbar {
     max-width: 1000px;
   }
 }
-.page-section.outro-after *:last-child {
-  border-bottom: 1px solid #F29420;
-  padding-bottom: 3rem;
+.page-section.outro-after {
+  margin-bottom: 3rem;
 }
 .page-section.page-section-text .card {
   margin-top: 1rem;

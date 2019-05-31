@@ -532,9 +532,8 @@ noscript > .gdprbar {
     @include make-container-max-widths();
   }
 
-  &.outro-after *:last-child {
-    border-bottom: $paper-record-border-bottom;
-    padding-bottom: $paper-record-outro-padding-b;
+  &.outro-after {
+    margin-bottom: $paper-record-outro-padding-b;
   }
 
   &.page-section-text .card {
