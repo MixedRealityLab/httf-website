@@ -10,12 +10,10 @@
 
 {% setcontent panels = 'panels' orderby 'starttime' %}
 {% setcontent papers = 'programme' where { types: '!theme-setting' } %}
-{% set panelsperside = (panels|length // 2) - 1%}
-<div class="page-section page-section-text twocoltext">
-    <div class="page-section-2coltext-left">
+<div class="page-section page-section-text">
     {% for panel in panels %}
         <div class="panelgap">
-            <h2><a href="{{ panel.link }}" class="nolinkcolour" title="Read abstracts for papers in the {{ panel.title }} panel">{{ panel.title }}</a>{% if panel.starttime %} <small><span class="badge badge-pill badge-dark">{{ panel.starttime|date('l') }} at {{ panel.starttime|date('g.i a') }}{% endif %}</span></small></h2>
+            <h2><a href="{{ panel.link }}" class="nolinkcolour" title="Read about the {{ panel.title }} session">{{ panel.title }}</a>{% if panel.starttime %} <small><span class="badge badge-pill badge-dark">{{ panel.starttime|date('l') }} at {{ panel.starttime|date('g.i a') }}{% endif %}</span></small></h2>
             {% for paper in papers if panel.id in paper.relation.panels %}
             <div class="page-section-text">
                 <div class="page-section-paper card">
@@ -32,16 +30,8 @@
                     </div>
                 </div>
             </div>
-            {% else %}
-            <div>
-                <p>Unfortunately, no accepted papers could be found in this session.</p>
-            </div>
             {% endfor %}
         </div>
-        {% if loop.index0 == panelsperside %}
-            </div>
-            <div class="page-section-2coltext-right">
-        {% endif %}
     {% else %}
         <p>Unfortunately, no session were be found.</p>
     {% endfor %}
