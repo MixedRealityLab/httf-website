@@ -15,30 +15,29 @@
 <div class="page-section page-section-text">
     {% if record.datetime is not empty %}
     <p>The session will take place on <strong>{{ record.datetime|date('l jS') }}</strong> at <strong>{{ record.datetime|date('g.i a') }}</strong>.</p>{% endif %}
-    {% setcontent papers = 'programme' where { 'relation.panels': record.id, types: '!theme-setting' } %}
-    {% for paper in papers if record.id in paper.relation.panels %}
+    {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
+    {% for event in events if record.id in event.relation.sessions %}
     <div class="page-section-text">
         <div class="page-section-paper card">
             <div class="paper-type">
-                {{ paper|taxonomy.types|first }}
+                {{ event|taxonomy.types|first }}
            </div>
            <div class="paper-title">
-                <a href="{{ paper.link }}" title="Read {{ paper.title }}">
-                    {{ paper.title }}
+                <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
+                    {{ event.title }}
                 </a>
             </div>
             <div class="paper-authors italic">
-                {{ paper.authors|markdown }}
+                {{ event.authors|markdown }}
             </div>
             <div class="paper-text">
-                {{ paper.teaser|markdown }}
+                {{ event.teaser|markdown }}
             </div>
         </div>
     </div>
     {% endfor %}
     <p>
-                    <a href="{{ path('contentlisting', {contenttypeslug: 'programme'}) }}" title="Browse the complete HttF programme">Browse the complete programme</a>.<br />
-                    <a href="{{ path('contentlink', {contenttypeslug: 'page', slug: 'cfp'}) }}" title="Read the Call for Papers">Read the Call for Papers</a>.
+                    <a href="{{ path('contentlisting', {contenttypeslug: 'programme'}) }}" title="Browse the complete HttF programme">&laquo; Browse the complete programme</a>
                     </p>
     </p>
 </div>

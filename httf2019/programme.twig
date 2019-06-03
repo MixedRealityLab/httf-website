@@ -2,38 +2,49 @@
 
 {% block main %}
 {% setcontent record = 'page/programme' %}
-{% if record  %}
-{% include 'partials/_record.twig' with {'record': record} %}
+{% if record %}
+    {% if record.redirect is not empty %}
+    {% include 'redirect.twig' with {'record': record} %}
+    {% else %}
+    {% include 'partials/_record.twig' with {'record': record} %}
+    {% endif %}
 {% else %}
 {{ redirect(path('contentlink', {contenttypeslug: 'page', slug: '404-not-found'})) }}
 {% endif %}
 
-{% setcontent panels = 'panels' orderby 'starttime' %}
-{% setcontent papers = 'programme' where { types: '!theme-setting' } %}
+{% setcontent sessions = 'sessions.' orderby 'starttime' %}
+{% setcontent events = 'programme' where { types: '!theme-setting' } %}
 <div class="page-section page-section-text">
-    {% for panel in panels %}
+    {% set currentday = "Unscheduled" %}
+    {% for session in sessions %}
         <div class="panelgap">
-            <h2><a href="{{ panel.link }}" class="nolinkcolour" title="Read about the {{ panel.title }} session">{{ panel.title }}</a>{% if panel.starttime %} <small><span class="badge badge-pill badge-dark">{{ panel.starttime|date('l') }} at {{ panel.starttime|date('g.i a') }}{% endif %}</span></small></h2>
-            {% for paper in papers if panel.id in paper.relation.panels %}
+            {% if loop.first and session.starttime is empty %}
+            <h2>Unscheduled</h2>
+            {% elseif session.starttime is not empty and currentday != session.starttime|date('l') %}
+            {% set currentday = session.starttime|date('l') %}
+            <h2>{{ currentday }}</h2>
+            {% endif %}
+            <h3>{% if session.starttime %}<span class="badge badge-pill badge-dark">{{ session.starttime|date('G:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' session">{{ session.title }}</a></h3>
+            {% for event in events if session.id in event.relation.sessions %}
             <div class="page-section-text">
                 <div class="page-section-paper card">
                     <div class="paper-type">
-                        {{ paper|taxonomy.types|first }}
+                        {{ event|taxonomy.types|first }}
                    </div>
                    <div class="paper-title">
-                        <a href="{{ paper.link }}" title="Read {{ paper.title }}">
-                            {{ paper.title }}
+                        <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
+                            {{ event.title }}
                         </a>
                     </div>
                     <div class="paper-authors">
-                        {{ paper.authors|markdown }}
+                        {{ event.authors|markdown }}
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     {% else %}
-        <p>Unfortunately, no session were be found.</p>
+        <p>Unfortunately, no sessions were be found.</p>
     {% endfor %}
     </div>
 </div>

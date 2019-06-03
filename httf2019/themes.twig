@@ -4,15 +4,15 @@
 {% setcontent record = 'page/themes' %}
 {% include 'partials/_record.twig' with {'record': record} %}
 
-{% setcontent panels = 'panels' where { session_types: 'panel' } orderby 'starttime' %}
+{% setcontent sessions = 'sessions' where { session_types: 'panel' } orderby 'starttime' %}
 {% setcontent papers = 'programme' where { types: 'theme-setting' } %}
-{% set panelsperside = (panels|length // 2) - 1%}
+{% set sessionsperside = (sessions|length // 2) - 1%}
 <div class="page-section page-section-text twocoltext">
     <div class="page-section-2coltext-left">
-    {% for panel in panels %}
+    {% for session in sessions %}
         <div>
-            <h2>{{ panel.title }}</h2>
-            {% for paper in papers if panel.id in paper.relation.panels %}
+            <h2>{{ session.title }}</h2>
+            {% for paper in papers if session.id in paper.relation.sessions %}
             <div class="page-section-text">
                 <a href="{{ paper.link }}" title="Read {{ paper.title }}">
                     {{ paper.title }}
@@ -21,16 +21,16 @@
             </div>
             {% else %}
             <div>
-                <p><em>Unfortunately, no theme-setting papers were found in this panel.</em></p>
+                <p><em>Unfortunately, no theme-setting papers were found in this session.</em></p>
             </div>
             {% endfor %}
         </div>
-        {% if loop.index0 == panelsperside %}
+        {% if loop.index0 == sessionsperside %}
             </div>
             <div class="page-section-2coltext-right">
         {% endif %}
     {% else %}
-        <p><em>Unfortunately, no panels were be found.</em></p>
+        <p><em>Unfortunately, no sessions were found.</em></p>
     {% endfor %}
     </div>
 </div>
