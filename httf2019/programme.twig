@@ -3,10 +3,10 @@
 {% block main %}
 {% setcontent record = 'page/programme' %}
 {% if record %}
-    {% if record.redirect is not empty %}
-    {% include 'redirect.twig' with {'record': record} %}
-    {% else %}
+    {% if app.request.get('preview') == "true" or record.redirect is empty %}
     {% include 'partials/_record.twig' with {'record': record} %}
+    {% else %}
+    {% include 'redirect.twig' with {'record': record} %}
     {% endif %}
 {% else %}
 {{ redirect(path('contentlink', {contenttypeslug: 'page', slug: '404-not-found'})) }}
