@@ -17,46 +17,52 @@
 <div class="page-section page-section-text">
     {% set currentday = "Unscheduled" %}
     {% for session in sessions %}
-        <div class="panelgap">
-            {% if loop.first and session.starttime is empty %}
-            <h2>Unscheduled</h2>
-            {% elseif session.starttime is not empty and currentday != session.starttime|date('l') %}
-            {% set currentday = session.starttime|date('l') %}
-            <h2>{{ currentday }}</h2>
-            {% endif %}
-            {% set timeOffset = 5 %}
-            {% set epochStart = session.starttime|date('U') %}
-            {% set epochEnd = session.starttime|date('U') + (session.lengthmins * 60) %}
-            {% set epochNow = "now"|date('U') %}
-            {% if epochNow > epochEnd - timeOffset %}
-                {% set badgeClass = "badge-secondary" %}
-            {% elseif epochNow + timeOffset > epochStart %}
-                {% set badgeClass = "badge-success" %}
-            {% else %}
-                {% set badgeClass = "badge-dark" %}
-            {% endif %}
-            <h3>{% if session.starttime %}<span class="badge badge-pill {{ badgeClass }}">{{ session.starttime|date('H:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' session">{{ session.title }}</a></h3>
-            {% for event in events if session.id in event.relation.sessions %}
-            <div class="page-section-text">
-                <div class="page-section-paper card">
-                    <div class="paper-type">
-                        {{ event|taxonomy.types|first }}
-                   </div>
-                   <div class="paper-title">
-                        <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
-                            {{ event.title }}
-                        </a>
-                    </div>
-                    <div class="paper-authors">
-                        {{ event.authors|markdown }}
-                    </div>
+        {% if loop.first and session.starttime is empty %}
+            <h2><a href="#programmeUnscheduled" data-toggle="collapse" data-target="#programmeUnscheduled" aria-expanded="false" aria-controls="programmeUnscheduled" class="programmeDay"><span></span> Unscheduled sessions</a></h2>
+            <div class="jumbotron programmeDayEvents rounded collapse" id="programmeUnscheduled">
+        {% elseif session.starttime is not empty and currentday != session.starttime|date('ljSFY') %}
+            {% if not loop.first %}
                 </div>
+            {% endif %}
+            {% set currentday = session.starttime|date('ljSFY') %}
+            <h2><a href="#programme{{ currentday }}"" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="{{ session.starttime|date('oz') == now|date('oz') ? "true" : "false" }}" aria-controls="programme{{ currentday }}" class="programmeDay will_show"><span></span> {{ session.starttime|date('l jS F Y')  }}</a></h2>
+            <div class="jumbotron programmeDayEvents rounded collapse{{ session.starttime|date('oz') == now|date('oz') ? " show" : "" }}" id="programme{{ currentday }}">
+        {% endif %}
+        {% set timeOffset = 5 %}
+        {% set epochStart = session.starttime|date('U') %}
+        {% set epochEnd = session.starttime|date('U') + (session.lengthmins * 60) %}
+        {% set epochNow = "now"|date('U') %}
+        {% if session.lengthmins > 0 and  epochNow > epochEnd - timeOffset %}
+            {% set badgeClass = "badge-secondary pastEvent" %}
+            {% set h3Class = "pastEvent" %}
+            {% set cardClass = "pastEvent" %}
+        {% elseif epochNow + timeOffset > epochStart %}
+            {% set badgeClass = "badge-success" %}
+            {% set h3Class = "" %}
+            {% set cardClass = "" %}
+        {% else %}
+            {% set badgeClass = "badge-dark" %}
+            {% set h3Class = "" %}
+            {% set cardClass = "" %}
+        {% endif %}
+        <h3 class="{{ h3Class }}">{% if session.starttime %}<span class="badge badge-pill {{ badgeClass }}">{{ session.starttime|date('H:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' session">{{ session.title }}</a></h3>
+        {% for event in events if session.id in event.relation.sessions %}
+        <div class="page-section-paper card shadow {{ cardClass }}">
+            <div class="paper-type">
+                {{ event|taxonomy.types|first }}
+           </div>
+           <div class="paper-title">
+                <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
+                    {{ event.title }}
+                </a>
             </div>
-            {% endfor %}
+            <div class="paper-authors d-md-block d-none">
+                {{ event.authors|markdown }}
+            </div>
         </div>
+        {% endfor %}
     {% else %}
         <p>Unfortunately, no sessions were be found.</p>
     {% endfor %}
 </div>
-
 {% endblock %}

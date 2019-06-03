@@ -33,6 +33,11 @@ h3, h4 {
   margin-top: $headings-margin-top / 2;
 }
 
+
+h3:first-child {
+  margin-top: 0
+}
+
 h3 .badge-pill {
   padding-top: .3rem;
 }
@@ -558,6 +563,8 @@ noscript > .gdprbar {
     font-style: italic;
   }
 
+  .pastEvent { opacity: .5; }
+
   & .page-section-paper {
     padding: $spacer/2;
     display: block;
@@ -570,20 +577,61 @@ noscript > .gdprbar {
       width: $paper-type-width;
     }
 
-    .paper-title {
-      margin-top: $paper-title-margin-top;
-      margin-left: $paper-title-margin-left;
-    }
-
-    .paper-authors, .paper-text {
-      margin-left: $paper-title-margin-left;
-      margin-bottom: $paper-title-margin-top;
-    }
 
     .paper-authors.italic {
       font-style: italic;
       color: $paper-authors-fg;
       margin-bottom: $paper-text-margin-top;
+    }
+  }
+
+  .programmeDay {
+    color: map-get($theme-colors, primary-gloss);
+
+    &, &:active, &:link, &:visited, a:hover {
+      color: map-get($theme-colors, primary-gloss);
+      text-decoration: none;
+    }
+
+    &[aria-expanded=false] span:after {
+      content: '➕';
+      font-size: 1rem;
+    }
+
+    &[aria-expanded=true] span:after {
+      content:'➖';
+      font-size: 1rem;
+    }
+  }
+
+  .programmeDayEvents {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    padding: 0;
+
+    & h3 {
+      margin: 0 $spacer/2 !important;
+      padding: $spacer/2 0 $spacer/4 0;
+    }
+
+    & > div {
+      margin: 0 $spacer/2 !important;
+      box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    }
+
+    & > h3 + & > div {
+      margin-top: 0 !important;
+    }
+
+    & > div + & > h3 {
+      margin-top: $spacer !important;
+    }
+
+    & > div:last-child {
+      margin-bottom: $spacer/4 !important;
+    }
+
+    & {
+      padding-bottom: $spacer/4;
     }
   }
 
@@ -603,11 +651,43 @@ noscript > .gdprbar {
     }
   }
 
-  &.page-section-text.center , &.page-section-text.outline.center {
-    text-align: center;
+&.page-section-text.center , &.page-section-text.outline.center {
+  text-align: center;
+}
+
+
+@include media-breakpoint-up(md) {
+  .page-section-paper {
+    .paper-title {
+      margin-top: $paper-title-margin-top;
+      margin-left: $paper-title-margin-left;
+    }
+
+    .paper-authors, .paper-text {
+      margin-left: $paper-title-margin-left;
+      margin-bottom: $paper-title-margin-top;
+    }
   }
 
+  .programmeDayEvents {
+    & > div + h3 {
+      padding-top: $spacer !important;
+    }
 
+    & > div {
+      padding: $spacer/2;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .programmeDayEvents {
+
+    & > div {
+      padding: $spacer/2;
+    }
+  }
+}
 
   &.page-section-author > div.layout {
     background: $sec-author-background;
@@ -1005,6 +1085,9 @@ noscript > .gdprbar {
   }
 
 }
+
+
+
 
 .page-sections-wrapper > .record-bumper, .record-between {
   @include make-container();

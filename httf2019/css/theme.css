@@ -8259,11 +8259,15 @@ h1, h2, h3, h4 {
 }
 
 h2 {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 h3, h4 {
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+
+h3:first-child {
+  margin-top: 0;
 }
 
 h3 .badge-pill {
@@ -8870,6 +8874,9 @@ noscript > .gdprbar {
 .page-section.page-section-text.authors {
   font-style: italic;
 }
+.page-section .pastEvent {
+  opacity: 0.5;
+}
 .page-section .page-section-paper {
   padding: 1rem;
   display: block;
@@ -8881,18 +8888,49 @@ noscript > .gdprbar {
   text-transform: uppercase;
   width: 4.5rem;
 }
-.page-section .page-section-paper .paper-title {
-  margin-top: -1.35rem;
-  margin-left: 5rem;
-}
-.page-section .page-section-paper .paper-authors, .page-section .page-section-paper .paper-text {
-  margin-left: 5rem;
-  margin-bottom: -1.35rem;
-}
 .page-section .page-section-paper .paper-authors.italic {
   font-style: italic;
   color: #495057;
   margin-bottom: 1rem;
+}
+.page-section .programmeDay {
+  color: #ED7E15;
+}
+.page-section .programmeDay, .page-section .programmeDay:active, .page-section .programmeDay:link, .page-section .programmeDay:visited, .page-section .programmeDay a:hover {
+  color: #ED7E15;
+  text-decoration: none;
+}
+.page-section .programmeDay[aria-expanded=false] span:after {
+  content: "➕";
+  font-size: 1rem;
+}
+.page-section .programmeDay[aria-expanded=true] span:after {
+  content: "➖";
+  font-size: 1rem;
+}
+.page-section .programmeDayEvents {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  padding: 0;
+}
+.page-section .programmeDayEvents h3 {
+  margin: 0 1rem !important;
+  padding: 1rem 0 0.5rem 0;
+}
+.page-section .programmeDayEvents > div {
+  margin: 0 1rem !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+.page-section .programmeDayEvents > h3 + .page-section .programmeDayEvents > div {
+  margin-top: 0 !important;
+}
+.page-section .programmeDayEvents > div + .page-section .programmeDayEvents > h3 {
+  margin-top: 2rem !important;
+}
+.page-section .programmeDayEvents > div:last-child {
+  margin-bottom: 0.5rem !important;
+}
+.page-section .programmeDayEvents {
+  padding-bottom: 0.5rem;
 }
 .page-section.page-section-text.center, .page-section.page-section-text.outline.center {
   text-align: center;
@@ -8909,6 +8947,27 @@ noscript > .gdprbar {
 }
 .page-section.page-section-text.center, .page-section.page-section-text.outline.center {
   text-align: center;
+}
+@media (min-width: 768px) {
+  .page-section .page-section-paper .paper-title {
+    margin-top: -1.35rem;
+    margin-left: 5rem;
+  }
+  .page-section .page-section-paper .paper-authors, .page-section .page-section-paper .paper-text {
+    margin-left: 5rem;
+    margin-bottom: -1.35rem;
+  }
+  .page-section .programmeDayEvents > div + h3 {
+    padding-top: 2rem !important;
+  }
+  .page-section .programmeDayEvents > div {
+    padding: 1rem;
+  }
+}
+@media (min-width: 992px) {
+  .page-section .programmeDayEvents > div {
+    padding: 1rem;
+  }
 }
 .page-section.page-section-author > div.layout {
   background: #f1f1f1;
