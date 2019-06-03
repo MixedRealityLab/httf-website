@@ -13,8 +13,8 @@
 {% endif %}
 
 <div class="page-section page-section-text">
-    {% if record.datetime is not empty %}
-    <p>The session will take place on <strong>{{ record.datetime|date('l jS') }}</strong> at <strong>{{ record.datetime|date('g.i a') }}</strong>.</p>{% endif %}
+    {% if record.starttime is not empty %}
+    <p>The session will take place on <strong>{{ record.starttime|date('l jS') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>.</p>{% endif %}
     {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
     {% for event in events if record.id in event.relation.sessions %}
     <div class="page-section-text">
