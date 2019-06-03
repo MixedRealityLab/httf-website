@@ -14,9 +14,10 @@
         <link rel="stylesheet" href="{{ asset('css/theme.css', 'theme') }}">
         <link href="{{ asset('css/academicons.min.css', 'theme') }}" rel="stylesheet">
         <title>
-            {%- if record.title is defined and record.title != config.get('general/sitename') %}{{ record.title|striptags }} | {% endif -%}
-                {{ config.get('general/sitename') -}}
-            {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
+            {% if record.title is defined %}{{ record.title|striptags }} - {{ config.get('general/sitename') -}}
+            {% elseif search is defined %}Search results - {{ config.get('general/sitename') -}}
+            {% elseif records is defined %}{{ (records|first).contenttype.name }} - {{ config.get('general/sitename') -}}
+            {% else %}{{ config.get('general/sitename') -}}{% endif -%} 
         </title>
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png', 'theme') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png', 'theme') }}">
@@ -41,8 +42,8 @@
                 </button>
 
                 <div class="sitelogo d-none d-md-inline-block">
-                    <a href="{{ path('homepage') }}" title="{{ app.config.get('general/sitename') }}">
-                        <img src="{{ asset('img/logo-square.svg', 'theme') }}" alt="{{ app.config.get('general/sitename') }}">
+                    <a href="{{ path('homepage') }}" title="Go to the {{ app.config.get('general/sitename') }} homepage">
+                        <img src="{{ asset('img/logo-square.svg', 'theme') }}" alt="{{ app.config.get('general/sitename') }} logo">
                     </a>
                 </div>
 
