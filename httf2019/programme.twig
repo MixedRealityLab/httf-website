@@ -24,7 +24,18 @@
             {% set currentday = session.starttime|date('l') %}
             <h2>{{ currentday }}</h2>
             {% endif %}
-            <h3>{% if session.starttime %}<span class="badge badge-pill badge-dark">{{ session.starttime|date('G:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' session">{{ session.title }}</a></h3>
+            {% set timeOffset = 5 %}
+            {% set epochStart = session.starttime|date('U') %}
+            {% set epochEnd = session.starttime|date('U') + (session.lengthmins * 60) %}
+            {% set epochNow = "now"|date('U') %}
+            {% if epochNow > epochEnd - timeOffset %}
+                {% set badgeClass = "badge-secondary" %}
+            {% elseif epochNow + timeOffset > epochStart %}
+                {% set badgeClass = "badge-success" %}
+            {% else %}
+                {% set badgeClass = "badge-dark" %}
+            {% endif %}
+            <h3>{% if session.starttime %}<span class="badge badge-pill {{ badgeClass }}">{{ session.starttime|date('H:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' session">{{ session.title }}</a></h3>
             {% for event in events if session.id in event.relation.sessions %}
             <div class="page-section-text">
                 <div class="page-section-paper card">
@@ -46,7 +57,6 @@
     {% else %}
         <p>Unfortunately, no sessions were be found.</p>
     {% endfor %}
-    </div>
 </div>
 
 {% endblock %}

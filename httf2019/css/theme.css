@@ -8266,6 +8266,10 @@ h3, h4 {
   margin-top: 2rem;
 }
 
+h3 .badge-pill {
+  padding-top: 0.3rem;
+}
+
 h5, h6 {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;

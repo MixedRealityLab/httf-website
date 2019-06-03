@@ -33,6 +33,10 @@ h3, h4 {
   margin-top: $headings-margin-top / 2;
 }
 
+h3 .badge-pill {
+  padding-top: .3rem;
+}
+
 h5, h6 {
   font-family: $headings-font-family;
   font-weight: bold;

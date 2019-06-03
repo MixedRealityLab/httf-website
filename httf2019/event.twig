@@ -9,9 +9,9 @@
             {% set session = record.related('sessions')|first %}
             {% set eventtype = record|taxonomy.types|first|lower %}
             {% if eventtype == "keynote" %}
-                A <strong>{{ record|taxonomy.types|first|lower }}</strong> in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></strong> session{% if session.starttime is not empty %} on <strong>{{ session.starttime|date('l jS') }}</strong> at <strong>{{ session.starttime|date('g.i a') }}</strong>{% endif %}.
+                A <strong>{{ record|taxonomy.types|first|lower }}</strong> in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></strong> session{% if session.starttime is not empty %} on <strong>{{ session.starttime|date('l jS') }}</strong> at <strong>{{ session.starttime|date('H:i') }}</strong>{% endif %}.
             {% elseif eventtype == "theme-setting" %}
-                The <strong>theme setting</strong> paper for the <strong><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></strong> session{% if session.starttime is not empty %} on <strong>{{ session.starttime|date('l jS') }}</strong> at <strong>{{ session.starttime|date('g.i a') }}</strong>{% endif %}.
+                The <strong>theme setting</strong> paper for the <strong><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></strong> session{% if session.starttime is not empty %} on <strong>{{ session.starttime|date('l jS') }}</strong> at <strong>{{ session.starttime|date('H:i') }}</strong>{% endif %}.
             {% else %}
                 A <strong>{{ record|taxonomy.types|first|lower }}</strong> paper in the <strong><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></strong> session{% if session.starttime is not empty %} on <strong>{{ session.starttime|date('l jS') }}</strong> at <strong>{{ session.starttime|date('g.i a') }}</strong>{% endif %}.
             {% endif %}
