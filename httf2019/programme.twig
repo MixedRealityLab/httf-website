@@ -45,7 +45,7 @@
             {% set h3Class = "" %}
             {% set cardClass = "" %}
         {% endif %}
-        <h3 class="{{ h3Class }}">{% if session.starttime %}<span class="badge badge-pill {{ badgeClass }}">{{ session.starttime|date('H:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' session">{{ session.title }}</a></h3>
+        <h3 class="{{ h3Class }}">{% if session.starttime %}<span class="badge badge-pill {{ badgeClass }}">{{ session.starttime|date('H:i') }}</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}</a></h3>
         {% for event in events if session.id in event.relation.sessions %}
         <div class="page-section-paper card shadow {{ cardClass }}">
             <div class="paper-type">

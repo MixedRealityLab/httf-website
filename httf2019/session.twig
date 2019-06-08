@@ -14,7 +14,7 @@
 
 <div class="page-section page-section-text">
     {% if record.starttime is not empty %}
-    <p>The session will take place on <strong>{{ record.starttime|date('l jS') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>.</p>{% endif %}
+    <p>The {{ record|taxonomy.session_types|first|lower }} will take place on <strong>{{ record.starttime|date('l jS F Y') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>.</p>{% endif %}
     {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
     {% for event in events if record.id in event.relation.sessions %}
     <div class="page-section-text">
