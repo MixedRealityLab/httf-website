@@ -3,7 +3,7 @@
     <channel>
         <title>{{ app.config.get('general/sitename') }}</title>
         <atom:link href="{{ canonical() }}" rel="self" type="application/rss+xml"/>
-        <link>{{ url('homepage') }}/programme</link>
+        <link>{{ url('homepage') }}</link>
 {% if app.config.get('general/payoff') is defined %}
         <description>{{ app.config.get('general/payoff') }}</description>
 {% endif %}
