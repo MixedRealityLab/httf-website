@@ -6,6 +6,19 @@
     <h1 class="page-title">{{ record.title }}</h1>
 </div>
 
+{% if record.image is not empty %}
+<div class="page-section page-section-media-wrapper media-right">
+    <div class="page-section-media">
+        <img src="{{ record.image|image }}" alt="{{ record.imagecaption }}">
+        {% if record.imagecaption is not empty %}
+        <div class="page-section-caption">
+            <p>{{ record.imagecaption }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
 {% if record.teaser is not empty %}
     <div class="page-section page-section-text">
         {{ record.teaser|markdown }}
