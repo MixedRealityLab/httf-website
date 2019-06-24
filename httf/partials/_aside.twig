@@ -1,0 +1,12 @@
+        {% setcontent blocks = 'blocks' where { show_in_sidebar: true } orderby 'sidebar_ordering' %}
+        {% for block in blocks %}
+            <div class="card shadow rounded" class="p-2">
+              <div class="card-body">
+                <h5 class="card-title">{{ block.title }}</h5>
+                {{ block.content|markdown }}
+                {% if block.contentlink is not empty %}
+                    <a href="{{ block.contentlink }}" class="card-link" title="{{ block.contentlink_title }}">{{ block.contentlink_text }}</a>
+                {% endif %}
+              </div>
+            </div>
+        {% endfor %}

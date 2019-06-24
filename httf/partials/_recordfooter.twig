@@ -1,0 +1,60 @@
+{# This file is inserted as the 'footer' of each listed record. #}
+
+{% if extended|default() %}
+    {% if record.nav is defined and record.nav %}
+        {% set previous = record.previous('id') %}
+        {% set next = record.next('id') %}
+        {% if previous or next %}
+            <p class="meta">
+                {% if previous %}
+                    <a href="{{ previous.link }}">&laquo; {{ previous.title }}</a>
+                {% endif %}
+                {% if previous and next %}
+                -
+                {% endif %}
+                {% if next %}
+                    <a href="{{ next.link }}">{{ next.title }} &raquo;</a>
+                {% endif %}
+            </p>
+        {% endif %}
+    {% endif %}
+
+    {% set relatedrecords = record.related() %}
+    {% if relatedrecords is not empty %}
+        <div class="hr col-6 p-0">
+            <hr>
+        </div>
+
+        <aside>
+        {% set endcontainer = false %}
+        {% for related in relatedrecords if related.contenttype.singular_slug == "pubs" %}
+            {% if loop.first %}
+                <h2>Associated publications</h2>
+                {% set endcontainer = true %}
+            {% endif %}
+
+            {% set pub = related %}
+            {{ block('pub') }}
+            
+        {% endfor %}
+        {% if endcontainer %}
+        {% endif %}
+
+        {% set endcontainer = false %}
+        {% for related in relatedrecords if related.contenttype.singular_slug != "pubs" %}
+            {% if loop.first %}
+                <h2>Related</h2>
+                <p class="meta">
+                    <ul>
+                {% set endcontainer = true %}
+            {% endif %}
+
+            <li><a href="{{ related.link }}">{{ related.title }}</a></li>
+        {% endfor %}
+        {% if endcontainer %}
+                </ul>
+            </p>
+        {% endif %}
+        </aside>
+    {% endif %}
+{% endif %}

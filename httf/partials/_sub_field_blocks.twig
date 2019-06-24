@@ -1,0 +1,176 @@
+{# Sub-block for 'text' field such as 'text', 'textarea', or 'html' #}
+{% block text_field %}
+    <div {% if key is not empty %}data-bolt-field="{{ key }}"{% endif %}{% if class is defined %}class="{% if value is iterable %}d-lg-flex {% endif %}{{ class }}"{% endif %}>
+        {# If 'allowtwig' is true for this field, we'll need to parse it as Twig here. #}
+        {% if value is iterable %}
+        {% set width = 12/(value|length) %}
+        {% for item in value %}
+            <div class="col-lg-{{width}} col-12 p-0 {{ loop.first ? 'pr-1' : 'pl-1' }}">
+                {%- autoescape false -%}
+                {% if allowtwig|default(false) %}{{ include(template_from_string(item)) }}{% else %}{{ item }}{% endif -%}
+                {%- endautoescape -%}
+            </div>
+            {% endfor %}
+        {% else %}
+            <div>
+                {%- autoescape false -%}
+                {% if allowtwig|default(false) %}{{ include(template_from_string(value)) }}{% else %}{{ value }}{% endif -%}
+                {%- endautoescape -%}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{# Sub-block for Markdown fields #}
+{% block markdown_field %}
+    {% if value is not empty %}
+    <div {% if key is not empty %}data-bolt-field="{{ key }}"{% endif %}{% if class is defined %}class="{% if value is iterable %}d-lg-flex {% endif %}{{ class }}"{% endif %}>
+        {# If 'allowtwig' is true for this field, we'll need to parse it as Twig here. #}
+        {% if value is iterable %}
+        {% set width = 12/(value|length) %}
+        {% for item in value %}
+            <div class="col-lg-{{width}} col-12 p-0 {{ loop.first ? 'pr-1' : 'pl-1' }}">
+                {% if allowtwig|default(false) %}{{ include(template_from_string(item))|markdown }}{% else %}{{ item|markdown }}{% endif -%}
+            </div>
+            {% endfor %}
+        {% else %}
+            <div>
+                {% if allowtwig|default(false) %}{{ include(template_from_string(value))|markdown }}{% else %}{{ value|markdown }}{% endif -%}
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endblock %}
+
+{# Sub-block for Card fields #}
+{% block card_field %}
+    <div class="card record-card {{ class ? class : 'shadow rounded' }}" {% if key is not empty %}data-bolt-field="{{ key }}"{% endif %}>
+        <div class="card-body">
+            <h5 class="card-title">{{ title }}</h5>
+            {% if allowtwig|default(false) %}{{ include(template_from_string(text))|markdown }}{% else %}{{ text|markdown }}{% endif -%}
+        </div>
+    </div>
+{% endblock %}
+
+{# Sub-block for 'imagelist' fields #}
+{% block imagelist_field %}
+    <div class="bolt-imagelist">
+        {% for image in value %}
+            <div class="bolt-imageholder">
+                {{ popup(image.filename, 200, 0) }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{# Block for "basic" fields like HTML, Markdown, Textarea and Text #}
+{% block common_fields %}
+
+    {# HTML, Textarea, Text fields #}
+    {% if fieldtype in ['html', 'textarea', 'text'] %}
+        {{ block('text_field') }}
+    {% endif %}
+
+    {# Markdown fields #}
+    {% if fieldtype == 'markdown' %}
+        {{ block('markdown_field') }}
+    {% elseif fieldtype == 'card' %}
+        {{ block('card_field') }}
+    {% endif %}
+
+    {# Image fields #}
+    {% if fieldtype == "image" and value.file|default is not empty %}
+        {% if imagestyle is defined and imagestyle == "inline" %}
+            <div class="record-inline-image{% if class is defined %} {{ class }}{% endif %}">
+                <div>
+                    <img src="{{ asset(value|first, "files") }}" alt="{{ alt|default(false) ? alt }}">
+                    {% if caption is defined and caption is not empty %}<div class="caption">{{ caption|markdown }}</div>{% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="record-image {{ class ? class : 'shadow rounded' }}">
+                <div>
+                    <img src="{{ asset(value|first, "files") }}" alt="{{ alt|default(record.title) }}">
+                    {% if caption is defined and caption is not empty %}<div class="caption">{{ caption|markdown }}</div>{% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {# Video fields #}
+    {% if fieldtype == "video" %}
+        {% if imagestyle is defined and imagestyle == "inline" %}
+            <div class="record-inline-image">
+                <div>
+                    {{ value.html|raw }}
+                    {% if caption is defined and caption is not empty %}<div class="caption">{{ caption|markdown }}</div>{% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="record-image">
+                <div>
+                    {{ value.html|raw }}
+                    {% if caption is defined and caption is not empty %}<div class="caption">{{ caption|markdown }}</div>{% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
+
+{# Block for other field types, like Geo, Select, Checkbox and others. #}
+{% block extended_fields %}
+
+    {# Programme themes field #}
+    {% if fieldtype == "programme" and detail == "themes" %}
+        {% include 'partials/_sub_programme_themes.twig' %}
+    {% elseif fieldtype == "programme" and detail == "keynotes" %}
+        {% include 'partials/_sub_programme_keynotes.twig' %}
+    {% elseif fieldtype == "programme" and detail == "full" %}
+        {% include 'partials/_sub_programme.twig' %}
+    {% endif %}
+
+    {# Geolocation field #}
+    {% if fieldtype == "geolocation" and value.latitude|default is not empty %}
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ value.latitude }},{{ value.longitude }}&amp;zoom=14&amp;size=617x300&amp;sensor=false&amp;markers={{ value.latitude }},{{ value.longitude }}">
+    {% endif %}
+
+    {# Special case for 'select' fields: if it's a multiple select, the value is an array. #}
+    {% if fieldtype == "select" and value is not empty %}
+        <p><strong>{{ record.contenttype.fields[key].label|default(key) }}: </strong>
+        {{ value|join(", ") }}
+        </p>
+    {% endif %}
+
+    {# Checkbox fields #}
+    {% if fieldtype == "checkbox" %}
+        <p><strong>{{ record.contenttype.fields[key].label|default(key) }}</strong>: {{ value ? "checked" : "not checked" }}</p>
+    {% endif %}
+
+    {# Imagelist fields #}
+    {% if fieldtype == "imagelist" and value is not empty %}
+        {{ block('imagelist_field') }}
+    {% endif %}
+
+    {# No special case defined for this type of field. We just output them, if it's
+       a simple scalar, and 'dump' them otherwise. #}
+    {% if fieldtype in [ 'filelist', 'datetime', 'date', 'integer', 'float' ] and value is not empty  %}
+        <p><strong>{{ record.contenttype.fields[key].label|default(key) }}: </strong>
+        {% if value is iterable %}
+            {{ dump(value) }}
+        {% else %}
+            {{ value }}
+        {% endif %}
+        </p>
+    {% endif %}
+
+{% endblock %}
+
+
+
+{% block content_blocks %}
+
+    {{ block('common_fields') }}
+    {{ block('extended_fields') }}
+
+{% endblock %}

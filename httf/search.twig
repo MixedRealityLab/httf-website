@@ -1,0 +1,61 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    {% if homepage is not defined or homepage == false %}
+        <div class="col-12">
+            <nav aria-label="breadcrumb" class="shadow rounded">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Search results</li>
+                </ol>
+            </nav>
+        </div>
+    {% endif %}
+
+    <div class="col-12">
+        <h1>
+            {% if search is not empty %}
+                {{ __('general.phrase.search-results-for-variable', { '%search%': search }) }}
+            {% else %}
+                {{ __('general.phrase.search') }}
+            {% endif %}
+        </h1>
+    </div>
+
+    <div class="col-xl-9 col-lg-8 col-md-7 col-12">
+        <form method="get" action="{{ path('search') }}" id="searchform-block" enctype="text/plain">
+            <input type="search" value="{{ search|default() }}" placeholder="{{ __('general.phrase.search-ellipsis') }}" name="search" class="rounded shadow">
+        </form>
+
+        {% for record in records %}
+            <article class="card rounded shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ record.title }}</h5>
+                    <p class="card-text">{{ record.teaser|markdown }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <a href="{{ record.link }}" title="Read '{{ record.title }}'" class="card-link">Read more…</a>
+                </div>
+            </article>
+
+            <br>
+
+        {% else %}
+            <article>
+
+                <p>
+                    {{ __('general.phrase.no-result-for-search-term', { '%SEARCHTERM%': search|escape }) }}
+                </p>
+
+            </article>
+        {% endfor %}
+
+        {# If there are more records than will fit on one page, the pager is shown. #}
+        {{ pager(template = 'partials/_sub_pager.twig') }}
+    </div>
+
+    <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
+        {% include 'partials/_aside.twig' %}
+    </aside>
+
+{% endblock main %}

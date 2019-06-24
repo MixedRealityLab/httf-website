@@ -1,0 +1,47 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    {% set session = record.related('sessions')|first %}
+    {% set eventtype = record|taxonomy.types|first %}
+
+    <div class="col-12">
+        <nav aria-label="breadcrumb" class="shadow rounded">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
+                <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ eventtype}}</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-xl-9 col-lg-8 col-md-7 col-12">
+        <div class="jumbotron p-3 m-0 mb-3 rounded shadow">
+            <h1>{{ record.title }}</h1>
+            {{ record.authors|markdown }}
+        </div>
+        <article>
+            <div>
+                {{ record.teaser|markdown }}
+
+                {% if record.pdffile is not empty %}
+                <p><a href="{{ asset(record.pdffile, "files") }}" title="Read '{{ record.title }}'">Download a copy of this paper</a></p>
+                {% elseif record.pdflink is not empty %}
+                <p><a href="{{ record.pdflink }}" title="Read '{{ record.title }}'">Download a copy of this paper</a></p>
+                {% endif %}
+            </div>
+        </article>
+    </div>
+    <aside  class="col-xl-3 col-lg-4 col-md-5 col-12">
+        {% if record.citation is not empty %}
+        <div class="card shadow rounded" class="p-2">
+          <div class="card-body">
+            <h5 class="card-title">Reference</h5>
+            <p class="card-text">
+                {{ record.citation }}
+            </p>
+          </div>
+        </div>
+        {% endif %}
+    </aside>
+{% endblock main %}

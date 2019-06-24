@@ -1,0 +1,66 @@
+{% use 'partials/_sub_field_blocks.twig' %}
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+    <div class="col-12">
+        <nav aria-label="breadcrumb" class="shadow rounded">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
+                <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
+                <li class="breadcrumb-item active">{{ record.title }}</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-12">
+        <h1>{{ record.title }}</h1>
+    </div>
+
+    <div class="col-xl-9 col-lg-8 col-md-7 col-12">
+        <article>
+            {% if record.image is not empty %}
+                {% set fieldtype = 'image' %}
+                {% set value = {"file": record.image} %}
+                {% set alt = record.imagecaption %}
+                {% set caption = record.imagecaption %}
+                {% if alt|trim is empty %}{% set alt = caption %}{% endif %}
+                {{ block('common_fields') }}
+            {% endif %}
+
+            {{ record.teaser|markdown }}
+
+            {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
+            <ul class="list-unstyled session rounded shadow shadow-darker">
+            {% for event in events if record.id in event.relation.sessions %}
+                <li class="media p-3 mb-1 mt-1">
+                    <div class="event-type small text-uppercase mr-3">
+                        {{ event|taxonomy.types|first }}
+                    </div>
+                    <div class="media-body">
+                        <h5 class="mt-0">
+                        <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
+                            {{ event.title }}
+                        </a>
+                        </h5>
+                        {{ event.teaser|markdown }}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </article>
+    </div>
+    <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
+        {% if record.starttime is not empty %}
+        <div class="card active shadow shadow-darker rounded" class="p-2">
+          <div class="card-body">
+            <h5 class="card-title">Scheduled time</h5>
+            <p class="card-text">
+                The {{ record|taxonomy.session_types|first|lower }} will take place on <strong>{{ record.starttime|date('l jS F Y') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>{% if record.lengthmins > 0 %} and will finish at <strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong>{% endif %}.
+            </p>
+          </div>
+        </div>
+        {% endif %}
+        {% include 'partials/_aside.twig' %}
+    </aside>
+{% endblock main %}

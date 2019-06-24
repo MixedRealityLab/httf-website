@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ htmllang() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script defer src="{{ asset('js/fa-httf.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/fontawesome.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/popper.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/bootstrap.min.js', 'theme') }}"></script>
+        {# make sure we always display a proper title: The record's title if there is one, appended with the
+           sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+        <title>
+            {% if record.title is defined %}{{ record.title|striptags }} - {{ config.get('general/sitename') -}}
+            {% elseif search is defined %}Search results - {{ config.get('general/sitename') -}}
+            {% elseif records is defined %}{{ (records|first).contenttype.name }} - {{ config.get('general/sitename') -}}
+            {% else %}{{ config.get('general/sitename') -}}{% endif -%} 
+        </title>
+        <link href="{{ asset('css/theme.min.css', 'theme') }}" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icn/apple-touch-icon.png', 'theme') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icn/favicon-32x32.png', 'theme') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icn/favicon-16x16.png', 'theme') }}">
+        <link rel="manifest" href="{{ asset('icn/site.webmanifest', 'theme') }}">
+        <link rel="mask-icon" href="{{ asset('icn/safari-pinned-tab.svg', 'theme') }}" color="#ED7E15">
+        <meta name="apple-mobile-web-app-title" content="HttF 2019">
+        <meta name="application-name" content="HttF 2019">
+        <meta name="msapplication-TileColor" content="#ED7E15">
+        <meta name="theme-color" content="#e1e1e1">
+    </head>
+    <body>
+        <div class="container-fluid">
+            {% block body %}
+            {{ include('partials/_header.twig') }}
+            <div class="row">
+                <div class="main-container container-fluid">
+                    <div class="main row p-4 shadow">
+                        {% block main %}
+                        {% endblock main %}
+                        <div class="col-12 sponsors">
+                            {% setcontent block = 'blocks/sponsors' %}
+                            {{ block.content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock body %}
+        </div>
+        <footer class="container">
+            <div class="row">
+                <div class="footer-container container-fluid">
+                    <div class="row d-flex flex-column justify-content-center flex-md-row">
+                        {% setcontent block = 'blocks/footer' %}
+                        {{ block.content }}
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

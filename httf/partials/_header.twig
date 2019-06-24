@@ -1,0 +1,22 @@
+<header class="row">
+    <h2>
+        <span class="d-md-none d-block">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Show/hide menu" class="d-md-none d-block">
+                <img src="{{ asset('img/brand.svg', 'theme') }}" alt="{{ config.get('general/sitename') -}}: {{ config.get('general/payoff') -}}">
+                <i class="fas fa-chevron-circle-down"></i>
+            </button>
+        </span>
+        <a href="{{ path('homepage') }}" title="Go to the {{ config.get('general/sitename') }} homepage" class="d-md-inline-block d-none">
+            <img src="{{ asset('img/brand-md.svg', 'theme') }}" alt="Halfway to the Future: A two-day symposium in Nottingham, UK exploring the past, present, and future of HCI and design-based research.">
+        </a>
+    </h2>
+
+    <nav id="nav" class="glass collapse">
+        {{ menu(template='partials/_sub_menu.twig') }}
+
+        <form method="get" action="/search" class="form-block nav-search">
+            <input type="search" class="form-control nav-search-input pull-right" name="search" placeholder="Search…" value="{{ search|default() }}">
+        </form>
+    </nav>
+
+</header>

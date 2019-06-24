@@ -1,0 +1,24 @@
+{% use 'partials/_sub_field_blocks.twig' %}
+
+{% setcontent sessions = 'sessions' where { session_types: 'panel' } orderby 'starttime' %}
+{% setcontent papers = 'programme' where { types: 'theme-setting' } %}
+{% set sessionsperside = (sessions|length // 2) %}
+
+{% set val_left = '' %}
+{% set val_temp = '' %}
+
+{% for session in sessions %}
+    {% set val_temp = [val_temp, "<strong>", session.title, " theme</strong>"]|join('') %}
+    {% for paper in papers if session.id in paper.relation.sessions %}
+        {% set val_temp = [val_temp, '<br><a href="', paper.link, '" title="Read ', paper.title, '">', paper.title, '</a>', paper.authors|markdown]|join('') %}
+    {% endfor %}
+    {% if loop.index == sessionsperside %}
+        {% set val_left = val_temp %}
+        {% set val_temp = '' %}
+    {% endif %}
+{% endfor %}
+
+{% set value = [val_left, val_temp] %}
+{% set class = '' %}
+
+{{ block('text_field') }}

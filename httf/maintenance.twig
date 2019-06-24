@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ htmllang() }}" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script defer src="{{ asset('js/fa-porcheron.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/fontawesome.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/popper.min.js', 'theme') }}"></script>
+        <script defer src="{{ asset('js/bootstrap.min.js', 'theme') }}"></script>
+        {# make sure we always display a proper title: The record's title if there is one, appended with the
+           sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+        <title>
+            Offline for Maintenance - {{ config.get('general/sitename') -}}
+        </title>
+        <link href="{{ asset('css/theme.css', 'theme') }}" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icn/apple-touch-icon.png', 'theme') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icn/favicon-32x32.png', 'theme') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icn/favicon-16x16.png', 'theme') }}">
+        <link rel="manifest" href="{{ asset('icn/site.webmanifest', 'theme') }}">
+        <link rel="mask-icon" href="{{ asset('icn/safari-pinned-tab.svg', 'theme') }}" color="#ED7E15">
+        <meta name="apple-mobile-web-app-title" content="HttF 2019">
+        <meta name="application-name" content="HttF 2019">
+        <meta name="msapplication-TileColor" content="#ED7E15">
+        <meta name="theme-color" content="#e1e1e1">
+    </head>
+    <body class="maintenance h-100">
+        <div class="container-fluid h-100 d-flex justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-12 h-100">
+                    <img src="{{ asset('img/brand-md.svg', 'theme') }}" alt="{{ config.get('general/sitename') -}}: {{ config.get('general/payoff') -}}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

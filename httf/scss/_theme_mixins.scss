@@ -1,0 +1,40 @@
+/*!
+ * Porcheron v4 (https://www.porcheron.uk/)
+ * Copyright 2019 Martin Porcheron.
+ * Licensed under MIT
+ */
+
+/* from https://stackoverflow.com/a/39238043 */
+/* create a container with an <hr> in for accessibility */
+@mixin make-rounded-hr($height, $color) {
+  position: relative;
+  margin-right: $height/2;
+  border-bottom: $height solid $color;
+
+  & hr {
+    @include sr-only;
+    width: 100%;
+  }
+
+  &:before, &:after {
+    content: '';
+    height: $height;
+    width: $height;
+    background-color: $color;
+    border-radius: $height;
+    display: inline-block;
+    margin-bottom: -$height;
+    vertical-align: text-bottom;
+  }
+
+  &:before {
+    float: left;
+    margin-left: -($height/2);
+  }
+
+  &:after {
+    float: right;
+    margin-right: -($height/2);
+  }
+}
+

@@ -1,0 +1,52 @@
+{% setcontent sessions = 'sessions.' orderby 'starttime' %}
+{% setcontent events = 'programme' where { types: '!theme-setting' } %}
+
+<div class="accordion shadow rounded" id="programme">
+    {% set currentday = "Unscheduled" %}
+    {% set today = now|date('ljSFY') %}
+    {% for session in sessions %}
+        {% if loop.first and session.starttime is empty %}
+        <div class="card">
+            <div class="card-header" id="headingUnscheduled">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#programmeUnscheduled" aria-expanded="false" aria-controls="programmeUnscheduled">Unscheduled sessions</button>
+                </h2>
+            </div>
+
+            <div id="programmeUnscheduled" class="collapse" aria-labelledby="headingUnscheduled" data-parent="#programmeUnscheduled">
+                <ul class="card-body list-unstyled">
+        {% elseif session.starttime is not empty and currentday != session.starttime|date('ljSFY') %}
+            {% if not loop.first %}
+        </ul>
+    </div>
+</div>
+            {% endif %}
+            {% set currentday = session.starttime|date('ljSFY') %}
+            {% set isToday = (today == currentday) %}
+            <div class="card">
+                <div class="card-header" id="heading{{ currentday }}">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="false" aria-controls="programme{{ currentday }}">{{ session.starttime|date('l jS F Y')  }}</button>
+                    </h2>
+                </div>
+                <div id="programme{{ currentday }}" class="collapse {{ isToday ? 'show' }}" aria-labelledby="heading{{ currentday }}" data-parent="#programme{{ currentday }}">
+                    <ul class="card-body list-unstyled">
+        {% endif %}
+        {% set timeOffset = 300 %}
+        {% set epochStart = session.starttime|date('U') %}
+        {% set epochEnd = session.starttime|date('U') + (session.lengthmins * 60) %}
+        {% set epochNow = "now"|date('U') %}
+        {% if not session.starttime %}
+            {% set timeClass = "programme-past" %}
+        {% elseif session.lengthmins > 0 and epochNow > epochEnd - timeOffset %}
+            {% set timeClass = "programme-past" %}
+        {% elseif epochNow + timeOffset > epochStart %}
+            {% set timeClass = "programme-now" %}
+        {% else %}
+            {% set timeClass = "programme-future" %}
+        {% endif %}
+        <li class="{{ timeClass }}">{% if session.starttime %}<span class="badge badge-pill">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-pill">Unsched.</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}</a></li>
+    {% endfor %}
+        </ul>
+    </div>
+</div>

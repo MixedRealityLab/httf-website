@@ -1,0 +1,133 @@
+/*!
+ * Halfway to the Future v2
+ * Copyright 2019 Martin Porcheron.
+ * Licensed under MIT
+ */
+
+
+// Color system
+
+$theme-colors: (
+  header-bg:    #F39D24,
+  header-aux:   #ED7E15,
+  header-fg:    $black,
+  nav-dd-bg:    rgb(243,180,115, .98),
+  page-bg:      #F7F7F7,
+  page-bg-dk:   #272C35,
+  page-fg:      $black,
+  main-bg:      #FFFFFF,
+  main-bg-dk:   #444444,
+  main-fg:      $black,
+  main-fg-dk:   $white,
+  main-aux:     $gray-800,
+  main-aux-lt:  #e9ecef,
+  main-aux-dk:  #333333,
+  link:         #B35600
+);
+
+$anim-time:           .67s;
+
+$link-color:          map-get($theme-colors, link);
+$link-color-dk:       $gray-100;
+
+$page-bg:             map-get($theme-colors, page-bg);
+
+$gls-shd:             inset 0 0 0 200px rgba(255,255,255,0.3);
+$gls-fltr:            blur(10px);
+$gls-bg:              rgba(255, 255, 255, 0.4);
+$gls-bg-2:            rgba(255, 255, 255, 0.6);
+
+$hdr-height:          6rem;
+$hdr-height-md:       12rem;
+$hdr-height-lg:       16rem;
+$hdr-height-xl:       16rem;
+$hdr-bg-color-st:     map-get($theme-colors, header-bg);
+$hdr-bg-color-end:    map-get($theme-colors, header-aux);
+$hdr-shd:             0 .5rem .5rem 0 rgba(225,225,225,.5);
+
+$hdr-img-mg-tb:       $spacer/2;
+$hdr-nav-tglr-mg-l:   $spacer;
+$hdr-nav-tglr-mg-b:   $spacer/4;
+
+$nav-height:          3rem;
+$nav-bg:              $gls-bg;
+$nav-a-color:         $black;
+$nav-a-bg-hover:      $gls-bg;
+$nav-a-sep:           1px solid map-get($theme-colors, page-bg);
+$nav-a-pd:            $spacer/2 $spacer;
+$nav-dd-pos-t:        $spacer + $line-height-lg - .07rem;
+$nav-dd-bg-md:        map-get($theme-colors, nav-dd-bg);
+$nav-dd-wdth:         15rem;
+$nav-bdr-rad:         .5rem;
+
+$nav-srch-pad:         $spacer;
+$nav-srch-bd-rad:      .5rem;
+$nav-srch-bg:          $gls-bg;
+$nav-srch-bg-active:   $gls-bg-2;
+$nav-srch-shd:         0 0 0 0.2rem map-get($theme-colors, nav-dd-bg);
+$nav-srch-md-mg-t:     -7.8rem;
+$nav-srch-lg-mg-t:     -9.45rem;
+$nav-srch-xl-mg-t:     -9.45rem;
+$nav-srch-md-mg-r:     -$spacer*2;
+
+$main-fg:               map-get($theme-colors, main-fg);
+$main-bg:               map-get($theme-colors, main-bg);
+$main-bdr:              1px solid map-get($theme-colors, main-bg);
+$main-bdr-rad:          $nav-bdr-rad;
+$main-shd:              0;
+$main-mg-b:             $spacer*2;
+
+$main-pag-bg:           map-get($theme-colors, page-bg);
+$main-pag-fg:           map-get($theme-colors, page-fg);
+$main-pag-bg-active:    map-get($theme-colors, main-aux-lt);
+$main-pag-fg-active:    map-get($theme-colors, page-fg);
+$main-pag-pd:           $spacer;
+$main-pag-bdr-rad:      0.25rem !important;
+
+$main-crd-bdr:          2px solid map-get($theme-colors, header-bg);
+
+$main-srch-inpt-bg:     map-get($theme-colors, main-aux-lt);
+
+$main-img-bg:           map-get($theme-colors, page-aux);
+$main-img-bg-dk:        $white;
+$main-img-fg:           $black;
+$main-img-fg-dk:        $white;
+$main-img-border:       0;
+$main-img-border-dk:    3px solid $main-img-bg-dk;
+$main-img-cpt-pad:      .5rem 1rem;
+$main-vid-neg-pad:    -.5rem;
+
+$aside-crd-bg:          map-get($theme-colors, main-aux-lt);
+$aside-crd-fg:          map-get($theme-colors, main-aux-dk);
+$aside-crd-fg-a:        $black;
+
+$aside-crd-act-bg:      map-get($theme-colors, main-aux-dk);
+$aside-crd-act-fg:      map-get($theme-colors, main-aux-lt);
+$aside-crd-act-fg-a:    $white;
+
+$jumobtron-bg:          $aside-crd-act-bg;
+$jumobtron-fg:          $aside-crd-act-fg;
+
+$session-bg:            $aside-crd-act-bg;
+$session-bd:            1px solid $aside-crd-act-fg;
+$session-fg:            $aside-crd-act-fg;
+$session-fg-a:          $aside-crd-act-fg-a;
+$session-slt-opa:       .7;
+
+$spnsr-mg-t:             $spacer*2;
+$spnsr-gap:              $spacer*2;
+$spnsr-opa:              .5;
+$spnsr-mx-wdth:         11rem;
+$spnsr-mx-hgth:         4rem;
+
+$prg-day-fg:            $white;
+$prg-day-bg:            map-get($theme-colors, main-aux-dk);
+$prg-now-bg:            #22D430;
+$prg-now-fg:            $white;
+$prg-past-bg:           #e1e1e1;
+$prg-past-fg:           $gray-700;
+$prg-future-bg:         $black;
+$prg-future-fg:         $white;
+
+$ftr-mg-t:              $spacer*1.5;
+$ftr-mg-b:              $spacer*3;

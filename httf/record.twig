@@ -1,0 +1,76 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+    {% if homepage is not defined or homepage == false %}
+        <div class="col-12">
+            <nav aria-label="breadcrumb" class="shadow rounded">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
+                    {% if record.taxonomy.categories and record.parent_page %}
+                        {% set category = record.taxonomy.categories|first %}
+                        {% setcontent parent_page = 'page/' ~ record.parent_page %}
+                        {% if category == parent_page.title %}
+                        <li class="breadcrumb-item"><a href="/{{ record.parent_page }}">{{ parent_page.title }}</a></li>
+                        {% else %}
+                        <li class="breadcrumb-item"><a href="#">{{ category }}</a></li>
+                        <li class="breadcrumb-item"><a href="/{{ record.parent_page }}">{{ parent_page.title }}</a></li>
+                        {% endif %}
+                    {% else %}
+                        {% if record.taxonomy.categories and record.taxonomy.categories|first != record.title %}
+                        <li class="breadcrumb-item"><a href="#">{{ record.taxonomy.categories|first }}</a></li>
+                        {% endif %}
+                        {% if record.parent_page %}
+                        {% setcontent parent_page = 'page/' ~ record.parent_page %}
+                        <li class="breadcrumb-item"><a href="/{{ record.parent_page }}">{{ parent_page.title }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ record.title }}</li>
+                </ol>
+            </nav>
+        </div>
+    {% endif %}
+
+
+
+    <div class="col-12">
+        <h1>{{ record.title }}</h1>
+    </div>
+
+
+    <div class="col-xl-9 col-lg-8 col-md-7 col-12">
+        {% if record.byline %} {# or record.editlink() #}
+            <p class="meta">
+                {% if record.editlink() %}
+                    <span class="edit-link"><a href="{{ record.editlink() }}" title="Edit '{{ record.title }}'"><strong>Edit</strong></a></span>
+                    {% if record.byline is not defined or record.byline %}- {% endif %}
+                {% endif %}
+                {% if record.byline is not defined or record.byline %}
+                    {% set date = record.datepublish|localedatetime("%e") %}
+                    {% set suffix = ((date == 1 or date == 21 or date == 31) ? 'st' : ((date == 2 or date == 22) ? 'nd' : ((date == 3 or date == 23) ? 'rd' : 'th'))) %}
+
+                    {{ __('general.phrase.written-by-on', {
+                        '%name%': record.user.displayname|default(__('Unknown')),
+                        '%date%': date ~ suffix ~ record.datepublish|localedatetime(" %B %Y")
+                    }) }}
+                {% endif %}
+            </p>
+        {% endif %}
+
+        <article>
+        {# Output all fields, in the order as defined in the contenttype.
+           To change the generated html and configure the options, see:
+           https://docs.bolt.cm/templating #}
+        {% with { 'record': record, 'common': true, 'extended': true, 'repeaters': true, 'blocks': true } %}
+            {{ block('sub_fields', 'partials/_sub_fields.twig') }}
+        {% endwith %}
+        </article>
+
+        {% include 'partials/_recordfooter.twig' with { 'record': record, 'extended': true } %}
+    </div>
+
+    <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
+        {% include 'partials/_aside.twig' %}
+    </aside>
+
+{% endblock main %}
