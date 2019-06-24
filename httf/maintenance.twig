@@ -4,17 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <script defer src="{{ asset('js/fa-porcheron.min.js', 'theme') }}"></script>
-        <script defer src="{{ asset('js/fontawesome.min.js', 'theme') }}"></script>
-        <script defer src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
-        <script defer src="{{ asset('js/popper.min.js', 'theme') }}"></script>
-        <script defer src="{{ asset('js/bootstrap.min.js', 'theme') }}"></script>
-        {# make sure we always display a proper title: The record's title if there is one, appended with the
-           sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
         <title>
             Offline for Maintenance - {{ config.get('general/sitename') -}}
         </title>
-        <link href="{{ asset('css/theme.css', 'theme') }}" rel="stylesheet">
+        <link href="{{ asset('css/theme.min.css', 'theme') }}" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icn/apple-touch-icon.png', 'theme') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icn/favicon-32x32.png', 'theme') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icn/favicon-16x16.png', 'theme') }}">
