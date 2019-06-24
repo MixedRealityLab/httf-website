@@ -1,0 +1,121 @@
+/*!
+ * Halfway to the Future v2
+ * Copyright 2019 Martin Porcheron (https://www.porcheron.uk/).
+ * Licensed under MIT
+ */
+
+@media (prefers-color-scheme: dark) {
+
+html, body {
+  background: $page-bg-dk;
+  color: $page-fg-dk;
+}
+
+a, a:active, a:link, a:visited, a:hover {
+  color: $link-color-dk;
+}
+
+header {
+  -webkit-box-shadow: $hdr-shd-dk;
+  -moz-box-shadow: $hdr-shd-dk;
+  box-shadow: $hdr-shd-dk;
+}
+
+.main {
+  background: $main-bg-dk;
+  color: $main-fg-dk;
+  border-color: $main-bdr-col-dk;
+
+  .breadcrumb {
+    background: $aside-crd-bg-dk;
+    color: $aside-crd-fg-dk;
+  }
+
+  article {
+    .record-card {
+      background: $main-crd-bg-dk;
+      color: $main-crd-fg-dk;
+    }
+
+    .record-image, .record-inline-image {
+      margin: 3*$spacer 0;
+      text-align: center;
+      width: 100%;
+
+      & > div {
+        display: inline-block;
+        width: auto;
+      }
+
+      & img, & iframe {
+        height: auto;
+        max-width: 100%;
+      }
+
+      & iframe {
+        margin-bottom: $main-vid-neg-pad;
+      }
+
+      .caption {
+        background: $main-img-bg-dk;
+        color: $main-img-fg-dk;
+      }
+    }
+  }
+  #programme {
+    .card-body {
+      background: $aside-crd-bg-dk;
+      color: $aside-crd-fg-dk;
+    }
+
+    .programme-past {
+      .badge-pill {
+        background-color: $prg-past-bg-dk;
+        color: $prg-past-fg-dk;
+      }
+
+      a, a:active, a:link, a:visited, a:hover {
+        color: $prg-past-fg-dk;
+      }
+    }
+
+    .programme-now {
+      .badge-pill {
+        background-color: $prg-now-bg-dk;
+        color: $prg-now-fg-dk;
+      }
+    }
+
+    .programme-future {
+      .badge-pill {
+        background-color: $prg-future-bg-dk;
+        color: $prg-future-fg-dk;
+      }
+    }
+  }
+
+  .sponsors.light {
+    display: none;
+  }
+  .sponsors.dark {
+    display: block;
+  }
+}
+
+aside {
+  .card {
+    background: $aside-crd-bg-dk;
+    color: $aside-crd-fg-dk;
+
+    a, a:active, a:link, a:visited, a:hover {
+      color: $aside-crd-fg-a-dk;
+    }
+  }
+
+  .card.active {
+    background: $aside-crd-act-bg-dk;
+    color: $aside-crd-act-fg-dk;
+  }
+}
+
+}

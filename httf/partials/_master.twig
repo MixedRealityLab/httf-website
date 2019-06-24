@@ -37,8 +37,12 @@
                     <div class="main row p-4 shadow">
                         {% block main %}
                         {% endblock main %}
-                        <div class="col-12 sponsors">
-                            {% setcontent block = 'blocks/sponsors' %}
+                        <div class="col-12 sponsors light">
+                            {% setcontent block = 'blocks/sponsors-light' %}
+                            {{ block.content }}
+                        </div>
+                        <div class="col-12 sponsors dark">
+                            {% setcontent block = 'blocks/sponsors-dark' %}
                             {{ block.content }}
                         </div>
                     </div>

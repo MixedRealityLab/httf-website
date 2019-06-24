@@ -8,29 +8,36 @@
 // Color system
 
 $theme-colors: (
-  header-bg:    #F39D24,
-  header-aux:   #ED7E15,
-  header-fg:    $black,
-  nav-dd-bg:    rgb(243,180,115, .98),
   page-bg:      #F7F7F7,
-  page-bg-dk:   #272C35,
   page-fg:      $black,
+  hdr-bg:       #F39D24,
+  hdr-aux:      #ED7E15,
+  hdr-fg:       $black,
+  hdr-shd:      rgba(225,225,225,.5),
+  nav-dd-bg:    rgb(243,180,115, .98),
   main-bg:      #FFFFFF,
-  main-bg-dk:   #444444,
   main-fg:      $black,
-  main-fg-dk:   $white,
   main-aux:     $gray-800,
   main-aux-lt:  #e9ecef,
-  main-aux-dk:  #333333,
-  link:         #B35600
+  main-aux-dk:  #272C35,
+  main-aux-dkr: #191B22,
+  link:         #B35600,
+  page-bg-dk:   #272C35,
+  page-fg-dk:   $white,
+  hdr-shd-dk:   rgba(0,0,0,.3),
+  main-bg-dk:   #20252C,
+  main-fg-dk:   $white
 );
 
 $anim-time:           .67s;
 
 $link-color:          map-get($theme-colors, link);
-$link-color-dk:       $gray-100;
+$link-color-dk:       map-get($theme-colors, hdr-bg);
 
 $page-bg:             map-get($theme-colors, page-bg);
+$page-bg-dk:          map-get($theme-colors, page-bg-dk);
+$page-fg:             map-get($theme-colors, page-fg);
+$page-fg-dk:          map-get($theme-colors, page-fg-dk);
 
 $gls-shd:             inset 0 0 0 200px rgba(255,255,255,0.3);
 $gls-fltr:            blur(10px);
@@ -41,10 +48,10 @@ $hdr-height:          6rem;
 $hdr-height-md:       12rem;
 $hdr-height-lg:       16rem;
 $hdr-height-xl:       16rem;
-$hdr-bg-color-st:     map-get($theme-colors, header-bg);
-$hdr-bg-color-end:    map-get($theme-colors, header-aux);
-$hdr-shd:             0 .5rem .5rem 0 rgba(225,225,225,.5);
-
+$hdr-bg-color-st:     map-get($theme-colors, hdr-bg);
+$hdr-bg-color-end:    map-get($theme-colors, hdr-aux);
+$hdr-shd:             0 .5rem .5rem 0 map-get($theme-colors, hdr-shd);
+$hdr-shd-dk:          0 .5rem .5rem 0 map-get($theme-colors, hdr-shd-dk);
 $hdr-img-mg-tb:       $spacer/2;
 $hdr-nav-tglr-mg-l:   $spacer;
 $hdr-nav-tglr-mg-b:   $spacer/4;
@@ -71,11 +78,28 @@ $nav-srch-xl-mg-t:     -9.45rem;
 $nav-srch-md-mg-r:     -$spacer*2;
 
 $main-fg:               map-get($theme-colors, main-fg);
+$main-fg-dk:            map-get($theme-colors, main-fg-dk);
 $main-bg:               map-get($theme-colors, main-bg);
+$main-bg-dk:            map-get($theme-colors, main-bg-dk);
 $main-bdr:              1px solid map-get($theme-colors, main-bg);
+$main-bdr-col-dk:       map-get($theme-colors, main-bg-dk);
 $main-bdr-rad:          $nav-bdr-rad;
 $main-shd:              0;
 $main-mg-b:             $spacer*2;
+
+$aside-crd-bg:          map-get($theme-colors, main-aux-lt);
+$aside-crd-fg:          map-get($theme-colors, main-aux-dk);
+$aside-crd-fg-a:        $black;
+$aside-crd-bg-dk:       map-get($theme-colors, main-aux-dkr);
+$aside-crd-fg-dk:       map-get($theme-colors, main-aux-lt);
+$aside-crd-fg-a-dk:     $link-color-dk;
+
+$aside-crd-act-bg:      map-get($theme-colors, main-aux-dk);
+$aside-crd-act-fg:      map-get($theme-colors, main-aux-lt);
+$aside-crd-act-fg-a:    $white;
+$aside-crd-act-bg-dk:   map-get($theme-colors, main-aux-dk);
+$aside-crd-act-fg-dk:   map-get($theme-colors, main-aux-lt);
+$aside-crd-act-fg-a-dk: $white;
 
 $main-pag-bg:           map-get($theme-colors, page-bg);
 $main-pag-fg:           map-get($theme-colors, page-fg);
@@ -84,26 +108,22 @@ $main-pag-fg-active:    map-get($theme-colors, page-fg);
 $main-pag-pd:           $spacer;
 $main-pag-bdr-rad:      0.25rem !important;
 
-$main-crd-bdr:          2px solid map-get($theme-colors, header-bg);
+$main-crd-bdr:          2px solid map-get($theme-colors, hdr-bg);
+$main-crd-bg:           map-get($theme-colors, main-bg);
+$main-crd-fg:           map-get($theme-colors, main-fg);
+$main-crd-bg-dk:        map-get($theme-colors, main-aux-dkr);
+$main-crd-fg-dk:        map-get($theme-colors, main-aux-lt);
 
 $main-srch-inpt-bg:     map-get($theme-colors, main-aux-lt);
 
 $main-img-bg:           map-get($theme-colors, page-aux);
-$main-img-bg-dk:        $white;
+$main-img-bg-dk:        map-get($theme-colors, main-aux-dk);
 $main-img-fg:           $black;
 $main-img-fg-dk:        $white;
 $main-img-border:       0;
 $main-img-border-dk:    3px solid $main-img-bg-dk;
 $main-img-cpt-pad:      .5rem 1rem;
 $main-vid-neg-pad:    -.5rem;
-
-$aside-crd-bg:          map-get($theme-colors, main-aux-lt);
-$aside-crd-fg:          map-get($theme-colors, main-aux-dk);
-$aside-crd-fg-a:        $black;
-
-$aside-crd-act-bg:      map-get($theme-colors, main-aux-dk);
-$aside-crd-act-fg:      map-get($theme-colors, main-aux-lt);
-$aside-crd-act-fg-a:    $white;
 
 $jumobtron-bg:          $aside-crd-act-bg;
 $jumobtron-fg:          $aside-crd-act-fg;
@@ -128,6 +148,15 @@ $prg-past-bg:           #e1e1e1;
 $prg-past-fg:           $gray-700;
 $prg-future-bg:         $black;
 $prg-future-fg:         $white;
+
+$prg-day-fg-dk:         $white;
+$prg-day-bg-dk:         map-get($theme-colors, main-aux-dk);
+$prg-now-bg-dk:         #22D430;
+$prg-now-fg-dk:         $white;
+$prg-past-bg-dk:        map-get($theme-colors, main-aux-dkr);
+$prg-past-fg-dk:        $gray-600;
+$prg-future-bg-dk:      $white;
+$prg-future-fg-dk:      $black;
 
 $ftr-mg-t:              $spacer*1.5;
 $ftr-mg-b:              $spacer*3;

@@ -6,6 +6,7 @@
 
 html, body {
   background: $page-bg;
+  color: $page-fg;
 }
 
 a, a:active, a:link, a:visited, a:hover {
@@ -135,6 +136,7 @@ header {
   background: $main-bg;
   border: $main-bdr;
   border-top: 0;
+  color: $main-fg;
   -webkit-box-shadow: $main-shd;
   -moz-box-shadow: $main-shd;
   box-shadow: $main-shd;
@@ -153,6 +155,8 @@ header {
     }
 
     .record-card {
+      background: $main-crd-bg;
+      color: $main-crd-fg;
       margin: 2.5*$spacer -2.5*$spacer 3*$spacer -2.5*$spacer;
       padding: $spacer 1.3*$spacer;
       border: $main-crd-bdr;
@@ -305,7 +309,7 @@ header {
     .programme-now {
       .badge-pill {
         background-color: $prg-now-bg;
-      color: $prg-now-fg;
+        color: $prg-now-fg;
       }
     }
 
@@ -345,7 +349,7 @@ header {
     }
 
     li:last-child {
-      border-bottom: 0;
+      border-bottom: 0 !important;
     }
   }
 
@@ -372,6 +376,10 @@ header {
     img:hover {
       opacity: 1;
     }
+  }
+
+  .sponsors.dark {
+    display: none;
   }
 }
 
