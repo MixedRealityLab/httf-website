@@ -11388,6 +11388,9 @@ header nav .nav-search input:focus {
 .main > div:first-child {
   padding: 1rem;
 }
+.main h1 {
+  margin-bottom: 2rem;
+}
 .main article .nogap > div > p:last-child {
   margin-bottom: 0;
 }
@@ -11408,7 +11411,7 @@ header nav .nav-search input:focus {
   margin-bottom: 0;
 }
 .main article .record-image, .main article .record-inline-image {
-  margin: 3rem 0;
+  margin: 2rem 0;
   text-align: center;
   width: 100%;
 }
@@ -11448,7 +11451,7 @@ header nav .nav-search input:focus {
   martin-top: 0;
 }
 .main article .record-image:first-child, .main article .record-inline-image:first-child {
-  margin-top: 2rem;
+  margin-top: 0;
 }
 .main article .record-image > div {
   border: 0;
@@ -11457,7 +11460,7 @@ header nav .nav-search input:focus {
   border: 0;
 }
 .main article .record-inline-image {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 .main article .record-inline-image > div {
   border: 0;
@@ -11574,6 +11577,9 @@ header nav .nav-search input:focus {
   display: none;
 }
 
+aside {
+  margin-top: 1rem;
+}
 aside .card {
   background: #e9ecef;
   color: #272C35;
@@ -11738,9 +11744,6 @@ footer hr {
     border: 2px solid #F39D24;
     border-radius: 0.25rem !important;
   }
-  .main article .record-image {
-    margin-bottom: 1rem;
-  }
   .main div.pagination {
     margin: 2.5rem auto 0 auto;
   }
@@ -11772,6 +11775,11 @@ footer hr {
   .main div.pagination ul.pagination li.active a, .main div.pagination ul.pagination li a:hover, .main div.pagination ul.pagination li a:active {
     background: #e9ecef;
     color: #000;
+  }
+}
+@media (min-width: 768px) {
+  aside {
+    margin-top: 0;
   }
 }
 @media (min-width: 768px) {
@@ -11826,7 +11834,7 @@ footer hr {
   article .record-image {
     float: right;
     margin: 1rem;
-    margin: 0 0 1rem 2rem !important;
+    margin: 1rem 0 1rem 1rem !important;
     max-width: 50%;
   }
   article .record-image.transparent {
@@ -11882,7 +11890,6 @@ footer hr {
     color: #e9ecef;
   }
   .main article .record-image, .main article .record-inline-image {
-    margin: 3rem 0;
     text-align: center;
     width: 100%;
   }

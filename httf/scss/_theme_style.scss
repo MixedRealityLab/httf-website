@@ -145,6 +145,10 @@ header {
     padding: $spacer;
   }
 
+  h1 {
+    margin-bottom: 2*$spacer;
+  }
+
   article {
     .nogap > div > p:last-child {
       margin-bottom: 0;
@@ -170,7 +174,7 @@ header {
     }
 
     .record-image, .record-inline-image {
-      margin: 3*$spacer 0;
+      margin: 2*$spacer 0;
       text-align: center;
       width: 100%;
 
@@ -222,7 +226,7 @@ header {
     }
 
     .record-image:first-child, .record-inline-image:first-child {
-      margin-top: 2*$spacer;
+      margin-top: 0;
     }
 
     .record-image {
@@ -236,7 +240,7 @@ header {
     }
 
     .record-inline-image {
-      margin: $spacer*2 0;
+      margin: $spacer 0;
 
       & > div {
         border: 0
@@ -390,6 +394,8 @@ header {
 }
 
 aside {
+  margin-top: $spacer;
+
   .card {
     background: $aside-crd-bg;
     color: $aside-crd-fg;
@@ -531,9 +537,6 @@ footer {
         border: $main-crd-bdr;
         border-radius: 0.25rem !important;
       }
-      .record-image {
-        margin-bottom: $spacer;
-      }
     }
 
     div.pagination {
@@ -576,6 +579,10 @@ footer {
     }
   }
 
+  aside {
+    margin-top: 0;
+  }
+
   footer {
     margin-top: $ftr-mg-t;
     margin-bottom: $ftr-mg-b;
@@ -616,23 +623,23 @@ footer {
     }
   }
 
-    article {
-      .record-image {
-        background: $main-img-bg;
-        float: right;
-        margin: $spacer;
-        margin: 0 0 $spacer 2*$spacer !important;
-        max-width: 50%;
+  article {
+    .record-image {
+      background: $main-img-bg;
+      float: right;
+      margin: $spacer;
+      margin: $spacer 0 $spacer $spacer !important;
+      max-width: 50%;
 
-        &.transparent {
-          background: transparent;
-        }
+      &.transparent {
+        background: transparent;
+      }
 
-        &.small-image {
-          max-width: 25%
-        }
+      &.small-image {
+        max-width: 25%
       }
     }
+  }
 }
 
 
