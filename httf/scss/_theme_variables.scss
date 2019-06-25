@@ -22,6 +22,7 @@ $theme-colors: (
   main-aux-dk:  #272C35,
   main-aux-dkr: #191B22,
   link:         #B35600,
+  link-dk:      #F5A83D,
   page-bg-dk:   #272C35,
   page-fg-dk:   $white,
   hdr-shd-dk:   rgba(0,0,0,.3),
@@ -32,7 +33,7 @@ $theme-colors: (
 $anim-time:           .67s;
 
 $link-color:          map-get($theme-colors, link);
-$link-color-dk:       map-get($theme-colors, hdr-bg);
+$link-color-dk:       map-get($theme-colors, link-dk);
 
 $page-bg:             map-get($theme-colors, page-bg);
 $page-bg-dk:          map-get($theme-colors, page-bg-dk);
@@ -140,6 +141,8 @@ $spnsr-opa:              .5;
 $spnsr-mx-wdth:         11rem;
 $spnsr-mx-hgth:         4rem;
 
+$prg-lnhght:            250%;
+$prg-pill-gap:          $spacer/2;
 $prg-day-fg:            $white;
 $prg-day-bg:            map-get($theme-colors, main-aux-dk);
 $prg-now-bg:            #22D430;
