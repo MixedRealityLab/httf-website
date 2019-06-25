@@ -280,11 +280,12 @@ header {
       background-color: $prg-day-bg;
     }
 
-    .btn-link {
+    .btn-link { /* Fixes to odd Bootstrap issue */
       background: transparent;
       border: 0;
       font-weight: bold;
       color: $prg-day-fg;
+      padding-bottom: .5rem;
     }
 
     .btn-link:hover, .btn-link:active {
@@ -292,7 +293,12 @@ header {
     }
 
     ul {
+      line-height: $prg-lnhght;
       margin-bottom: 0;
+    }
+
+    .badge-pill {
+      margin-right: $prg-pill-gap;
     }
 
     .programme-past {
