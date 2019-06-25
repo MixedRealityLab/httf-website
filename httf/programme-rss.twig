@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:httf="https://www.halfwaytothefuture.org/programme">
+    <channel>
+        <title>{{ app.config.get('general/sitename') }}</title>
+        <atom:link href="{{ canonical() }}" rel="self" type="application/rss+xml"/>
+        <link>{{ url('homepage') }}</link>
+{% if app.config.get('general/payoff') is defined %}
+        <description>{{ app.config.get('general/payoff') }}</description>
+{% endif %}
+        <language>{{ htmllang()|lower }}</language>
+        {% setcontent sessions = 'sessions.' orderby 'starttime' -%}
+        {% setcontent events = 'programme' where { types: '!theme-setting' } -%}
+        {% set currentday = "Unscheduled" -%}
+        {% for session in sessions -%}
+        {% if loop.first and session.starttime is empty -%}
+        <item>
+            <guid isPermaLink="false">session/unscheduled</guid>
+            <title>Unscheduled sessions</title>
+            <httf:type>unscheduled</httf:type>
+            <httf:events>
+        {%- elseif session.starttime is not empty and currentday != session.starttime|date('ljSFY') -%}
+        {% if not loop.first %}
+
+            </httf:events>
+        </item>
+        <item>
+        {% endif %}
+            {%- set currentday = session.starttime|date('ljSFY') %}    <guid isPermaLink="false">session/{{ session.slug }}</guid>
+            <title>{{ session.title }}</title>
+            <httf:startTime>{{ session.starttime|date("r") }}</httf:startTime>
+            <httf:duration>{{ session.lengthmins }}</httf:duration>
+            <httf:type>{{ session|taxonomy.session_types|first|lower }}</httf:type>
+            <description><![CDATA[ {{ session.teaser }} ]]></description>
+            <httf:events>
+            {% endif -%}
+            {% for event in events if session.id in event.relation.sessions %}
+
+                <httf:event>
+                    <guid isPermaLink="false">programme/{{ event.slug }}</guid>
+                    <title>{{ event.title }}</title>
+                    <httf:type>{{ event|taxonomy.types|first|lower }}</httf:type>
+                    <httf:authors><![CDATA[ {{ event.authors }} ]]></httf:authors>
+                    <description><![CDATA[ {{ event.teaser }} ]]></description>
+                </httf:event>
+            {%- endfor -%}
+        {% endfor -%}
+            </httf:events>
+        </item>
+    </channel>
+</rss>
