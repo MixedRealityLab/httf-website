@@ -11908,6 +11908,13 @@ footer hr {
     background: #272C35;
     color: #fff;
   }
+  .main article .record-image.transparent .caption, .main article .record-inline-image.transparent .caption {
+    background: transparent;
+    color: #fff;
+  }
+  .main article .record-image.transparent .caption a, .main article .record-image.transparent .caption a:active, .main article .record-image.transparent .caption a:link, .main article .record-image.transparent .caption a:visited, .main article .record-image.transparent .caption a:hover, .main article .record-inline-image.transparent .caption a, .main article .record-inline-image.transparent .caption a:active, .main article .record-inline-image.transparent .caption a:link, .main article .record-inline-image.transparent .caption a:visited, .main article .record-inline-image.transparent .caption a:hover {
+    color: #fff;
+  }
   .main #programme .card-body {
     background: #191B22;
     color: #e9ecef;

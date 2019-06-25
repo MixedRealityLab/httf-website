@@ -59,8 +59,20 @@ header {
         background: $main-img-bg-dk;
         color: $main-img-fg-dk;
       }
+
+      &.transparent {
+        .caption {
+          background: transparent;
+          color: $main-fg-dk;
+
+          & a, & a:active, & a:link, & a:visited, & a:hover {
+            color: $main-fg-dk;
+          }
+        }
+      }
     }
   }
+
   #programme {
     .card-body {
       background: $aside-crd-bg-dk;
