@@ -10,3 +10,14 @@
               </div>
             </div>
         {% endfor %}
+        {% set tweets = twitter_user_timeline(screen_name = 'httfsymposium', count = 1) %}
+        <div class="card shadow rounded" class="p-2">
+          <div class="card-body">
+            <h5 class="card-title">@httfsymposium</h5>
+            {% for tweet in tweets %}
+                <em>{{ tweet.text|markdown }}</em>
+                {{ tweet.created_at|date('jS F Y') }}</p>
+            {% endfor %}
+            <p><a href="https://twitter.com/httfsymposium" title="Follow us on Twitter">Follow us on Twitter</a></p>
+          </div>
+        </div>
