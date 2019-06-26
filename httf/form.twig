@@ -1,0 +1,5 @@
+{% extends 'record.twig' %}
+
+{% block post_content %}
+    {{ boltforms(global.request.get('slug')|replace('-', '_')) }}
+{% endblock post_content %}

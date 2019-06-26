@@ -391,6 +391,46 @@ header {
   .sponsors.dark {
     display: none;
   }
+
+  .boltforms-row {
+    clear: left;
+    margin-top: $spacer*2;
+  }
+
+  .boltforms-label {
+    font-weight: bold;
+    width: $frm-lbl-wdth;
+  }
+
+  .boltforms-value input[type=text], .boltforms-value input[type=email], .boltforms-value textarea {
+    border: $frm-inpt-bdr;
+    box-shadow: $frm-inpt-shd;
+    padding: $spacer*.75;
+    width: $frm-inpt-wdth;
+  }
+
+  .boltforms-value input[type=radio] {
+    margin-left: $spacer*2;
+    margin-right: $spacer;
+  }
+
+  .boltforms-value input[type=radio]:first-child {
+    margin-left: 0;
+  }
+
+   .boltforms-value textarea  {
+    height: $frm-txt-hght;
+  }
+
+  .boltforms-button {
+    text-align: center;
+  }
+
+  .boltforms-button button {
+    box-shadow: $frm-inpt-shd;
+    font-weight: bold;
+    padding: $spacer/2 $spacer;
+  }
 }
 
 aside {

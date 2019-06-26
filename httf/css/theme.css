@@ -11576,6 +11576,38 @@ header nav .nav-search input:focus {
 .main .sponsors.dark {
   display: none;
 }
+.main .boltforms-row {
+  clear: left;
+  margin-top: 2rem;
+}
+.main .boltforms-label {
+  font-weight: bold;
+  width: 100%;
+}
+.main .boltforms-value input[type=text], .main .boltforms-value input[type=email], .main .boltforms-value textarea {
+  border: 1px inset #272C35;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.125) !important;
+  padding: 0.75rem;
+  width: 100%;
+}
+.main .boltforms-value input[type=radio] {
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+.main .boltforms-value input[type=radio]:first-child {
+  margin-left: 0;
+}
+.main .boltforms-value textarea {
+  height: 8rem;
+}
+.main .boltforms-button {
+  text-align: center;
+}
+.main .boltforms-button button {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.125) !important;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
 
 aside {
   margin-top: 1rem;

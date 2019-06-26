@@ -64,6 +64,9 @@
         {% with { 'record': record, 'common': true, 'extended': true, 'repeaters': true, 'blocks': true } %}
             {{ block('sub_fields', 'partials/_sub_fields.twig') }}
         {% endwith %}
+
+        {% block post_content %}
+        {% endblock post_content %}
         </article>
 
         {% include 'partials/_recordfooter.twig' with { 'record': record, 'extended': true } %}
