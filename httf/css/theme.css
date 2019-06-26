@@ -11947,9 +11947,19 @@ footer hr {
   .main article .record-image.transparent .caption a, .main article .record-image.transparent .caption a:active, .main article .record-image.transparent .caption a:link, .main article .record-image.transparent .caption a:visited, .main article .record-image.transparent .caption a:hover, .main article .record-inline-image.transparent .caption a, .main article .record-inline-image.transparent .caption a:active, .main article .record-inline-image.transparent .caption a:link, .main article .record-inline-image.transparent .caption a:visited, .main article .record-inline-image.transparent .caption a:hover {
     color: #fff;
   }
-  .main #programme .card-body {
+  .main .card {
+    border-color: #191B22;
+  }
+  .main .card-body {
+    background: #272C35;
+    color: #e9ecef;
+  }
+  .main .card-footer {
     background: #191B22;
     color: #e9ecef;
+  }
+  .main #programme .card-body {
+    background: #191B22;
   }
   .main #programme .programme-past .badge-pill {
     background-color: #191B22;

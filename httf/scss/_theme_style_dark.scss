@@ -73,10 +73,23 @@ header {
     }
   }
 
+  .card {
+    border-color: $aside-crd-bg-dk;
+  }
+
+  .card-body {
+    background: $aside-crd-bg-dkl;
+    color: $aside-crd-fg-dk;
+  }
+
+  .card-footer {
+    background: $aside-crd-bg-dk;
+    color: $aside-crd-fg-dk;
+  }
+
   #programme {
     .card-body {
       background: $aside-crd-bg-dk;
-      color: $aside-crd-fg-dk;
     }
 
     .programme-past {
