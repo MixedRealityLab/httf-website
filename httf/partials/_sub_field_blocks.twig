@@ -88,8 +88,8 @@
                 </div>
             </div>
         {% else %}
-            <div class="record-image">
-                <div class="{{ class ? class : 'shadow rounded' }}">
+            <div class="record-image {{ class ? class }}">
+                <div class="shadow rounded">
                     <img src="{{ asset(value|first, "files") }}" alt="{{ alt|default(record.title) }}">
                     {% if caption is defined and caption is not empty %}<div class="caption">{{ caption|markdown }}</div>{% endif %}
                 </div>
