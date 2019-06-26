@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-header" id="heading{{ currentday }}">
                     <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="false" aria-controls="programme{{ currentday }}">{{ session.starttime|date('l jS F Y')  }}</button>
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="false" aria-controls="programme{{ currentday }}">{{ session.starttime|date('l jS F')  }}</button>
                     </h2>
                 </div>
                 <div id="programme{{ currentday }}" class="collapse {{ isToday ? 'show' }}" aria-labelledby="heading{{ currentday }}" data-parent="#programme{{ currentday }}">
@@ -45,7 +45,7 @@
         {% else %}
             {% set timeClass = "programme-future" %}
         {% endif %}
-        <li class="{{ timeClass }}">{% if session.starttime %}<span class="badge badge-pill">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-pill">Unsched.</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}</a></li>
+        <li class="{{ timeClass }} d-flex flex-column flex-sm-row align-items-center">{% if session.starttime %}<span class="badge badge-pill">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-pill">Unsched.</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}</a></li>
     {% endfor %}
         </ul>
     </div>

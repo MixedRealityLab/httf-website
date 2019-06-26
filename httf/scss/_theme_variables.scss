@@ -142,8 +142,9 @@ $spnsr-opa:              .5;
 $spnsr-mx-wdth:         11rem;
 $spnsr-mx-hgth:         4rem;
 
-$prg-lnhght:            250%;
-$prg-pill-gap:          $spacer/2;
+$prg-mg-b:              $spacer*2;
+$prg-mg-b-sm:           $spacer;
+$prg-pill-gap:          $spacer/1.5;
 $prg-day-fg:            $white;
 $prg-day-bg:            map-get($theme-colors, main-aux-dk);
 $prg-now-bg:            #22D430;

@@ -297,13 +297,24 @@ header {
     }
 
     ul {
-      line-height: $prg-lnhght;
       margin-bottom: 0;
     }
 
-    .badge-pill {
-      margin-right: $prg-pill-gap;
+    li {
+      margin-bottom: $prg-mg-b;
+      text-align: center;
+
+      a {
+        width: 100%;
+      }
     }
+
+    .badge-pill {
+      display: block;
+      margin: 0 auto $prg-mg-b/2 auto;
+      width: 75%;
+    }
+
 
     .programme-past {
       .badge-pill {
@@ -479,6 +490,29 @@ footer {
   }
 }
 
+
+
+
+
+
+
+@include media-breakpoint-up(sm) {
+  .main {
+    #programme {
+      li {
+        margin-bottom: $prg-mg-b-sm;
+        text-align: left;
+      }
+
+      .badge-pill {
+        margin-bottom: 0;
+        margin-right: $prg-pill-gap;
+        display: inline;
+        width: auto;
+      }
+    }
+  }
+}
 
 
 

@@ -11506,11 +11506,19 @@ header nav .nav-search input:focus {
   color: #fff;
 }
 .main #programme ul {
-  line-height: 250%;
   margin-bottom: 0;
 }
+.main #programme li {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.main #programme li a {
+  width: 100%;
+}
 .main #programme .badge-pill {
-  margin-right: 0.5rem;
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: 75%;
 }
 .main #programme .programme-past .badge-pill {
   background-color: #e1e1e1;
@@ -11647,6 +11655,18 @@ footer hr {
   width: 100%;
 }
 
+@media (min-width: 576px) {
+  .main #programme li {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  .main #programme .badge-pill {
+    margin-bottom: 0;
+    margin-right: 0.6666666667rem;
+    display: inline;
+    width: auto;
+  }
+}
 @media (min-width: 768px) {
   header {
     height: 12rem;
