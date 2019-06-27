@@ -11557,6 +11557,9 @@ header nav .nav-search input:focus {
 .main .session li:hover, .main .session li:active, .main .session li a:active {
   opacity: 1;
 }
+.main .session li:first-child {
+  margin-top: 0 !important;
+}
 .main .session li:last-child {
   border-bottom: 0 !important;
 }

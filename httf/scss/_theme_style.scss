@@ -369,6 +369,10 @@ header {
       }
     }
 
+    li:first-child {
+      margin-top: 0 !important;
+    }
+
     li:last-child {
       border-bottom: 0 !important;
     }
