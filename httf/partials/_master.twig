@@ -15,7 +15,7 @@
             {% if record.title is defined %}{{ record.title|striptags }} - {{ config.get('general/sitename') -}}
             {% elseif search is defined %}Search results - {{ config.get('general/sitename') -}}
             {% elseif records is defined %}{{ (records|first).contenttype.name }} - {{ config.get('general/sitename') -}}
-            {% else %}{{ config.get('general/sitename') -}}{% endif -%} 
+            {% else %}{{ config.get('general/sitename') -}}{% endif -%}
         </title>
         <link href="{{ asset('css/theme.min.css', 'theme') }}" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icn/apple-touch-icon.png', 'theme') }}">
