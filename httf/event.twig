@@ -9,8 +9,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
                 <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
-                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ eventtype}}</li>
+                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ eventtype }}</li>
             </ol>
         </nav>
     </div>

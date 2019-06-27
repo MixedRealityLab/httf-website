@@ -45,7 +45,7 @@
         {% else %}
             {% set timeClass = "programme-future" %}
         {% endif %}
-        <li class="{{ timeClass }} d-flex flex-column flex-sm-row align-items-center">{% if session.starttime %}<span class="badge badge-pill">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-pill">Unsched.</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}</a></li>
+        <li class="{{ timeClass }} d-flex flex-column flex-sm-row align-items-center">{% if session.starttime %}<span class="badge badge-pill">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-pill">Unsched.</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a></li>
     {% endfor %}
         </ul>
     </div>
