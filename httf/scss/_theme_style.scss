@@ -162,7 +162,6 @@ header {
       background: $main-crd-bg;
       color: $main-crd-fg;
       margin: 2.5*$spacer -2.5*$spacer 3*$spacer -2.5*$spacer;
-      padding: $spacer 1.3*$spacer;
       border: $main-crd-bdr;
       border-left: 0;
       border-right: 0;
@@ -170,6 +169,10 @@ header {
 
       p:last-child  {
         margin-bottom: 0;
+      }
+
+      .card-body {
+        padding: 1.5*$spacer 2.5*$spacer;
       }
     }
 
@@ -614,6 +617,10 @@ footer {
         padding: 0;
         border: $main-crd-bdr;
         border-radius: 0.25rem !important;
+
+        .card-body {
+          padding: 1.5*$spacer;
+        }
       }
     }
 

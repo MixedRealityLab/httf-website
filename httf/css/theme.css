@@ -11401,7 +11401,6 @@ header nav .nav-search input:focus {
   background: #FFFFFF;
   color: #000;
   margin: 2.5rem -2.5rem 3rem -2.5rem;
-  padding: 1rem 1.3rem;
   border: 2px solid #F39D24;
   border-left: 0;
   border-right: 0;
@@ -11409,6 +11408,9 @@ header nav .nav-search input:focus {
 }
 .main article .record-card p:last-child {
   margin-bottom: 0;
+}
+.main article .record-card .card-body {
+  padding: 1.5rem 2.5rem;
 }
 .main article .record-image, .main article .record-inline-image {
   margin: 2rem 0;
@@ -11798,6 +11800,9 @@ footer hr {
     padding: 0;
     border: 2px solid #F39D24;
     border-radius: 0.25rem !important;
+  }
+  .main article .record-card .card-body {
+    padding: 1.5rem;
   }
   .main div.pagination {
     margin: 2.5rem auto 0 auto;
