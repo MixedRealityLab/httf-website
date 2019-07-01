@@ -13,6 +13,7 @@ $theme-colors: (
   hdr-bg:       #F39D24,
   hdr-aux:      #ED7E15,
   hdr-fg:       $black,
+  hdr-dev-bg:   #C20C81,
   hdr-shd:      rgba(225,225,225,.5),
   nav-dd-bg:    rgb(243,180,115, .98),
   main-bg:      #FFFFFF,
@@ -51,6 +52,7 @@ $hdr-height-lg:       16rem;
 $hdr-height-xl:       16rem;
 $hdr-bg-color-st:     map-get($theme-colors, hdr-bg);
 $hdr-bg-color-end:    map-get($theme-colors, hdr-aux);
+$hdr-bg-color-end-dev:map-get($theme-colors, hdr-dev-bg);
 $hdr-shd:             0 .5rem .5rem 0 map-get($theme-colors, hdr-shd);
 $hdr-shd-dk:          0 .5rem .5rem 0 map-get($theme-colors, hdr-shd-dk);
 $hdr-img-mg-tb:       $spacer/2;

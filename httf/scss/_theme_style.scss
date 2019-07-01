@@ -43,6 +43,13 @@ header, .maintenance {
   text-align: center;
 }
 
+body.dev {
+  header, .maintenance {
+  background: $hdr-bg-color-end-dev;
+  background: linear-gradient(to bottom right, $hdr-bg-color-st, $hdr-bg-color-end-dev);
+  }
+}
+
 header {
   min-height: $hdr-height;
 
