@@ -4,7 +4,7 @@
     {% set session = record.related('sessions')|first %}
     {% set eventtype = record|taxonomy.types|first %}
 
-    <div class="col-12">
+    <div class="breadcrumb-container col-12">
         <nav aria-label="breadcrumb" class="shadow rounded">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>

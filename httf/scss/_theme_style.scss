@@ -153,8 +153,13 @@ header {
   }
 
   h1 {
-    margin-bottom: 2*$spacer;
+    margin-bottom: $spacer;
   }
+
+  .breadcrumb-container ~ div {
+    margin-bottom: $spacer;
+  }
+
 
   article {
     .nogap > div > p:last-child {

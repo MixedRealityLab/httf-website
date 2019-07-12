@@ -11527,7 +11527,10 @@ header nav .nav-search input:focus {
   padding: 1rem;
 }
 .main h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+.main .breadcrumb-container ~ div {
+  margin-bottom: 1rem;
 }
 .main article .nogap > div > p:last-child {
   margin-bottom: 0;
