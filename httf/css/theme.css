@@ -11591,7 +11591,7 @@ header nav .nav-search input:focus {
   martin-top: 0;
 }
 .main article .record-image:first-child, .main article .record-inline-image:first-child {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 .main article .record-image > div {
   border: 0;
