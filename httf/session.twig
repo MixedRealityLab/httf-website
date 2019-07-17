@@ -61,6 +61,16 @@
           </div>
         </div>
         {% endif %}
+        {% if record.chair is not empty %}
+        <div class="card active shadow shadow-darker rounded" class="p-2">
+          <div class="card-body">
+            <h5 class="card-title">Panel chair</h5>
+            <p class="card-text">
+                {{ record.chair }}
+            </p>
+          </div>
+        </div>
+        {% endif %}
         {% include 'partials/_aside.twig' %}
     </aside>
 {% endblock main %}
