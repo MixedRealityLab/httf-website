@@ -1,6 +1,53 @@
 {% setcontent sessions = 'sessions.' orderby 'starttime' %}
 {% setcontent events = 'programme' where { types: '!theme-setting' } %}
 
+{% if app.request.get('showLatex') == "true" %}
+<pre><code>
+{%- set currentday = "Unscheduled" -%}
+{%- set today = now|date('ljSFY') -%}
+{%- for session in sessions -%}
+{%- if loop.first and session.starttime is empty %}
+\day{Unscheduled sessions}
+\begin{sessions}
+{% elseif session.starttime is not empty and currentday != session.starttime|date('ljSFY') -%}
+{%- if not loop.first %}
+\end{sessions}
+{%- endif -%}
+{%- set currentday = session.starttime|date('ljSFY') -%}
+{%- set isToday = (today == currentday) %}
+
+
+\day{
+{{- session.starttime|date('l jS F') -}}
+}
+\begin{sessions}
+{% endif -%}
+\session{
+{%- if session.starttime %}{{ session.starttime|date('H:i') }}{% else %}Unsched.{% endif -%}
+}{
+{{- session.title|replace({'&': '\\&', '{': '\\{', '}': '\\}'}) -}}
+{%- if session.taxonomy.session_types|first == 'Panel' %} panel{%- endif -%}
+} \\
+{% setcontent events = 'programme' where { 'relation.sessions': session.id, types: '!theme-setting' } %}
+{% for event in events if session.id in event.relation.sessions %}
+    \event{
+{{- event|taxonomy.types|first -}}%
+}%
+    {
+{{- event.title|replace({'&': '\\&', '{': '\\{', '}': '\\}'}) -}}%
+}%
+    [
+{{- event.authors|replace({'&': '\\&', '{': '\\{', '}': '\\}'})|striptags -}}%
+]%
+    {
+{{- event.teaser|replace({'&': '\\&', '{': '\\{', '}': '\\}'})|striptags -}}%
+}
+{% endfor %}
+{% endfor %}
+\end{sessions}
+</code></pre>
+{% else %}
+
 <div class="accordion shadow rounded" id="programme">
     {% set currentday = "Unscheduled" %}
     {% set today = now|date('ljSFY') %}
@@ -50,3 +97,5 @@
         </ul>
     </div>
 </div>
+
+{% endif %}
