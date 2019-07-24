@@ -20,8 +20,8 @@
     <div class="col-xl-9 col-lg-8 col-md-7 col-12">
         <article>
             {% if record.image is not empty %}
-                {% set fieldtype = 'image' %}
-                {% set value = {"file": record.image} %}
+                {% set fieldtype = record.fieldtype('image') %}
+                {% set value = record.get('image') %}
                 {% set alt = record.imagecaption %}
                 {% set caption = record.imagecaption %}
                 {% if alt|trim is empty %}{% set alt = caption %}{% endif %}
