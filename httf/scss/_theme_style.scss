@@ -94,8 +94,9 @@ header {
         color: $nav-a-color;
       }
 
-      & a:hover, & a[aria-expanded=true] {
+      & a:hover, & a[aria-expanded=true], & a:focus {
        background: $nav-a-bg-hover;
+       outline: none;
       }
 
       ul.dropdown-menu {

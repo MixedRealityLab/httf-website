@@ -11481,8 +11481,9 @@ header nav ul li:first-child {
 header nav ul li a, header nav ul li a:active, header nav ul li a:link, header nav ul li a:visited, header nav ul li a:hover {
   color: #000;
 }
-header nav ul li a:hover, header nav ul li a[aria-expanded=true] {
+header nav ul li a:hover, header nav ul li a[aria-expanded=true], header nav ul li a:focus {
   background: rgba(255, 255, 255, 0.4);
+  outline: none;
 }
 header nav ul li ul.dropdown-menu {
   border: 0;
