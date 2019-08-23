@@ -77,6 +77,7 @@ header {
   nav {
     background: $nav-bg;
     width: 100%;
+    z-index: 999;
 
     nav::before {
       background: $nav-bg;
@@ -612,6 +613,7 @@ footer {
 
   .main-container {
     @include make-container-max-widths();
+    z-index: 1;
   }
 
   .main {

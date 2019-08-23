@@ -11467,6 +11467,7 @@ header button[aria-expanded=true] i, header button[aria-expanded=true] svg {
 header nav {
   background: rgba(255, 255, 255, 0.4);
   width: 100%;
+  z-index: 999;
 }
 header nav nav::before {
   background: rgba(255, 255, 255, 0.4);
@@ -11904,6 +11905,11 @@ footer hr {
   }
   header nav .nav-search input {
     text-align: left;
+  }
+}
+@media (min-width: 768px) {
+  .main-container {
+    z-index: 1;
   }
 }
 @media (min-width: 768px) and (min-width: 576px) {
