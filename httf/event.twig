@@ -32,13 +32,24 @@
             </div>
         </article>
     </div>
-    <aside  class="col-xl-3 col-lg-4 col-md-5 col-12">
+    <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
+        {% set starttime = session.starttime ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : '' %}
+        {% if starttime is not empty %}
+        <div class="card shadow shadow-darker rounded" class="p-2">
+          <div class="card-body">
+            <h5 class="card-title">Scheduled time</h5>
+            <p class="card-text">
+                This {{ eventtype|lower }} presentation will take place on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at <strong>{{ starttime }}</strong> (for <strong>{{ record.lengthmins }}</strong> minutes).
+            </p>
+          </div>
+        </div>
+        {% endif %}
         {% if record.citation is not empty %}
         <div class="card shadow rounded" class="p-2">
           <div class="card-body">
             <h5 class="card-title">Reference</h5>
             <p class="card-text">
-                {{ record.citation }}
+                {{ record.citation|markdown }}
             </p>
           </div>
         </div>

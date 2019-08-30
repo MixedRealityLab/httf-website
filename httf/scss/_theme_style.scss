@@ -369,6 +369,7 @@ header {
 
     .event-type {
       font-weight: bold;
+      opacity: $session-type-opa;
     }
 
     p:last-child {
@@ -381,8 +382,14 @@ header {
       webkit-transition: opacity $anim-time;
       transition: opacity $anim-time;
 
+      .event-time {
+        background: $main-bg;
+        color: $session-bg;
+        opacity: $session-type-opa;
+      }
+
       &:hover, &:active, & a:active {
-        opacity: 1;
+        opacity: 1 !important;
       }
     }
 
