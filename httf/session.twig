@@ -39,12 +39,11 @@
                         {{ event|taxonomy.types|first }} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>
                     </div>
                     <div class="media-body">
-                        <h5 class="mt-0">
+                        <h5 class="mt-0 mb-0">
                         <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
                             {{ event.title }}
                         </a>
                         </h5>
-                        <!-- {{ event.teaser|markdown }} -->
                     </div>
                 </li>
             {% endfor %}

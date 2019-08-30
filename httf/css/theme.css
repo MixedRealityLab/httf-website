@@ -11531,8 +11531,12 @@ header nav .nav-search input:focus {
 .main h1 {
   margin-bottom: 1rem;
 }
-.main .breadcrumb-container ~ div {
-  margin-bottom: 1rem;
+.main .breadcrumb-container nav {
+  display: none;
+}
+.main .breadcrumb-container ~ * {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
 }
 .main article .nogap > div > p:last-child {
   margin-bottom: 0;
@@ -11622,6 +11626,9 @@ header nav .nav-search input:focus {
 }
 .main .jumbotron p:last-child {
   margin-bottom: 0;
+}
+.main .jumbotron h1 {
+  font-size: 1.8rem;
 }
 .main #searchform-block {
   display: none;
@@ -11948,6 +11955,19 @@ footer hr {
     -moz-border-radius-bottomleft: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
+  }
+  .main .breadcrumb-container nav {
+    display: block;
+  }
+  .main .breadcrumb-container ~ div {
+    margin-bottom: 1rem;
+  }
+  .main .breadcrumb-container ~ * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .main > div:first-child {
+    padding: 1rem;
   }
   .main article .record-card {
     margin: 0 0 1rem 0;

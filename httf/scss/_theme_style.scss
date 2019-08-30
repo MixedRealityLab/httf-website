@@ -158,8 +158,13 @@ header {
     margin-bottom: $spacer;
   }
 
-  .breadcrumb-container ~ div {
-    margin-bottom: $spacer;
+  .breadcrumb-container nav {
+    display: none;
+  }
+
+  .breadcrumb-container ~ * {
+    margin-top: -$spacer;
+    margin-bottom: 2*$spacer;
   }
 
 
@@ -279,6 +284,10 @@ header {
 
     p:last-child {
       margin-bottom: 0;
+    }
+
+    h1 {
+    font-size: 1.8rem;
     }
   }
 
@@ -632,6 +641,23 @@ footer {
     -moz-border-radius-bottomleft: $main-bdr-rad;
     border-bottom-right-radius: $main-bdr-rad;
     border-bottom-left-radius: $main-bdr-rad;
+
+  .breadcrumb-container nav {
+      display: block;
+    }
+
+  .breadcrumb-container ~ div {
+    margin-bottom: $spacer;
+  }
+
+  .breadcrumb-container ~ * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+    & > div:first-child {
+      padding: $spacer;
+    }
 
     article {
       .record-card {
