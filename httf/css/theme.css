@@ -11524,6 +11524,14 @@ header nav .nav-search input:focus {
   -webkit-box-shadow: 0;
   -moz-box-shadow: 0;
   box-shadow: 0;
+  /*  .breadcrumb-container nav {
+      display: none;
+    }
+
+    .breadcrumb-container ~ * {
+      margin-top: -$spacer;
+      margin-bottom: 2*$spacer;
+    }*/
 }
 .main > div:first-child {
   padding: 1rem;
@@ -11532,11 +11540,14 @@ header nav .nav-search input:focus {
   margin-bottom: 1rem;
 }
 .main .breadcrumb-container nav {
-  display: none;
+  display: block;
+}
+.main .breadcrumb-container ~ div {
+  margin-bottom: 1rem;
 }
 .main .breadcrumb-container ~ * {
-  margin-top: -1rem;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .main article .nogap > div > p:last-child {
   margin-bottom: 0;
@@ -11955,16 +11966,6 @@ footer hr {
     -moz-border-radius-bottomleft: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-  }
-  .main .breadcrumb-container nav {
-    display: block;
-  }
-  .main .breadcrumb-container ~ div {
-    margin-bottom: 1rem;
-  }
-  .main .breadcrumb-container ~ * {
-    margin-top: 0;
-    margin-bottom: 0;
   }
   .main > div:first-child {
     padding: 1rem;

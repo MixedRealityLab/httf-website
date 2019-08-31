@@ -158,13 +158,26 @@ header {
     margin-bottom: $spacer;
   }
 
-  .breadcrumb-container nav {
+/*  .breadcrumb-container nav {
     display: none;
   }
 
   .breadcrumb-container ~ * {
     margin-top: -$spacer;
     margin-bottom: 2*$spacer;
+  }*/
+  
+  .breadcrumb-container nav {
+      display: block;
+    }
+
+  .breadcrumb-container ~ div {
+    margin-bottom: $spacer;
+  }
+
+  .breadcrumb-container ~ * {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
 
@@ -642,18 +655,6 @@ footer {
     border-bottom-right-radius: $main-bdr-rad;
     border-bottom-left-radius: $main-bdr-rad;
 
-  .breadcrumb-container nav {
-      display: block;
-    }
-
-  .breadcrumb-container ~ div {
-    margin-bottom: $spacer;
-  }
-
-  .breadcrumb-container ~ * {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
 
     & > div:first-child {
       padding: $spacer;
