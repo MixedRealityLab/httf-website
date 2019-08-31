@@ -88,12 +88,16 @@ header {
   }
 
   #programme {
+    .card-header {
+      background: $aside-crd-act-bg-dk;
+    }
+
     .card-body {
-      background: $aside-crd-bg-dk;
+      background: $main-bg-dk;
     }
 
     .programme-past {
-      .badge-pill {
+      .badge-time {
         background-color: $prg-past-bg-dk;
         color: $prg-past-fg-dk;
       }
@@ -104,18 +108,26 @@ header {
     }
 
     .programme-now {
-      .badge-pill {
+      .badge-time {
         background-color: $prg-now-bg-dk;
         color: $prg-now-fg-dk;
       }
     }
 
     .programme-future {
-      .badge-pill {
+      .badge-time {
         background-color: $prg-future-bg-dk;
         color: $prg-future-fg-dk;
       }
     }
+  }
+
+  .session {
+    background: $session-bg-dk;
+  }
+
+  .jumbotron {
+    background: $jumobtron-bg-dk;
   }
 
   .sponsors.light {

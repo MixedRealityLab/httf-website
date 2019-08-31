@@ -12121,7 +12121,7 @@ footer hr {
     border-color: #20252C;
   }
   .main .breadcrumb {
-    background: #191B22;
+    background: #272C35;
     color: #e9ecef;
   }
   .main article .record-card {
@@ -12155,33 +12155,42 @@ footer hr {
     color: #fff;
   }
   .main .card {
-    border-color: #191B22;
+    border-color: #272C35;
   }
   .main .card-body {
     background: #272C35;
     color: #e9ecef;
   }
   .main .card-footer {
-    background: #191B22;
+    background: #272C35;
     color: #e9ecef;
   }
-  .main #programme .card-body {
+  .main #programme .card-header {
     background: #191B22;
   }
-  .main #programme .programme-past .badge-pill {
+  .main #programme .card-body {
+    background: #20252C;
+  }
+  .main #programme .programme-past .badge-time {
     background-color: #191B22;
     color: #6c757d;
   }
   .main #programme .programme-past a, .main #programme .programme-past a:active, .main #programme .programme-past a:link, .main #programme .programme-past a:visited, .main #programme .programme-past a:hover {
     color: #6c757d;
   }
-  .main #programme .programme-now .badge-pill {
+  .main #programme .programme-now .badge-time {
     background-color: #22D430;
     color: #fff;
   }
-  .main #programme .programme-future .badge-pill {
+  .main #programme .programme-future .badge-time {
     background-color: #fff;
     color: #000;
+  }
+  .main .session {
+    background: #191B22;
+  }
+  .main .jumbotron {
+    background: #191B22;
   }
   .main .sponsors.light {
     display: none;
@@ -12191,14 +12200,14 @@ footer hr {
   }
 
   aside .card {
-    background: #191B22;
+    background: #272C35;
     color: #e9ecef;
   }
   aside .card a, aside .card a:active, aside .card a:link, aside .card a:visited, aside .card a:hover {
     color: #F5A83D;
   }
   aside .card.active {
-    background: #272C35;
+    background: #191B22;
     color: #e9ecef;
   }
 }

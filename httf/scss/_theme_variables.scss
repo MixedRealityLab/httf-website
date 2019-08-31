@@ -93,7 +93,7 @@ $main-mg-b:             $spacer*2;
 $aside-crd-bg:          map-get($theme-colors, main-aux-lt);
 $aside-crd-fg:          map-get($theme-colors, main-aux-dk);
 $aside-crd-fg-a:        $black;
-$aside-crd-bg-dk:       map-get($theme-colors, main-aux-dkr);
+$aside-crd-bg-dk:       map-get($theme-colors, main-aux-dk);
 $aside-crd-bg-dkl:      map-get($theme-colors, main-aux-dk);
 $aside-crd-fg-dk:       map-get($theme-colors, main-aux-lt);
 $aside-crd-fg-a-dk:     $link-color-dk;
@@ -101,7 +101,7 @@ $aside-crd-fg-a-dk:     $link-color-dk;
 $aside-crd-act-bg:      map-get($theme-colors, main-aux-dk);
 $aside-crd-act-fg:      map-get($theme-colors, main-aux-lt);
 $aside-crd-act-fg-a:    $white;
-$aside-crd-act-bg-dk:   map-get($theme-colors, main-aux-dk);
+$aside-crd-act-bg-dk:   map-get($theme-colors, main-aux-dkr);
 $aside-crd-act-fg-dk:   map-get($theme-colors, main-aux-lt);
 $aside-crd-act-fg-a-dk: $white;
 
@@ -130,9 +130,11 @@ $main-img-cpt-pad:      .5rem 1rem;
 $main-vid-neg-pad:    -.5rem;
 
 $jumobtron-bg:          $aside-crd-act-bg;
+$jumobtron-bg-dk:       $aside-crd-act-bg-dk;
 $jumobtron-fg:          $aside-crd-act-fg;
 
 $session-bg:            $aside-crd-act-bg;
+$session-bg-dk:         $aside-crd-act-bg-dk;
 $session-bd:            1px solid $aside-crd-act-fg;
 $session-fg:            $aside-crd-act-fg;
 $session-fg-a:          $aside-crd-act-fg-a;
