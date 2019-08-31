@@ -1,6 +1,6 @@
 {% setcontent record = 'page/programme' %}
 {% if app.request.get('preview') == "true" or record.redirect is empty %}
-{% include 'record.twig' with {'homepage' : false, 'record': record, 'meta': false} %}
+{% include 'record.twig' with {'homepage' : false, 'record': record, 'meta': false, 'show_events': true} %}
 {% else %}
 {% include 'redirect.twig' with {'record': record} %}
 {% endif %}

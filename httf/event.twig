@@ -34,7 +34,7 @@
     </div>
     <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
         {% set starttime = session.starttime ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : '' %}
-        {% if starttime is not empty %}
+        {% if starttime is not empty and eventtype != "Theme-setting paper" %}
         <div class="card shadow shadow-darker rounded" class="p-2">
           <div class="card-body">
             <h5 class="card-title">Scheduled time</h5>

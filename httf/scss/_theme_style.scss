@@ -14,6 +14,10 @@ a, a:active, a:link, a:visited, a:hover {
   font-weight: bold;
 }
 
+a.text-muted {
+  font-weight: normal;
+}
+
 .glass {
   background: $gls-bg;
   backdrop-filter: blur(5px);
@@ -340,23 +344,32 @@ header {
     }
 
     li {
-      margin-bottom: $prg-mg-b;
-      text-align: center;
+      text-align: left;
 
       a {
         width: 100%;
       }
     }
 
-    .badge-pill {
-      display: block;
-      margin: 0 auto $prg-mg-b/2 auto;
-      width: 75%;
+    .badge-time {
+        margin-right: $prg-pill-gap;
+    }
+
+    .badge-eventtype {
+        margin-right: $prg-pill-gap;
+        background-color: $prg-past-bg;
+        color: $prg-past-fg;
+        vertical-align: middle;
+        padding-top: .4em;
+    }
+
+    .prg-details {
+      margin-top: -.2rem !important;
     }
 
 
     .programme-past {
-      .badge-pill {
+      .badge-time {
         background-color: $prg-past-bg;
         color: $prg-past-fg;
       }
@@ -367,14 +380,14 @@ header {
     }
 
     .programme-now {
-      .badge-pill {
+      .badge-time {
         background-color: $prg-now-bg;
         color: $prg-now-fg;
       }
     }
 
     .programme-future {
-      .badge-pill {
+      .badge-time {
         background-color: $prg-future-bg;
         color: $prg-future-fg;
       }
@@ -551,14 +564,6 @@ footer {
     #programme {
       li {
         margin-bottom: $prg-mg-b-sm;
-        text-align: left;
-      }
-
-      .badge-pill {
-        margin-bottom: 0;
-        margin-right: $prg-pill-gap;
-        display: inline;
-        width: auto;
       }
     }
   }

@@ -11410,6 +11410,10 @@ a, a:active, a:link, a:visited, a:hover {
   font-weight: bold;
 }
 
+a.text-muted {
+  font-weight: normal;
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(5px);
@@ -11672,29 +11676,36 @@ header nav .nav-search input:focus {
   margin-bottom: 0;
 }
 .main #programme li {
-  margin-bottom: 2rem;
-  text-align: center;
+  text-align: left;
 }
 .main #programme li a {
   width: 100%;
 }
-.main #programme .badge-pill {
-  display: block;
-  margin: 0 auto 1rem auto;
-  width: 75%;
+.main #programme .badge-time {
+  margin-right: 0.6666666667rem;
 }
-.main #programme .programme-past .badge-pill {
+.main #programme .badge-eventtype {
+  margin-right: 0.6666666667rem;
+  background-color: #e1e1e1;
+  color: #495057;
+  vertical-align: middle;
+  padding-top: 0.4em;
+}
+.main #programme .prg-details {
+  margin-top: -0.2rem !important;
+}
+.main #programme .programme-past .badge-time {
   background-color: #e1e1e1;
   color: #495057;
 }
 .main #programme .programme-past a, .main #programme .programme-past a:active, .main #programme .programme-past a:link, .main #programme .programme-past a:visited, .main #programme .programme-past a:hover {
   color: #495057;
 }
-.main #programme .programme-now .badge-pill {
+.main #programme .programme-now .badge-time {
   background-color: #22D430;
   color: #fff;
 }
-.main #programme .programme-future .badge-pill {
+.main #programme .programme-future .badge-time {
   background-color: #000;
   color: #fff;
 }
@@ -11830,13 +11841,6 @@ footer hr {
 @media (min-width: 576px) {
   .main #programme li {
     margin-bottom: 1rem;
-    text-align: left;
-  }
-  .main #programme .badge-pill {
-    margin-bottom: 0;
-    margin-right: 0.6666666667rem;
-    display: inline;
-    width: auto;
   }
 }
 @media (min-width: 768px) {

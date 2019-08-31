@@ -92,7 +92,18 @@
         {% else %}
             {% set timeClass = "programme-future" %}
         {% endif %}
-        <li class="{{ timeClass }} d-flex flex-column flex-sm-row align-items-center">{% if session.starttime %}<span class="badge badge-pill">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-pill">Unsched.</span>{% endif %} <a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a></li>
+        <li class="{{ timeClass }} d-flex flex-row align-items-start">{% if session.starttime %}<span class="badge badge-time">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-time">Unsched.</span>{% endif %} <div class="d-flex flex-column align-items-start prg-details"><a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a>
+        {% if show_events %}
+        {% set these_events = events|filter(v => v.relation.sessions|first == session.id) %}
+        {% if these_events %}
+        <ol class="p-0 pb-sm-0 pb-3">
+        {% for event in these_events %}
+        <li class="d-flex flex-row align-items-start text-muted pt-2 pb-0 mb-0">
+            <a href="{{ event.link }}" title="Read about '{{ event.title }}'" class="text-muted">{{ event.title }}</a>
+        {% endfor %}
+        </ol>
+        {% endif %}
+        {% endif %}</div></li>
     {% endfor %}
         </ul>
     </div>
