@@ -4,7 +4,7 @@
 {% if app.request.get('showLatex') == "true" %}
 <pre><code>
 {%- set currentday = "Unscheduled" -%}
-{%- set today = now|date('ljSFY') -%}
+{%- set today = now|date('Y-m-d') -%}
 {%- for session in sessions -%}
 {%- if loop.first and session.starttime is empty %}
 \day{Unscheduled sessions}
@@ -49,34 +49,34 @@
 {% else %}
 
 <div class="accordion shadow rounded" id="programme">
-    {% set currentday = "Unscheduled" %}
-    {% set today = now|date('ljSFY') %}
+    {% set currentday = "Not yet scheduled" %}
+    {% set today = now|date('Y-m-d') %}
     {% for session in sessions %}
         {% if loop.first and session.starttime is empty %}
         <div class="card">
             <div class="card-header" id="headingUnscheduled">
                 <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#programmeUnscheduled" aria-expanded="false" aria-controls="programmeUnscheduled">Unscheduled sessions</button>
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#programmeUnscheduled" aria-expanded="false" aria-controls="programmeUnscheduled">Not yet scheduled sessions</button>
                 </h2>
             </div>
 
             <div id="programmeUnscheduled" class="collapse" aria-labelledby="headingUnscheduled" data-parent="#programmeUnscheduled">
                 <ul class="card-body list-unstyled">
-        {% elseif session.starttime is not empty and currentday != session.starttime|date('ljSFY') %}
+        {% elseif session.starttime is not empty and currentday != session.starttime|date('Y-m-d') %}
             {% if not loop.first %}
         </ul>
     </div>
 </div>
             {% endif %}
-            {% set currentday = session.starttime|date('ljSFY') %}
-            {% set isToday = (today == currentday) %}
+            {% set currentday = session.starttime|date('Y-m-d') %}
+            {% set isFuture = (currentday >= today) %}
             <div class="card">
                 <div class="card-header" id="heading{{ currentday }}">
                     <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="false" aria-controls="programme{{ currentday }}">{{ session.starttime|date('l jS F')  }}</button>
                     </h2>
                 </div>
-                <div id="programme{{ currentday }}" class="collapse {{ isToday ? 'show' }}" aria-labelledby="heading{{ currentday }}" data-parent="#programme{{ currentday }}">
+                <div id="programme{{ currentday }}" class="collapse {{ isFuture ? 'show' }}" aria-labelledby="heading{{ currentday }}" data-parent="#programme{{ currentday }}">
                     <ul class="card-body list-unstyled">
         {% endif %}
         {% set timeOffset = 300 %}
