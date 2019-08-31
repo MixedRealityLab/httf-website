@@ -92,7 +92,7 @@
         {% else %}
             {% set timeClass = "programme-future" %}
         {% endif %}
-        <li class="{{ timeClass }} d-flex flex-row align-items-start">{% if session.starttime %}<span class="badge badge-time">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-time">Unsched.</span>{% endif %} <div class="d-flex flex-column align-items-start prg-details"><a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a>
+        <li class="{{ timeClass }} d-flex flex-row align-items-start mb-3">{% if session.starttime %}<span class="badge badge-time">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-time">Unsched.</span>{% endif %} <div class="d-flex flex-column align-items-start prg-details"><a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a>
         {% if show_events %}
         {% set these_events = events|filter(v => v.relation.sessions|first == session.id) %}
         {% if these_events %}
