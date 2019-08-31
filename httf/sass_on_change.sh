@@ -11,7 +11,7 @@ while read -r directory events filename; do
 		uglifycss css/theme.css > css/theme.min.css
 		now=`date`
 		printf "%s: Uploading CSS...\n" "$now"
-		scp css/theme.* map@norma.porcheron.cloud:/www/httf/public/theme/httf/css
+		scp css/theme.* halfway@norma.porcheron.cloud:/www/httf/public/theme/httf/css
 		#scp css/theme.* halfway-admin@halfway.wp.horizon.ac.uk:/var/www/halfway/public/theme/httf/css
 	else
 		printf "failed!\n"
