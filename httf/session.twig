@@ -44,6 +44,7 @@
                             {{ event.title }}
                         </a>
                         </h5>
+                        {{ event.authors|trim|raw }}
                     </div>
                 </li>
             {% endfor %}
