@@ -53,10 +53,25 @@
         {% if starttime is not empty and eventtype != "Theme-setting paper" %}
         <div class="card shadow shadow-darker rounded" class="p-2">
           <div class="card-body">
-            <h5 class="card-title">Scheduled time</h5>
-            <p class="card-text">
-                This {{ eventtype|lower }} presentation will take place on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at approximately <strong>{{ starttime }}</strong> (for <strong>{{ record.lengthmins }}</strong> minutes).
-            </p>
+            {% if session.location %}
+            <div class="media event-details">
+                <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
+                <div class="media-body">{% if session.locationlink %}<a href="{{ session.locationlink }}" title="About {{ session.location }}">{{ session.location }}</a>{% else %}{{ session.location }}{% endif %}</div>
+            </div>
+            <hr>
+            {% endif %}
+            <div class="media event-details mb-3">
+                <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ eventtype|lower }}"aria-label="Date of the {{ eventtype|lower }}"></i>
+                <div class="media-body"><strong>{{ session.starttime|date('jS F') }}</strong></div>
+            </div>
+            <div class="media event-details mb-3">
+                <i class="fas fa-clock mr-2 event-details-icon" title="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}" aria-label="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}"></i>
+                <div class="media-body"><strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
+            </div>
+            <div class="media event-details mb-0">
+                <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ eventtype|lower }}" aria-label="Length of the {{ eventtype|lower }}"></i>
+                <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
+            </div>
           </div>
         </div>
         {% endif %}

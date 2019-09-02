@@ -58,7 +58,7 @@
                     </div>
                     <div class="media-body">
                         <h5 class="my-0">
-                        <a href="{{ event.link }}{{ linktrailer }}" title="Read about '{{ event.title }}'">
+                        <a href="{{ event.link }}{{ linktrailer }}" title="Read more about the {% if type ends with "paper" %}the paper '{{ event.title }}'{% else %}{{ event.title }}{% endif %} ">
                             {{ event.title }}
                         </a>
                         </h5>
@@ -73,11 +73,37 @@
         {% if record.starttime is not empty %}
         <div class="card shadow shadow-darker rounded" class="p-2">
           <div class="card-body">
-            <h5 class="card-title">Scheduled time</h5>
-            <p class="card-text">
-                The {{ record|taxonomy.session_types|first|lower }} will take place on <strong>{{ record.starttime|date('l jS F Y') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>{% if record.lengthmins > 0 %} and will finish at <strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong>.<br><br><em>Start times for specific talks are approximate.</em>{% else %}.{% endif %}
-            </p>
+            {% if record.location %}
+            <div class="media event-details">
+                <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
+                <div class="media-body">{% if record.locationlink %}<a href="{{ record.locationlink }}" title="About {{ record.location }}">{{ record.location }}</a>{% else %}{{ record.location }}{% endif %}</div>
+            </div>
+            <hr>
+            {% endif %}
+            <div class="media event-details mb-3">
+                <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ sessiontype|lower }}" aria-label="Date of the {{ sessiontype|lower }}"></i>
+                <div class="media-body"><strong>{{ record.starttime|date('jS F') }}</strong></div>
+            </div>
+            <div class="media event-details mb-3">
+                <i class="fas fa-clock mr-2 event-details-icon" title="Scheduled start time of the {{ sessiontype|lower }}" aria-label="Scheduled start time of the {{ sessiontype|lower }}"></i> 
+                <div class="media-body"><strong>{{ record.starttime|date('H:i') }}</strong></div>
+            </div>
+
+            {% if record.lengthmins >= 60 %}
+            <div class="media event-details mb-0">
+                <i class="fas fa-arrow-to-right mr-2 event-details-icon" title="End time of the {{ sessiontype|lower }}" aria-label="End time of the {{ sessiontype|lower }}"></i>
+                <div class="media-body"><strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong></div>
+            </div>
+            {% else %}
+            <div class="media event-details mb-0">
+                <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ sessiontype|lower }}" aria-label="Length of the {{ sessiontype|lower }}"></i>
+                <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
+            </div>
+            {% endif %}
           </div>
+          {% if sessiontype == 'Session' %}
+          <div class="card-footer"><em>Start times shown for specific talks are approximate.</em></div>
+          {% endif %}
         </div>
         {% endif %}
         {% if record.chair is not empty %}
@@ -90,9 +116,6 @@
           </div>
         </div>
         {% endif %}
-        <div class="d-none d-md-block">
-        {% include 'partials/_aside.twig' %}
-        </div>
     </aside>
 
 

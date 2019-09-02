@@ -11744,6 +11744,10 @@ header nav .nav-search input:focus {
 .main .session li:last-child {
   border-bottom: 0 !important;
 }
+.main .event-details .event-details-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
 .main .sponsors {
   padding-top: 1rem !important;
   text-align: center;
