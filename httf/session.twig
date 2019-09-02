@@ -80,40 +80,37 @@
             </div>
             <hr>
             {% endif %}
+            {% if record.chair is not empty %}
+            <div class="media event-details">
+              <i class="fas fa-user mr-2 event-details-icon" title="Chair of the {{ sessiontype|lower }}" aria-label="Chair of the {{ sessiontype|lower }}"></i>
+              <div class="media-body">Chaired by <strong>{{ record.chair|markdown }}</strong></div>
+            </div>
+            <hr>
+            {% endif %}
             <div class="media event-details mb-3">
               <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ sessiontype|lower }}" aria-label="Date of the {{ sessiontype|lower }}"></i>
-              <div class="media-body"><strong>{{ record.starttime|date('D.') }}</strong> {{ session.starttime|date('jS F') }}</div>
+              <div class="media-body"><strong>{{ record.starttime|date('D. jS F') }}</strong></div>
             </div>
             <div class="media event-details mb-3">
             <i class="fas fa-clock mr-2 event-details-icon" title="Scheduled start time of the {{ sessiontype|lower }}" aria-label="Scheduled start time of the {{ sessiontype|lower }}"></i> 
-            <div class="media-body"><strong>{{ record.starttime|date('H:i') }}</strong></div>
+            <div class="media-body">Starts at <strong>{{ record.starttime|date('H:i') }}</strong></div>
             </div>
 
             {% if record.lengthmins >= 60 %}
             <div class="media event-details mb-0">
               <i class="fas fa-arrow-to-right mr-2 event-details-icon" title="End time of the {{ sessiontype|lower }}" aria-label="End time of the {{ sessiontype|lower }}"></i>
-              <div class="media-body"><strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong></div>
+              <div class="media-body">Ends at <strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong></div>
             </div>
             {% else %}
             <div class="media event-details mb-0">
               <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ sessiontype|lower }}" aria-label="Length of the {{ sessiontype|lower }}"></i>
-              <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
+              <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes long</div>
             </div>
             {% endif %}
           </div>
           {% if sessiontype == 'Session' %}
           <div class="card-footer"><em>Start times shown for specific talks are approximate.</em></div>
           {% endif %}
-        </div>
-        {% endif %}
-        {% if record.chair is not empty %}
-        <div class="card active shadow shadow-darker rounded" class="p-2">
-          <div class="card-body">
-            <h5 class="card-title">Panel chair</h5>
-            <p class="card-text">
-                {{ record.chair }}
-            </p>
-          </div>
         </div>
         {% endif %}
     </aside>
