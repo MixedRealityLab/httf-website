@@ -405,6 +405,7 @@ header {
     .event-type {
       font-weight: bold;
       opacity: $session-type-opa;
+      min-width: 7rem;
     }
 
     p:last-child {
