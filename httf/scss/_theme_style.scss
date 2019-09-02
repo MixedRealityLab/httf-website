@@ -197,7 +197,7 @@ header {
     .record-card {
       background: $main-crd-bg;
       color: $main-crd-fg;
-      margin: 2.5*$spacer -2.5*$spacer 3*$spacer -2.5*$spacer;
+      margin: 2.5*$spacer -1*$spacer 3*$spacer -1*$spacer;
       border: $main-crd-bdr;
       border-left: 0;
       border-right: 0;
@@ -208,7 +208,7 @@ header {
       }
 
       .card-body {
-        padding: 1.5*$spacer 2.5*$spacer;
+        padding: 1.5*$spacer $spacer;
       }
     }
 

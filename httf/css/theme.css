@@ -11562,7 +11562,7 @@ header nav .nav-search input:focus {
 .main article .record-card {
   background: #FFFFFF;
   color: #000;
-  margin: 2.5rem -2.5rem 3rem -2.5rem;
+  margin: 2.5rem -1rem 3rem -1rem;
   border: 2px solid #F39D24;
   border-left: 0;
   border-right: 0;
@@ -11572,7 +11572,7 @@ header nav .nav-search input:focus {
   margin-bottom: 0;
 }
 .main article .record-card .card-body {
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem 1rem;
 }
 .main article .record-image, .main article .record-inline-image {
   margin: 2rem 0;
