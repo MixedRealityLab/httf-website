@@ -26,7 +26,6 @@
 {%- if session.starttime %}{{ session.starttime|date('H:i') }}{% else %}Unsched.{% endif -%}
 }{
 {{- session.title|replace({'&': '\\&', '{': '\\{', '}': '\\}'}) -}}
-{%- if session.taxonomy.session_types|first == 'Panel' %} panel{%- endif -%}
 } \\
 {% setcontent events = 'programme' where { 'relation.sessions': session.id, types: '!theme-setting' } %}
 {% for event in events if session.id in event.relation.sessions %}
@@ -92,14 +91,14 @@
         {% else %}
             {% set timeClass = "programme-future" %}
         {% endif %}
-        <li class="{{ timeClass }} d-flex flex-row align-items-start mb-3">{% if session.starttime %}<span class="badge badge-time">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-time">??:??</span>{% endif %} <div class="d-flex flex-column align-items-start prg-details"><a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a>
+        <li class="{{ timeClass }} d-flex flex-row align-items-start mb-3">{% if session.starttime %}<span class="badge badge-time">{{ session.starttime|date('H:i') }}</span>{% else %}<span class="badge badge-time">??:??</span>{% endif %} <div class="d-flex flex-column align-items-start prg-details"><a href="{{ session.link }}" title="Read about the '{{ session.title }}' {{ session|taxonomy.session_types|first|lower }}">{{ session.title }}</a>
         {% if show_events %}
         {% set these_events = events|filter(v => v.relation.sessions|first == session.id) %}
         {% if these_events %}
         <ol class="p-0 pb-sm-0 pb-3">
         {% for event in these_events %}
         <li class="d-flex flex-row align-items-start text-muted pt-2 pb-0 mb-0">
-            <a href="{{ event.link }}" title="Read about '{{ event.title }}'" class="text-muted">{{ event.title }}</a>
+            <a href="{{ event.link }}" title="Read about '{{ event.title }}'" class="text-muted"><b>{{ event.title }}</b><br>{% if event.firstauthor != "" %}<em>{{ event.authors }}</em>{% endif %}</a>
         {% endfor %}
         </ol>
         {% endif %}

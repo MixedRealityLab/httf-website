@@ -8,13 +8,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
                 <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
-                <li class="breadcrumb-item active">{{ record.title }}{% if record.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</li>
+                <li class="breadcrumb-item active">{{ record.title }}</li>
             </ol>
         </nav>
     </div>
 
     <div class="col-12">
-        <h1>{{ record.title }}{% if record.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</h1>
+        <h1>{{ record.title }}</h1>
     </div>
 
     <div class="col-xl-9 col-lg-8 col-md-7 col-12">
@@ -36,7 +36,8 @@
                 {% set starttime = record.starttime ? (event.sessionoffset > 0 ? record.starttime|date_modify("+" ~ (event.sessionoffset) ~ " mins")|date('H:i') : record.starttime|date('H:i'))  : 'Not yet scheduled' %}
                 <li class="media p-3 mb-1 mt-1 d-flex flex-sm-row flex-column">
                     <div class="event-type small text-uppercase mr-sm-3 mb-sm-0 mb-2">
-                        {{ event|taxonomy.types|first }} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>
+                        {% set type = event|taxonomy.types|first %}
+                        {% if type ends with "paper" %}Paper{% else %}{{ type }}{% endif %} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>
                     </div>
                     <div class="media-body">
                         <h5 class="my-0">
@@ -57,7 +58,7 @@
           <div class="card-body">
             <h5 class="card-title">Scheduled time</h5>
             <p class="card-text">
-                The {{ record|taxonomy.session_types|first|lower }} will take place on <strong>{{ record.starttime|date('l jS F Y') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>{% if record.lengthmins > 0 %} and will finish at <strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong>{% endif %}.
+                The {{ record|taxonomy.session_types|first|lower }} will take place on <strong>{{ record.starttime|date('l jS F Y') }}</strong> at <strong>{{ record.starttime|date('H:i') }}</strong>{% if record.lengthmins > 0 %} and will finish at <strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong>.<br><br><em>Start times for specific talks are approximate.</em>{% else %}.{% endif %}
             </p>
           </div>
         </div>

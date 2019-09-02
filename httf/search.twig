@@ -37,13 +37,19 @@
                         {% set eventtype = record|taxonomy.types|first %}
                         {% if eventtype != "Theme-setting paper" %}
                         {% set session = record.related('sessions')|first %}
-                        {% set starttime = record.starttime ? (record.sessionoffset > 0 ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : session.starttime|date('H:i'))  : 'Not yet scheduled' %}
-                        <p class="card-text"><small class="text-muted">This is a <strong>{{ eventtype|lower }} presentation</strong>, to be given on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at <strong>{{ starttime|lower }}</strong>.</small></p>
+                        {% set starttime = session.starttime ? (record.sessionoffset > 0 ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : session.starttime|date('H:i'))  : 'Not yet scheduled' %}
+                        <p class="card-text"><small class="text-muted">This is a <strong>{{ eventtype|lower }} presentation</strong> in the <strong>{{ session.title }}</strong> session, to be given on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at approximately <strong>{{ starttime|lower }}</strong>.</small></p>
                         {% endif %}
                     {% endif %}
                 </div>
                 <div class="card-footer text-muted">
+                    {% if record.contenttype.slug == "programme" and eventtype != "Theme-setting paper" %}
+                    <a href="{{ session.link }}" title="View the '{{ session.title }}' session" class="card-link">View all talks in this session</a>
+                    <a href="/programme" title="View the online symposium programme" class="card-link">View complete programme</a>
+                    <a href="{{ record.link }}" title="Permalink for '{{ record.title }}'" class="card-link">Permalink</a>
+                    {% else %}
                     <a href="{{ record.link }}" title="Read '{{ record.title }}'" class="card-link">Read more…</a>
+                    {% endif %}
                 </div>
             </article>
 

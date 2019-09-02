@@ -9,7 +9,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
                 <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
-                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}{% if session.taxonomy.session_types|first == 'Panel' %} panel{% endif %}</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ eventtype }}</li>
             </ol>
         </nav>
@@ -39,7 +39,7 @@
           <div class="card-body">
             <h5 class="card-title">Scheduled time</h5>
             <p class="card-text">
-                This {{ eventtype|lower }} presentation will take place on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at <strong>{{ starttime }}</strong> (for <strong>{{ record.lengthmins }}</strong> minutes).
+                This {{ eventtype|lower }} presentation will take place on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at approximately <strong>{{ starttime }}</strong> (for <strong>{{ record.lengthmins }}</strong> minutes).
             </p>
           </div>
         </div>
