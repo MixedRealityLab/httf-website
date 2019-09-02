@@ -1,6 +1,6 @@
 {% use 'partials/_sub_field_blocks.twig' %}
 
-{% setcontent sessions = 'sessions' where { session_types: 'panel' } orderby 'starttime' %}
+{% setcontent sessions = 'sessions' where { session_types: 'session' } orderby 'starttime' %}
 {% setcontent papers = 'programme' where { types: 'theme-setting' } %}
 {% set sessionsperside = (sessions|length // 2) %}
 

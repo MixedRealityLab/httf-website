@@ -1,6 +1,6 @@
 {% use 'partials/_sub_field_blocks.twig' %}
 
-{% setcontent sessions = 'sessions' where { session_types: 'panel' } orderby 'starttime' %}
+{% setcontent sessions = 'sessions' where { session_types: 'session' } orderby 'starttime' %}
 {% setcontent events = 'programme' where { types: 'theme-setting || keynote' } %}
 {% set sessionsperside = (sessions|length // 2) %}
 
@@ -13,7 +13,7 @@
     {% set themepaper = filtered_events|filter(v => v.taxonomy.types|first == "Theme-setting paper") %}
     {% if keynote|length > 0 and themepaper|length > 0 %}
     {% set val_temp = [val_temp, "<strong>", session.title, "</strong><br>"]|join('') %}
-    {% set val_temp = [val_temp, keynote|first.authors|markdown|striptags('</p>'), ', reflecting on the work <em><a href="', keynote|first.link, '" title="Read about the ', session.title, ' keynote">', themepaper|first.title, '</a></em><br><br>']|join('') %}
+    {% set val_temp = [val_temp, keynote|first.authors|markdown|striptags('</p>'), ', reflecting on the work <em><a href="', themepaper|first.link, '" title="Read about the ', session.title, ' keynote">', themepaper|first.title, '</a></em><br><br>']|join('') %}
     {% if loop.index == sessionsperside %}
         {% set val_left = val_temp %}
         {% set val_temp = '' %}
