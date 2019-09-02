@@ -3,11 +3,28 @@
 
 {% block main %}
 
+    {% set sessiontype = record|taxonomy.session_types|first %}
+
+{% if app.request.get('preview') == "true" %}
+{% set showcontent = true %}
+{% set linktrailer = "?preview=true" %}
+{% elseif sessiontype == 'Session' %}
+{% setcontent programme_record = 'page/programme' %}
+{% if programme_record.redirect is not empty %}
+{% include 'redirect.twig' with {'record': programme_record} %}
+{% else %}
+{% set showcontent = true %}
+{% endif %}
+{% else %}
+{% set showcontent = true %}
+{% endif %}
+{% if showcontent %}
+
     <div class="breadcrumb-container col-12">
         <nav aria-label="breadcrumb" class="shadow rounded">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
-                <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
+                <li class="breadcrumb-item"><a href="/programme{{ linktrailer }}">Programme</a></li>
                 <li class="breadcrumb-item active">{{ record.title }}</li>
             </ol>
         </nav>
@@ -41,7 +58,7 @@
                     </div>
                     <div class="media-body">
                         <h5 class="my-0">
-                        <a href="{{ event.link }}" title="Read about '{{ event.title }}'">
+                        <a href="{{ event.link }}{{ linktrailer }}" title="Read about '{{ event.title }}'">
                             {{ event.title }}
                         </a>
                         </h5>
@@ -77,4 +94,7 @@
         {% include 'partials/_aside.twig' %}
         </div>
     </aside>
+
+
+{% endif %}
 {% endblock main %}
