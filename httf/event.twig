@@ -39,41 +39,46 @@
         <article>
             <div>
                 {{ record.teaser|markdown }}
-
-                {% if record.pdffile is not empty %}
-                <p><a href="{{ asset(record.pdffile, "files") }}" title="Read '{{ record.title }}'">Download a copy of this paper</a></p>
-                {% elseif record.pdflink is not empty %}
-                <p><a href="{{ record.pdflink }}" title="Read '{{ record.title }}'">Download a copy of this paper</a></p>
-                {% endif %}
             </div>
         </article>
     </div>
     <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
-        {% set starttime = session.starttime ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : '' %}
-        {% if starttime is not empty and eventtype != "Theme-setting paper" %}
-        <div class="card shadow shadow-darker rounded" class="p-2">
-          <div class="card-body">
-            {% if session.location %}
-            <div class="media event-details">
-                <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
-                <div class="media-body">{% if session.locationlink %}<a href="{{ session.locationlink }}" title="About {{ session.location }}">{{ session.location }}</a>{% else %}{{ session.location }}{% endif %}</div>
-            </div>
-            <hr>
-            {% endif %}
-            <div class="media event-details mb-3">
-                <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ eventtype|lower }}"aria-label="Date of the {{ eventtype|lower }}"></i>
-                <div class="media-body"><strong>{{ session.starttime|date('jS F') }}</strong></div>
-            </div>
-            <div class="media event-details mb-3">
-                <i class="fas fa-clock mr-2 event-details-icon" title="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}" aria-label="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}"></i>
-                <div class="media-body"><strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
-            </div>
-            <div class="media event-details mb-0">
-                <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ eventtype|lower }}" aria-label="Length of the {{ eventtype|lower }}"></i>
-                <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
-            </div>
+      {% set starttime = session.starttime ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : '' %}
+      {% if (starttime is not empty and eventtype != "Theme-setting paper") or (record.download is not empty) %}
+      <div class="card shadow shadow-darker rounded" class="p-2">
+        <div class="card-body">
+          {% if starttime is not empty and eventtype != "Theme-setting paper" %}
+          {% if session.location %}
+          <div class="media event-details">
+            <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
+            <div class="media-body">{% if session.locationlink %}<a href="{{ session.locationlink }}" title="About {{ session.location }}">{{ session.location }}</a>{% else %}{{ session.location }}{% endif %}</div>
           </div>
+          <hr>
+          {% endif %}
+          <div class="media event-details mb-3">
+            <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ eventtype|lower }}"aria-label="Date of the {{ eventtype|lower }}"></i>
+            <div class="media-body"><strong>{{ session.starttime|date('D.') }}</strong> {{ session.starttime|date('jS F') }}</div>
+          </div>
+          <div class="media event-details mb-3">
+            <i class="fas fa-clock mr-2 event-details-icon" title="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}" aria-label="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}"></i>
+            <div class="media-body"><strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
+          </div>
+          <div class="media event-details mb-0">
+            <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ eventtype|lower }}" aria-label="Length of the {{ eventtype|lower }}"></i>
+            <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
+          </div>
+          {% endif %}
+          {% if eventtype != "Theme-setting paper" and record.download is not empty %}
+          <hr>
+          {% endif %}
+          {% if record.download is not empty %}
+          <div class="media event-details mb-0">
+            <i class="fas fa-download mr-2 event-details-icon" title="Access a copy" aria-label="Access a copy"></i>
+            <div class="media-body"><a href="{{ record.download }}" title="Access a copy"><strong>Download</strong></a>{% if record.freedownload %} (free){% else %} (not free){% endif %}</div>
+          </div>
+          {% endif %}
         </div>
+      </div>
         {% endif %}
         {% if record.citation is not empty %}
         <div class="card shadow rounded" class="p-2">

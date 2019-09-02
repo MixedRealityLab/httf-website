@@ -75,29 +75,29 @@
           <div class="card-body">
             {% if record.location %}
             <div class="media event-details">
-                <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
-                <div class="media-body">{% if record.locationlink %}<a href="{{ record.locationlink }}" title="About {{ record.location }}">{{ record.location }}</a>{% else %}{{ record.location }}{% endif %}</div>
+              <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
+              <div class="media-body">{% if record.locationlink %}<a href="{{ record.locationlink }}" title="About {{ record.location }}">{{ record.location }}</a>{% else %}{{ record.location }}{% endif %}</div>
             </div>
             <hr>
             {% endif %}
             <div class="media event-details mb-3">
-                <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ sessiontype|lower }}" aria-label="Date of the {{ sessiontype|lower }}"></i>
-                <div class="media-body"><strong>{{ record.starttime|date('jS F') }}</strong></div>
+              <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ sessiontype|lower }}" aria-label="Date of the {{ sessiontype|lower }}"></i>
+              <div class="media-body"><strong>{{ record.starttime|date('D.') }}</strong> {{ session.starttime|date('jS F') }}</div>
             </div>
             <div class="media event-details mb-3">
-                <i class="fas fa-clock mr-2 event-details-icon" title="Scheduled start time of the {{ sessiontype|lower }}" aria-label="Scheduled start time of the {{ sessiontype|lower }}"></i> 
-                <div class="media-body"><strong>{{ record.starttime|date('H:i') }}</strong></div>
+            <i class="fas fa-clock mr-2 event-details-icon" title="Scheduled start time of the {{ sessiontype|lower }}" aria-label="Scheduled start time of the {{ sessiontype|lower }}"></i> 
+            <div class="media-body"><strong>{{ record.starttime|date('H:i') }}</strong></div>
             </div>
 
             {% if record.lengthmins >= 60 %}
             <div class="media event-details mb-0">
-                <i class="fas fa-arrow-to-right mr-2 event-details-icon" title="End time of the {{ sessiontype|lower }}" aria-label="End time of the {{ sessiontype|lower }}"></i>
-                <div class="media-body"><strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong></div>
+              <i class="fas fa-arrow-to-right mr-2 event-details-icon" title="End time of the {{ sessiontype|lower }}" aria-label="End time of the {{ sessiontype|lower }}"></i>
+              <div class="media-body"><strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong></div>
             </div>
             {% else %}
             <div class="media event-details mb-0">
-                <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ sessiontype|lower }}" aria-label="Length of the {{ sessiontype|lower }}"></i>
-                <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
+              <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ sessiontype|lower }}" aria-label="Length of the {{ sessiontype|lower }}"></i>
+              <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes</div>
             </div>
             {% endif %}
           </div>
