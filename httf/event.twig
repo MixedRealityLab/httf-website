@@ -48,6 +48,10 @@
       <div class="card shadow shadow-darker rounded" class="p-2">
         <div class="card-body">
           {% if starttime is not empty and eventtype != "Theme-setting paper" %}
+          <div class="media event-details{{ session.location ? ' mb-3' : '' }}">
+            <i class="fas {% if eventtype == "Keynote" %}fa-keynote{% elseif record.poster %}fa-users-class{% elseif eventtype ends with "paper" %}fa-presentation{% else %}fa-microphone{% endif %} mr-2 event-details-icon" title="This is a {{ eventtype|lower }}{{ record.poster ? ' given as a poster' : ' given as a presentation' }}" aria-label="This is a {{ eventtype|lower }}{{ record.poster ? ' given as a poster' : ' given as a presentation' }}"></i>
+            <div class="media-body">{% if eventtype == "Keynote" %}<strong>Keynote</strong>{% elseif eventtype ends with "paper" %}{{ eventtype }}, given as a <strong>{{ record.poster ? 'poster' : 'presentation' }}</strong>{% else %}<strong>Panel</strong>{% endif %}</div>
+          </div>
           {% if session.location %}
           <div class="media event-details">
             <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
@@ -59,14 +63,16 @@
             <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ eventtype|lower }}"aria-label="Date of the {{ eventtype|lower }}"></i>
             <div class="media-body"><strong>{{ session.starttime|date('D. jS F') }}</strong></div>
           </div>
-          <div class="media event-details mb-3">
+          <div class="media event-details {{ record.lengthmins > 0 ? 'mb-3' }}">
             <i class="fas fa-clock mr-2 event-details-icon" title="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}" aria-label="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}"></i>
-            <div class="media-body">Starts at <strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
+            <div class="media-body">{{ record.poster ? 'Presented from' : 'Starts at' }} <strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
           </div>
+          {% if record.lengthmins > 0 %}
           <div class="media event-details mb-0">
             <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ eventtype|lower }}" aria-label="Length of the {{ eventtype|lower }}"></i>
             <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes long</div>
           </div>
+          {% endif %}
           {% endif %}
           {% if eventtype != "Theme-setting paper" and record.download is not empty %}
           <hr>
