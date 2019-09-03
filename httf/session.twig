@@ -54,12 +54,10 @@
               {% set has_events = true %}
                 {% set starttime = record.starttime ? (event.sessionoffset > 0 ? record.starttime|date_modify("+" ~ (event.sessionoffset) ~ " mins")|date('H:i') : record.starttime|date('H:i'))  : 'Not yet scheduled' %}
                 <li class="media p-3 mb-1 mt-1 d-flex flex-sm-row flex-column">
-                    {% if not event.poster %}
                     <div class="event-type small text-uppercase mr-sm-3 mb-sm-0 mb-2">
                         {% set type = event|taxonomy.types|first %}
-                        {% if type ends with "paper" %}Paper{% else %}{{ type }}{% endif %} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>
+                        {% if type ends with "paper" %}{{ event.poster ? 'Poster' : 'Paper' }}{% else %}{{ type }}{% endif %} {% if not event.poster %} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>{% endif %}
                     </div>
-                    {% endif %}
                     <div class="media-body">
                         <h5 class="my-0">
                         <a href="{{ event.link }}{{ linktrailer }}" title="Read more about the {% if type ends with "paper" %}the paper '{{ event.title }}'{% else %}{{ event.title }}{% endif %} ">
