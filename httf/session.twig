@@ -48,7 +48,7 @@
             {{ record.teaser|markdown }}
 
             {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
-            <ul class="list-unstyled session rounded shadow shadow-darker">
+            <ul class="list-unstyled session rounded shadow">
             {% set has_events = false %}
             {% for event in events if record.id in event.relation.sessions %}
               {% set has_events = true %}
