@@ -361,8 +361,13 @@ header {
       }
     }
 
+    li:last-child {
+      margin-bottom: 0 !important;
+    }
+
     .badge-time {
-        margin-right: $prg-pill-gap;
+      margin-right: $prg-pill-gap;
+      min-width: 3rem;
     }
 
     .badge-eventtype {
@@ -376,7 +381,6 @@ header {
     .prg-details {
       margin-top: -.2rem !important;
     }
-
 
     .programme-past {
       .badge-time {
@@ -577,16 +581,6 @@ footer {
 
 
 
-
-@include media-breakpoint-up(sm) {
-  .main {
-    #programme {
-      li {
-        margin-bottom: $prg-mg-b-sm;
-      }
-    }
-  }
-}
 
 
 

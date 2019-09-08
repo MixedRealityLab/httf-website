@@ -11677,8 +11677,12 @@ header nav .nav-search input:focus {
 .main #programme li a {
   width: 100%;
 }
+.main #programme li:last-child {
+  margin-bottom: 0 !important;
+}
 .main #programme .badge-time {
   margin-right: 0.6666666667rem;
+  min-width: 3rem;
 }
 .main #programme .badge-eventtype {
   margin-right: 0.6666666667rem;
@@ -11839,11 +11843,6 @@ footer hr {
   width: 100%;
 }
 
-@media (min-width: 576px) {
-  .main #programme li {
-    margin-bottom: 1rem;
-  }
-}
 @media (min-width: 768px) {
   header {
     height: 12rem;
