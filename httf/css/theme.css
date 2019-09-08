@@ -11734,6 +11734,7 @@ header nav .nav-search input:focus {
   background: #FFFFFF;
   color: #272C35;
   opacity: 0.7;
+  vertical-align: middle;
 }
 .main .session li:hover, .main .session li:active, .main .session li a:active {
   opacity: 1 !important;

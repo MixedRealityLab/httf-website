@@ -436,6 +436,7 @@ header {
         background: $main-bg;
         color: $session-bg;
         opacity: $session-type-opa;
+        vertical-align: middle;
       }
 
       &:hover, &:active, & a:active {
