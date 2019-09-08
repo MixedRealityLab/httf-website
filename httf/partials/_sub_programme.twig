@@ -100,7 +100,7 @@
         {% if show_events %}
         {% set these_events = events|filter(v => v.relation.sessions|first == session.id) %}
         {% if these_events %}
-        <ol class="session-events collapse show p-0 pb-sm-0 pb-3">
+        <ol class="session-events collapse p-0 pb-sm-0 pb-3">
         {% for event in these_events %}
         <li class="d-flex flex-row align-items-start text-muted pt-2 pb-0 mb-0">
             <a href="{{ event.link }}{{ linktrailer }}" title="Read about '{{ event.title }}'" class="text-muted"><b>{{ event.title }}</b><br>{% if event.firstauthor != "" %}<em>{{ event.authors }}</em>{% endif %}</a>
