@@ -1,22 +1,32 @@
-<header class="row flex-column">
-    <h2>
-        <span class="d-md-none d-block">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Show/hide menu" class="d-md-none d-block">
-                <img src="{{ asset('img/brand.svg', 'theme') }}" alt="{{ config.get('general/sitename') -}}: {{ config.get('general/payoff') -}}">
-                <i class="fas fa-chevron-circle-down"></i>
-            </button>
-        </span>
-        <a href="{{ path('homepage') }}" title="Go to the {{ config.get('general/sitename') }} homepage" class="d-md-inline-block d-none">
-            <img src="{{ asset('img/brand-md.svg', 'theme') }}" alt="Halfway to the Future: A two-day symposium in Nottingham, UK exploring the past, present, and future of HCI and design-based research.">
-        </a>
-    </h2>
+<header class="row">
+    <div class="container">
+        <div class="row">
+            <h2 class="m-0 mx-md-0 mx-auto">
+                <span class="d-md-none d-block">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Show/hide menu" class="d-md-none d-block">
+                        <img src="{{ asset('img/brand.svg', 'theme') }}" alt="{{ config.get('general/sitename') -}}: {{ config.get('general/payoff') -}}" class="mobile-logo">
+                        <i class="fas fa-chevron-circle-down"></i>
+                    </button>
+                </span>
+                <a href="{{ path('homepage') }}" title="Go to the {{ config.get('general/sitename') }} homepage" class="d-md-inline-block d-none py-4">
+                    <img src="{{ asset('img/brand-md.svg', 'theme') }}" alt="Halfway to the Future: A two-day symposium in Nottingham, UK exploring the past, present, and future of HCI and design-based research." class="logo">
+                </a>
+            </h2>
 
-    <nav id="nav" class="glass collapse">
-        {{ menu(template='partials/_sub_menu.twig') }}
+            <div id="hashtag" class="d-md-block d-none m-0 ml-auto py-4">
+                <a href="https://twitter.com/search?f=top&q=(%23httf2019%20OR%20%40httfsymposium)&src=typed_query" title="Tweets relating to the symposium are on the hashtag #httf2019" class="d-block py-4-lg py-3">
+                    <img src="{{ asset('img/hashtag.svg', 'theme') }}" alt="The {{ config.get('general/sitename') }} Twitter Hashtag is #httf2019" class="hashtag">
+                </a>
+            </div>
 
-        <form method="get" action="/search" class="form-block nav-search">
-            <input type="search" class="form-control nav-search-input pull-right" name="search" placeholder="Search…" value="{{ search|default() }}">
-        </form>
-    </nav>
+            <nav id="nav" class="glass collapse">
+                {{ menu(template='partials/_sub_menu.twig') }}
+
+                <form method="get" action="/search" class="form-block nav-search">
+                    <input type="search" class="form-control nav-search-input pull-right" name="search" placeholder="Search…" value="{{ search|default() }}">
+                </form>
+            </nav>
+        </div>
+    </div>
 
 </header>

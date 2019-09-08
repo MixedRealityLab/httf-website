@@ -46,10 +46,9 @@ $gls-fltr:            blur(10px);
 $gls-bg:              rgba(255, 255, 255, 0.4);
 $gls-bg-2:            rgba(255, 255, 255, 0.6);
 
-$hdr-height:          6rem;
-$hdr-height-md:       12rem;
-$hdr-height-lg:       16rem;
-$hdr-height-xl:       16rem;
+$hdr-height-md:       7.5rem;
+$hdr-height-lg:       9rem;
+$hdr-height-xl:       9rem;
 $hdr-bg-color-st:     map-get($theme-colors, hdr-bg);
 $hdr-bg-color-end:    map-get($theme-colors, hdr-aux);
 $hdr-bg-color-end-dev:map-get($theme-colors, hdr-dev-bg);
@@ -75,9 +74,9 @@ $nav-srch-bd-rad:      .5rem;
 $nav-srch-bg:          $gls-bg;
 $nav-srch-bg-active:   $gls-bg-2;
 $nav-srch-shd:         0 0 0 0.2rem map-get($theme-colors, nav-dd-bg);
-$nav-srch-md-mg-t:     -7.8rem;
-$nav-srch-lg-mg-t:     -9.45rem;
-$nav-srch-xl-mg-t:     -9.45rem;
+$nav-srch-md-mg-t:     -8.25rem;
+$nav-srch-lg-mg-t:     -8.4rem;
+$nav-srch-xl-mg-t:     -8.4rem;
 $nav-srch-md-mg-r:     -$spacer*2;
 
 $main-fg:               map-get($theme-colors, main-fg);

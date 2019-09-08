@@ -60,16 +60,6 @@ body.dev {
 }
 
 header {
-  min-height: $hdr-height;
-
-  h2 {
-    width: 100%;
-  }
-
-  img {
-    margin-top: $hdr-img-mg-tb;
-    max-height: $hdr-height-md - ($hdr-img-mg-tb*2) !important;
-  }
 
   button i, button svg {
     margin-left: $hdr-nav-tglr-mg-l;
@@ -589,8 +579,14 @@ footer {
 
 @include media-breakpoint-up(md) {
   header {
-    height: $hdr-height-md;
-    text-align: left;
+
+    .logo {
+      height: $hdr-height-md;
+    }
+
+    .hashtag {
+      height: 1.5rem;
+    }
 
     h2, nav {
       @include make-container();
@@ -601,9 +597,8 @@ footer {
       }
     }
 
-    img {
-      margin: $spacer/2 0;
-      max-height: $hdr-height-md - $nav-height - $spacer !important;
+    h2 {
+      width: auto !important;
     }
 
     nav {
@@ -762,11 +757,13 @@ footer {
 
 @include media-breakpoint-up(lg) {
   header {
-    height: $hdr-height-lg;
 
-    img {
-      margin: $spacer*2 0;
-      max-height: $hdr-height-lg - $nav-height - $spacer*4 !important;
+    .logo {
+      height: $hdr-height-lg;
+    }
+
+    .hashtag {
+      height: auto;
     }
 
     nav {
@@ -801,10 +798,9 @@ footer {
 
 @include media-breakpoint-up(xl) {
   header {
-    height: $hdr-height-xl;
 
-    img {
-      max-height: $hdr-height-xl - $nav-height - $spacer*2;
+    .logo {
+      height: $hdr-height-xl;
     }
 
     nav {

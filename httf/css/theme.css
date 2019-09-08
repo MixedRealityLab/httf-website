@@ -11440,16 +11440,6 @@ body.dev header, body.dev .maintenance {
   background: linear-gradient(to bottom right, #F39D24, #C20C81);
 }
 
-header {
-  min-height: 6rem;
-}
-header h2 {
-  width: 100%;
-}
-header img {
-  margin-top: 0.5rem;
-  max-height: 11rem !important;
-}
 header button i, header button svg {
   margin-left: 1rem;
   margin-bottom: -0.25rem;
@@ -11845,9 +11835,11 @@ footer hr {
 }
 
 @media (min-width: 768px) {
-  header {
-    height: 12rem;
-    text-align: left;
+  header .logo {
+    height: 7.5rem;
+  }
+  header .hashtag {
+    height: 1.5rem;
   }
   header h2, header nav {
     width: 100%;
@@ -11886,9 +11878,8 @@ footer hr {
   }
 }
 @media (min-width: 768px) {
-  header img {
-    margin: 0.5rem 0;
-    max-height: 8rem !important;
+  header h2 {
+    width: auto !important;
   }
 }
 @media (min-width: 768px) {
@@ -11930,7 +11921,7 @@ footer hr {
   }
   header nav .nav-search {
     float: right;
-    margin-top: -7.8rem;
+    margin-top: -8.25rem;
     margin-right: -2rem;
   }
   header nav .nav-search input {
@@ -12060,15 +12051,14 @@ footer hr {
   }
 }
 @media (min-width: 992px) {
-  header {
-    height: 16rem;
+  header .logo {
+    height: 9rem;
   }
-  header img {
-    margin: 2rem 0;
-    max-height: 9rem !important;
+  header .hashtag {
+    height: auto;
   }
   header nav .nav-search {
-    margin-top: -9.45rem;
+    margin-top: -8.4rem;
   }
 
   article .record-image {
@@ -12085,14 +12075,11 @@ footer hr {
   }
 }
 @media (min-width: 1200px) {
-  header {
-    height: 16rem;
-  }
-  header img {
-    max-height: 11rem;
+  header .logo {
+    height: 9rem;
   }
   header nav .nav-search {
-    margin-top: -9.45rem;
+    margin-top: -8.4rem;
   }
 }
 /*!
