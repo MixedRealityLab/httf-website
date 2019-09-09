@@ -46,6 +46,7 @@
             {% endif %}
 
             {{ record.teaser|markdown }}
+            {{ record.detail|markdown }}
 
             {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
             <ul class="list-unstyled session rounded shadow">
