@@ -27,24 +27,7 @@
             <input type="search" value="{{ search|default() }}" placeholder="{{ __('general.phrase.search-ellipsis') }}" name="search" class="rounded shadow">
         </form>
 
-{% setcontent programme_record = 'page/programme' %}
-
         {% for record in records %}
-
-{% if app.request.get('preview') == "true" %}
-    {% set showresult = true %}
-    {% set linktrailer = "?preview=true" %}
-{% elseif record.contenttype.slug == "programme" %}
-    {% set eventtype = record|taxonomy.types|first %}
-    {% if eventtype != "Theme-setting paper"  %}
-        {% if programme_record.redirect is empty %}
-        {% set showresult = true %}
-        {% endif %}
-    {% else %}
-    {% set showresult = true %}
-    {% endif %}
-{% endif %}
-{% if showresult %}
             <article class="card rounded shadow">
                 <div class="card-body">
                     <h5 class="card-title">{{ record.title }}</h5>
@@ -69,7 +52,6 @@
                     {% endif %}
                 </div>
             </article>
-{% endif %}
 
             <br>
 
