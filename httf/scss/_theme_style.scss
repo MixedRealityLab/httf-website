@@ -519,6 +519,16 @@ header {
     font-weight: bold;
     padding: $spacer/2 $spacer;
   }
+
+  .search-result {
+    .card-link + .card-link {
+      margin-left: 0;
+    }
+  }
+
+  .search-session-time {
+    min-width: 15rem;
+  }
 }
 
 aside {
@@ -549,6 +559,45 @@ aside {
 
     a, a:active, a:link, a:visited, a:hover {
       color: $aside-crd-act-fg-a;
+    }
+  }
+}
+
+div.pagination {
+  margin: $spacer*2.5 auto $spacer auto;
+
+  ul.pagination {
+    li a {
+      background: $main-pag-bg;
+      color: $main-pag-fg;
+      display: block;
+      padding: $main-pag-pd;
+      text-decoration: none;
+  }
+
+    li:first-child a {
+      -webkit-border-top-left-radius: $main-pag-bdr-rad;
+      -webkit-border-bottom-left-radius: $main-pag-bdr-rad;
+      -moz-border-radius-topleft: $main-pag-bdr-rad;
+      -moz-border-radius-bottomleft: $main-pag-bdr-rad;
+      border-top-left-radius: $main-pag-bdr-rad;
+      border-bottom-left-radius: $main-pag-bdr-rad;
+      padding-left: 1.3*$main-pag-pd;
+    }
+
+    li:last-child a {
+      -webkit-border-top-right-radius: $main-pag-bdr-rad;
+      -webkit-border-bottom-right-radius: $main-pag-bdr-rad;
+      -moz-border-radius-topright: $main-pag-bdr-rad;
+      -moz-border-radius-bottomright: $main-pag-bdr-rad;
+      border-top-right-radius: $main-pag-bdr-rad;
+      border-bottom-right-radius: $main-pag-bdr-rad;
+      padding-right: 1.3*$main-pag-pd;
+    }
+
+    li.active a, li a:hover, li a:active {
+      background: $main-pag-bg-active;
+      color: $main-pag-fg-active;
     }
   }
 }
@@ -686,45 +735,6 @@ footer {
         }
       }
     }
-
-    div.pagination {
-      margin: $spacer*2.5 auto 0 auto;
-
-      ul.pagination {
-        li a {
-          background: $main-pag-bg;
-          color: $main-pag-fg;
-          display: block;
-          padding: $main-pag-pd;
-          text-decoration: none;
-      }
-
-        li:first-child a {
-          -webkit-border-top-left-radius: $main-pag-bdr-rad;
-          -webkit-border-bottom-left-radius: $main-pag-bdr-rad;
-          -moz-border-radius-topleft: $main-pag-bdr-rad;
-          -moz-border-radius-bottomleft: $main-pag-bdr-rad;
-          border-top-left-radius: $main-pag-bdr-rad;
-          border-bottom-left-radius: $main-pag-bdr-rad;
-          padding-left: 1.3*$main-pag-pd;
-        }
-
-        li:last-child a {
-          -webkit-border-top-right-radius: $main-pag-bdr-rad;
-          -webkit-border-bottom-right-radius: $main-pag-bdr-rad;
-          -moz-border-radius-topright: $main-pag-bdr-rad;
-          -moz-border-radius-bottomright: $main-pag-bdr-rad;
-          border-top-right-radius: $main-pag-bdr-rad;
-          border-bottom-right-radius: $main-pag-bdr-rad;
-          padding-right: 1.3*$main-pag-pd;
-        }
-
-        li.active a, li a:hover, li a:active {
-          background: $main-pag-bg-active;
-          color: $main-pag-fg-active;
-        }
-      }
-    }
   }
 
   aside {
@@ -790,6 +800,7 @@ footer {
       }
     }
   }
+
 }
 
 
@@ -807,6 +818,36 @@ footer {
       .nav-search {
         margin-top: $nav-srch-xl-mg-t;
       }
+    }
+  }
+
+  .search-session-time {
+    max-width: 15rem;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .border#{$infix}-top {      border-top: $border-width solid $border-color !important; }
+    .border#{$infix}-right {    border-right: $border-width solid $border-color !important; }
+    .border#{$infix}-bottom {   border-bottom: $border-width solid $border-color !important; }
+    .border#{$infix}-left {     border-left: $border-width solid $border-color !important; }
+
+    .border#{$infix}-top-0 {    border-top: 0 !important; }
+    .border#{$infix}-right-0 {  border-right: 0 !important; }
+    .border#{$infix}-bottom-0 { border-bottom: 0 !important; }
+    .border#{$infix}-left-0 {   border-left: 0 !important; }
+
+    .border#{$infix}-x {
+      border-left: $border-width solid $border-color !important;
+      border-right: $border-width solid $border-color !important;
+    }
+
+    .border#{$infix}-y {
+      border-top: $border-width solid $border-color !important;
+      border-bottom: $border-width solid $border-color !important;
     }
   }
 }

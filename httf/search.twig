@@ -28,27 +28,106 @@
         </form>
 
         {% for record in records %}
-            <article class="card rounded shadow">
-                <div class="card-body">
-                    <h5 class="card-title">{{ record.title }}</h5>
-                    <p class="card-text">{{ record.teaser|markdown }}</p>
+            {% set eventtype = record|taxonomy.types|first %}
+            {% set session = record.related('sessions')|first %}
+            <article class="card search-result">
+                <div class="card-body d-flex flex-xl-row flex-column rounded shadow">
+                    <div class="pr-xl-4 pb-xl-0 flex-fill">
+                        <h5 class="card-title">{{ record.title }}</h5>
+                        <p class="card-text">{{ record.teaser|markdown }}</p>
+                    </div>
 
-                    {% if record.contenttype.slug == "programme" %}
-                        {% set eventtype = record|taxonomy.types|first %}
-                        {% if eventtype != "Theme-setting paper" %}
-                        {% set session = record.related('sessions')|first %}
-                        {% set starttime = session.starttime ? (record.sessionoffset > 0 ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : session.starttime|date('H:i'))  : 'Not yet scheduled' %}
-                        <p class="card-text"><small class="text-muted">This is a <strong>{{ eventtype|lower }} presentation</strong> in the <strong>{{ session.title }}</strong> session, to be given on <strong>{{ session.starttime|date('l jS F Y') }}</strong> at approximately <strong>{{ starttime|lower }}</strong>.</small></p>
+                    {% if record.contenttype.slug == "sessions" and record.starttime is not empty %}
+                        <div class="border-xl-left border-xl-top-0 border-top pl-xl-4 pt-xl-0 pt-3 search-session-time" class="p-2">
+                            <div>
+                            {% if record.location %}
+                            <div class="media event-details">
+                                <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
+                                <div class="media-body">{% if record.locationlink %}<a href="{{ record.locationlink }}" title="About {{ record.location }}">{{ record.location }}</a>{% else %}{{ record.location }}{% endif %}</div>
+                            </div>
+                            <hr>
+                            {% endif %}
+                            {% if record.chair is not empty %}
+                            <div class="media event-details">
+                                <i class="fas fa-user mr-2 event-details-icon" title="Chair of the {{ sessiontype|lower }}" aria-label="Chair of the {{ sessiontype|lower }}"></i>
+                                <div class="media-body">Chaired by <strong>{{ record.chair|markdown }}</strong></div>
+                            </div>
+                            <hr>
+                            {% endif %}
+                            <div class="media event-details mb-3">
+                                <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ sessiontype|lower }}" aria-label="Date of the {{ sessiontype|lower }}"></i>
+                                <div class="media-body"><strong>{{ record.starttime|date('D. jS F') }}</strong></div>
+                            </div>
+                            <div class="media event-details mb-3">
+                            <i class="fas fa-clock mr-2 event-details-icon" title="Scheduled start time of the {{ sessiontype|lower }}" aria-label="Scheduled start time of the {{ sessiontype|lower }}"></i> 
+                            <div class="media-body">Starts at <strong>{{ record.starttime|date('H:i') }}</strong></div>
+                            </div>
+
+                            {% if record.lengthmins >= 60 %}
+                            <div class="media event-details mb-0">
+                                <i class="fas fa-arrow-to-right mr-2 event-details-icon" title="End time of the {{ sessiontype|lower }}" aria-label="End time of the {{ sessiontype|lower }}"></i>
+                                <div class="media-body">Ends at <strong>{{ record.starttime|date_modify("+" ~ record.lengthmins ~ " mins")|date('H:i') }}</strong></div>
+                            </div>
+                            {% else %}
+                            <div class="media event-details mb-0">
+                                <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ sessiontype|lower }}" aria-label="Length of the {{ sessiontype|lower }}"></i>
+                                <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes long</div>
+                            </div>
+                            {% endif %}
+                            </div>
+                        </div>
+                    {% elseif record.contenttype.slug == "programme" %}
+                        {% set starttime = session.starttime ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : '' %}
+                        {% if (starttime is not empty and eventtype != "Theme-setting paper") or (record.download is not empty) %}
+                        <div class="border-xl-left border-xl-top-0 border-top pl-xl-4 pt-xl-0 pt-3 search-session-time" class="p-2">
+                            {% if starttime is not empty and eventtype != "Theme-setting paper" %}
+                                <div class="media event-details{{ session.location ? ' mb-3' : '' }}">
+                                <i class="fas {% if eventtype == "Keynote" %}fa-keynote{% elseif record.poster %}fa-users-class{% elseif eventtype ends with "paper" %}fa-presentation{% else %}fa-microphone{% endif %} mr-2 event-details-icon" title="This is a {{ eventtype|lower }}{{ record.poster ? ' given as a poster' : ' given as a presentation' }}" aria-label="This is a {{ eventtype|lower }}{{ record.poster ? ' given as a poster' : ' given as a presentation' }}"></i>
+                                <div class="media-body">{% if eventtype == "Keynote" %}<strong>Keynote</strong>{% elseif eventtype ends with "paper" %}{{ eventtype }}, given as a <strong>{{ record.poster ? 'poster' : 'presentation' }}</strong>{% else %}<strong>Panel</strong>{% endif %}</div>
+                                </div>
+                                {% if session.location %}
+                                    <div class="media event-details">
+                                    <i class="fas fa-location-circle mr-2 event-details-icon" title="Location of the {{ sessiontype|lower }}" aria-label="Location of the {{ sessiontype|lower }}"></i>
+                                    <div class="media-body">{% if session.locationlink %}<a href="{{ session.locationlink }}" title="About {{ session.location }}">{{ session.location }}</a>{% else %}{{ session.location }}{% endif %}</div>
+                                    </div>
+                                    <hr>
+                                {% endif %}
+                                <div class="media event-details mb-3">
+                                <i class="fas fa-calendar-day mr-2 event-details-icon" title="Date of the {{ eventtype|lower }}"aria-label="Date of the {{ eventtype|lower }}"></i>
+                                <div class="media-body"><strong>{{ session.starttime|date('D. jS F') }}</strong></div>
+                                </div>
+                                <div class="media event-details {{ record.lengthmins > 0 ? 'mb-3' }}">
+                                <i class="fas fa-clock mr-2 event-details-icon" title="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}" aria-label="{% if record.sessionoffset > 0 %}Approximate{% else %}Scheduled{% endif %} start time of the {{ eventtype|lower }}"></i>
+                                <div class="media-body">{{ record.poster ? 'Presented from' : 'Starts at' }} <strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
+                                </div>
+                                    {% if record.lengthmins > 0 %}
+                                        <div class="media event-details mb-0">
+                                        <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ eventtype|lower }}" aria-label="Length of the {{ eventtype|lower }}"></i>
+                                        <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes long</div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if eventtype != "Theme-setting paper" and record.download is not empty %}
+                                    <hr>
+                                {% endif %}
+                                {% if record.download is not empty %}
+                                    <div class="media event-details mb-0">
+                                    <i class="fas fa-download mr-2 event-details-icon" title="Access a copy" aria-label="Access a copy"></i>
+                                    <div class="media-body"><a href="{{ record.download }}" title="Access a copy"><strong>Download</strong></a>{% if record.freedownload %} (free){% else %} (not free){% endif %}</div>
+                                    </div>
+                                {% endif %}
+                            </div>
                         {% endif %}
                     {% endif %}
                 </div>
                 <div class="card-footer text-muted">
-                    {% if record.contenttype.slug == "programme" and eventtype != "Theme-setting paper" %}
-                    <a href="{{ session.link }}" title="View the '{{ session.title }}' session" class="card-link">View all talks in this session</a>
-                    <a href="/programme" title="View the online symposium programme" class="card-link">View complete programme</a>
-                    <a href="{{ record.link }}" title="Permalink for '{{ record.title }}'" class="card-link">Permalink</a>
+                    {% if record.contenttype.slug == "programme"  %}
+                    Read more: <a href="{{ record.link }}" title="Read more about the {{ eventtype|lower }}" class="card-link">{{ eventtype|lower ends with 'paper' ? 'this paper' : eventtype|lower }}</a> &bull; <a href="{{ session.link }}" title="View the details of the '{{ session.title }}' session" class="card-link">session events</a> &bull; <a href="/programme" title="View the online symposium programme" class="card-link">complete programme</a>
+                    {% elseif record.contenttype.slug == "sessions" %}
+                    {% set sessiontype = record|taxonomy.session_types|first|lower %}
+                    Read more: <a href="{{ record.link }}" title="Read more about the {{ sessiontype }}" class="card-link">this {{ sessiontype|lower }}</a> &bull; <a href="/programme" title="View the online symposium programme" class="card-link">complete programme</a>
                     {% else %}
-                    <a href="{{ record.link }}" title="Read '{{ record.title }}'" class="card-link">Read more…</a>
+                    <a href="{{ record.link }}" title="Read '{{ record.title }}'" class="card-link">Read more</a>
                     {% endif %}
                 </div>
             </article>
