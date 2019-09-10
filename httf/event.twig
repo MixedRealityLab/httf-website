@@ -5,27 +5,12 @@
     {% set session = record.related('sessions')|first %}
     {% set eventtype = record|taxonomy.types|first %}
 
-{% if app.request.get('preview') == "true" %}
-    {% set showcontent = true %}
-    {% set linktrailer = "?preview=true" %}
-{% elseif eventtype != "Theme-setting paper"  %}
-    {% setcontent programme_record = 'page/programme' %}
-    {% if programme_record.redirect is not empty %}
-    {% include 'redirect.twig' with {'record': programme_record} %}
-    {% else %}
-    {% set showcontent = true %}
-    {% endif %}
-{% else %}
-    {% set showcontent = true %}
-{% endif %}
-{% if showcontent %}
-
     <div class="breadcrumb-container col-12">
         <nav aria-label="breadcrumb" class="shadow rounded">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">{{ config.get('general/sitename') -}}</a></li>
-                <li class="breadcrumb-item"><a href="/programme{{ linktrailer }}">Programme</a></li>
-                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}{{ linktrailer }}">{{ session.title }}</a></li>
+                <li class="breadcrumb-item"><a href="/programme">Programme</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('contentlink', {contenttypeslug: 'sessions', slug: session.slug}) }}">{{ session.title }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ eventtype }}</li>
             </ol>
         </nav>
@@ -98,5 +83,4 @@
         {% endif %}
     </aside>
 
-{% endif    %}
 {% endblock main %}

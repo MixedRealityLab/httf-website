@@ -5,21 +5,6 @@
 
     {% set sessiontype = record|taxonomy.session_types|first %}
 
-{% if app.request.get('preview') == "true" %}
-{% set showcontent = true %}
-{% set linktrailer = "?preview=true" %}
-{% elseif sessiontype == 'Session' %}
-{% setcontent programme_record = 'page/programme' %}
-{% if programme_record.redirect is not empty %}
-{% include 'redirect.twig' with {'record': programme_record} %}
-{% else %}
-{% set showcontent = true %}
-{% endif %}
-{% else %}
-{% set showcontent = true %}
-{% endif %}
-{% if showcontent %}
-
     <div class="breadcrumb-container col-12">
         <nav aria-label="breadcrumb" class="shadow rounded">
             <ol class="breadcrumb">
@@ -118,6 +103,4 @@
         {% endif %}
     </aside>
 
-
-{% endif %}
 {% endblock main %}
