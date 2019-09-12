@@ -108,6 +108,10 @@
                     {% elseif blocktype == 'programmeblock' %}
                         {% set fieldtype = 'programme' %}
                         {% set detail = blockdata.detail %}
+                    {% elseif blocktype == 'searchblock' %}
+                        {% set fieldtype = 'searchbox' %}
+                        {% set label = blockdata.label %}
+                        {% set class = blockdata.class %}
                     {% elseif blocktype == 'imageblock' %}
                         {% set fieldtype = 'image' %}
                         {% set value = blockdata.image %}
@@ -146,6 +150,10 @@
                     {% elseif blocktype == 'programmeblock' %}
                         {% set fieldtype = 'programme' %}
                         {% set detail = blockdata.detail.value %}
+                    {% elseif blocktype == 'searchblock' %}
+                        {% set fieldtype = 'searchbox' %}
+                        {% set label = blockdata.label.value %}
+                        {% set class = blockdata.class.value %}
                     {% elseif blocktype == 'imageblock' %}
                         {% set fieldtype = 'image' %}
                         {% set value = blockdata.image.value %}

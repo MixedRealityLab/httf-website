@@ -121,6 +121,11 @@
 {# Block for other field types, like Geo, Select, Checkbox and others. #}
 {% block extended_fields %}
 
+    {# Search box field #}
+    {% if fieldtype == "searchbox" %}
+        {% include 'partials/_sub_searchbox.twig' with {'placeholder': label} %}
+    {% endif %}
+
     {# Programme themes field #}
     {% if fieldtype == "programme" and detail == "themes" %}
         {% include 'partials/_sub_programme_themes.twig' %}
