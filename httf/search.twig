@@ -34,7 +34,17 @@
                 <div class="card-body d-flex flex-xl-row flex-column rounded shadow">
                     <div class="pr-xl-4 pb-xl-0 flex-fill">
                         <h5 class="card-title">{{ record.title }}</h5>
+
+                        {% if record.contenttype.slug == "programme" %}
+                        {% if record.authorsorganisations %}
+                            <div class="card-text text-muted small">{{ record.authorsorganisations|markdown }}</div>
+                        {% else %}
+                            <div class="card-text text-muted small">{{ record.authors|markdown }}</div>
+                        {% endif %}
+                        {% endif %}
+
                         <p class="card-text">{{ record.teaser|markdown }}</p>
+
                     </div>
 
                     {% if record.contenttype.slug == "sessions" and record.starttime is not empty %}
