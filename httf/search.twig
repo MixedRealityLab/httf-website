@@ -23,9 +23,9 @@
     </div>
 
     <div class="col-xl-9 col-lg-8 col-md-7 col-12">
-        <form method="get" action="{{ path('search') }}" id="searchform-block" enctype="text/plain">
-            <input type="search" value="{{ search|default() }}" placeholder="{{ __('general.phrase.search-ellipsis') }}" name="search" class="rounded shadow">
-        </form>
+        <div  class="d-md-none d-block">
+        {% include 'partials/_sub_searchbox.twig' with {'placeholder': __('general.phrase.search-ellipsis')} %}
+        </div>
 
         {% for record in records %}
             {% set eventtype = record|taxonomy.types|first %}

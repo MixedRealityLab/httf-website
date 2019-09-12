@@ -11628,7 +11628,6 @@ header nav .nav-search input:focus {
   font-size: 1.8rem;
 }
 .main #searchform-block {
-  display: none;
   margin-bottom: 2rem;
 }
 .main #searchform-block input {
