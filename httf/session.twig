@@ -42,7 +42,7 @@
                 <li class="media p-3 mb-1 mt-1 d-flex flex-sm-row flex-column">
                     <div class="event-type small text-uppercase mr-sm-3 mb-sm-0 mb-2">
                         {% set type = event|taxonomy.types|first %}
-                        {% if type ends with "paper" %}{{ event.poster ? 'Poster' : 'Paper' }}{% else %}{{ type }}{% endif %} {% if not event.poster %} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>{% endif %}
+                        {% if type ends with "paper" %}{{ event.poster ? 'Poster' : 'Talk' }}{% else %}{{ type }}{% endif %} {% if not event.poster %} &nbsp;&nbsp;<span class="badge badge-light event-time">{{ starttime }}</span>{% endif %}
                     </div>
                     <div class="media-body">
                         <h5 class="my-0">
