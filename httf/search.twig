@@ -88,7 +88,7 @@
                         </div>
                     {% elseif record.contenttype.slug == "programme" %}
                         {% set starttime = session.starttime ? session.starttime|date_modify("+" ~ (record.sessionoffset) ~ " mins")|date('H:i') : '' %}
-                        {% if (starttime is not empty and eventtype != "Theme-setting paper") or (record.download is not empty) or (record.doi is not empty) %}
+                        {% if (starttime is not empty and eventtype != "Theme-setting paper") or (record.download is not empty) or (record.doi is not empty and record.doiactive) %}
                         <div class="border-xl-left border-xl-top-0 border-top pl-xl-4 pt-xl-0 pt-3 search-session-time" class="p-2">
                             {% if starttime is not empty and eventtype != "Theme-setting paper" %}
                                 <div class="media event-details{{ session.location or record.locationoverride ? ' mb-3' : '' }}">
@@ -113,22 +113,22 @@
                                 <div class="media-body">{{ record.poster ? 'Presented from' : 'Starts at' }} <strong>{{ starttime|date('H:i') }}</strong>{% if record.sessionoffset > 0 %} approx.{% endif %}</div>
                                 </div>
                                 {% if record.lengthmins > 0 %}
-                                <div class="media event-details {{ record.download is not empty and record.doi is not empty ? 'mb-0' }}">
+                                <div class="media event-details {{ record.download is not empty and (record.doi is not empty and record.doiactive) ? 'mb-0' }}">
                                     <i class="fas fa-hourglass-end mr-2 event-details-icon" title="Length of the {{ eventtype|lower }}" aria-label="Length of the {{ eventtype|lower }}"></i>
                                     <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes long</div>
                                 </div>
                                 {% endif %}
                                 {% endif %}
-                                {% if eventtype != "Theme-setting paper" and (record.download is not empty or record.doi is not empty) %}
+                                {% if eventtype != "Theme-setting paper" and (record.download is not empty or (record.doi is not empty and record.doiactive)) %}
                                 <hr>
                                 {% endif %}
                                 {% if record.download is not empty %}
-                                <div class="media event-details {{ record.doi is empty ? 'mb-0' : 'mb-3' }}">
+                                <div class="media event-details {{ record.doi is empty and record.doiactive ? 'mb-0' : 'mb-3' }}">
                                     <i class="fas fa-download mr-2 event-details-icon" title="Access a copy" aria-label="Access a copy"></i>
                                     <div class="media-body"><a href="{{ record.download }}" title="Access a copy"><strong>Download</strong></a>{% if record.freedownload %} (free){% endif %}</div>
                                 </div>
                                 {% endif %}
-                                {% if record.doi is not empty %}
+                                {% if record.doi is not empty and record.doiactive %}
                                 <div class="media event-details mb-0">
                                     <i class="fas fa-link mr-2 event-details-icon" title="{{ record.doititle ? record.doititle : 'DOI for this article' }}" aria-label="{{ record.doititle ? record.doititle : 'DOI for this article' }}"></i>
                                     <div class="media-body"><a href="https://doi.org/{{ record.doi }}" title="{{ record.doititle ? record.doititle : 'DOI for this article' }}"><strong>{{ record.doilabel ? record.doilabel : 'DOI' }}</strong></a></div>
