@@ -42,8 +42,16 @@ header {
 
   nav {
     > ul > li {
-      > a {
+      a {
         color: $white !important;
+      }
+      @include media-breakpoint-up(md) {
+        a {
+          color: $black !important;
+        }
+        > a {
+          color: $white !important;
+        }
       }
 
       > a:hover, > a[aria-expanded=true], > a:focus {
@@ -159,8 +167,8 @@ header {
   #programme {
 
     .card-header {
-      background: $aside-crd-bg-dk;
-
+      border: $main-crd-bdr !important;
+      margin-bottom: 0 !important;
     }
 
     .card-body {
@@ -195,6 +203,7 @@ header {
 
   .session {
     background: $session-bg-dk;
+    border: $main-crd-bdr !important;
 
     li {
       border-bottom: 2px solid $main-bg-dk !important;

@@ -12341,12 +12341,24 @@ footer hr {
     -moz-box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
   }
+  header nav > ul > li a {
+    color: #fff !important;
+  }
+}
+@media (prefers-color-scheme: dark) and (min-width: 768px) {
+  header nav > ul > li a {
+    color: #000 !important;
+  }
   header nav > ul > li > a {
     color: #fff !important;
   }
+}
+@media (prefers-color-scheme: dark) {
   header nav > ul > li > a:hover, header nav > ul > li > a[aria-expanded=true], header nav > ul > li > a:focus {
     background: rgba(0, 0, 0, 0.5);
   }
+}
+@media (prefers-color-scheme: dark) {
   header nav .nav-search input {
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
@@ -12358,7 +12370,8 @@ footer hr {
   header nav .nav-search input::placeholder {
     color: #fff;
   }
-
+}
+@media (prefers-color-scheme: dark) {
   .main {
     background: #20252C;
     color: #fff;
@@ -12427,7 +12440,8 @@ footer hr {
     color: #e9ecef;
   }
   .main #programme .card-header {
-    background: #272C35;
+    border: 2px solid #F39D24 !important;
+    margin-bottom: 0 !important;
   }
   .main #programme .card-body {
     background: #191B22;
@@ -12449,6 +12463,7 @@ footer hr {
   }
   .main .session {
     background: #191B22;
+    border: 2px solid #F39D24 !important;
   }
   .main .session li {
     border-bottom: 2px solid #20252C !important;
@@ -12463,7 +12478,8 @@ footer hr {
   .main .sponsors.dark {
     display: block;
   }
-
+}
+@media (prefers-color-scheme: dark) {
   aside .card {
     background: #272C35;
     color: #e9ecef;

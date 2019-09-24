@@ -34,10 +34,13 @@
             {{ record.detail|markdown }}
 
             {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
-            <ul class="list-unstyled session rounded shadow">
+            
             {% set has_events = false %}
             {% for event in events if record.id in event.relation.sessions %}
-              {% set has_events = true %}
+                {% if has_events == false %}
+                <ul class="list-unstyled session rounded shadow">
+                {% set has_events = true %}
+                {% endif %}
                 {% set starttime = record.starttime ? (event.sessionoffset > 0 ? record.starttime|date_modify("+" ~ (event.sessionoffset) ~ " mins")|date('H:i') : record.starttime|date('H:i'))  : 'Not yet scheduled' %}
                 <li class="media p-3 mb-1 mt-1 d-flex flex-sm-row flex-column">
                     <div class="event-type small text-uppercase mr-sm-3 mb-sm-0 mb-2">
@@ -54,7 +57,9 @@
                     </div>
                 </li>
             {% endfor %}
+            {% if has_events  %}
             </ul>
+            {% endif %}
         </article>
     </div>
     <aside class="col-xl-3 col-lg-4 col-md-5 col-12">
