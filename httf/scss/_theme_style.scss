@@ -128,7 +128,7 @@ header {
           text-align: center;
         }
 
-        input:active {
+        input:active, input:focused {
           background: $nav-srch-bg-active;
         }
 

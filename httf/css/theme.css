@@ -11494,7 +11494,7 @@ header nav .nav-search input {
   border: 0;
   text-align: center;
 }
-header nav .nav-search input:active {
+header nav .nav-search input:active, header nav .nav-search input:focused {
   background: rgba(255, 255, 255, 0.6);
 }
 header nav .nav-search input:focus {
@@ -12317,14 +12317,46 @@ footer hr {
     color: #fff;
   }
 
+  hr {
+    border-color: #fff;
+  }
+
   a, a:active, a:link, a:visited, a:hover {
     color: #F5A83D;
+  }
+
+  .text-muted {
+    color: #ccc !important;
+  }
+
+  .glass {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .glass ::before {
+    background: rgba(0, 0, 0, 0.3);
   }
 
   header {
     -webkit-box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
     box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+  }
+  header nav > ul > li > a {
+    color: #fff !important;
+  }
+  header nav > ul > li > a:hover, header nav > ul > li > a[aria-expanded=true], header nav > ul > li > a:focus {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  header nav .nav-search input {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+  }
+  header nav .nav-search input:active, header nav .nav-search input:focus {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  header nav .nav-search input::placeholder {
+    color: #fff;
   }
 
   .main {
@@ -12335,6 +12367,12 @@ footer hr {
   .main .breadcrumb {
     background: #272C35;
     color: #e9ecef;
+  }
+  .main article {
+    background: #20252C;
+  }
+  .main article .card {
+    background: #20252C;
   }
   .main article .record-card {
     background: #191B22;
@@ -12366,22 +12404,33 @@ footer hr {
   .main article .record-image.transparent .caption a, .main article .record-image.transparent .caption a:active, .main article .record-image.transparent .caption a:link, .main article .record-image.transparent .caption a:visited, .main article .record-image.transparent .caption a:hover, .main article .record-inline-image.transparent .caption a, .main article .record-inline-image.transparent .caption a:active, .main article .record-inline-image.transparent .caption a:link, .main article .record-inline-image.transparent .caption a:visited, .main article .record-inline-image.transparent .caption a:hover {
     color: #fff;
   }
+  .main article #searchform-block input {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+  }
+  .main article #searchform-block input:active, .main article #searchform-block input:focus {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  .main article .btn-prg {
+    background-color: #191B22;
+  }
   .main .card {
     border-color: #272C35;
+    border-width: 3px;
   }
   .main .card-body {
-    background: #272C35;
     color: #e9ecef;
   }
   .main .card-footer {
-    background: #272C35;
+    background: #191B22;
     color: #e9ecef;
   }
   .main #programme .card-header {
-    background: #191B22;
+    background: #272C35;
   }
   .main #programme .card-body {
-    background: #20252C;
+    background: #191B22;
   }
   .main #programme .programme-past .badge-time {
     background-color: #191B22;
@@ -12401,8 +12450,12 @@ footer hr {
   .main .session {
     background: #191B22;
   }
+  .main .session li {
+    border-bottom: 2px solid #20252C !important;
+  }
   .main .jumbotron {
     background: #191B22;
+    border: 2px solid #F39D24;
   }
   .main .sponsors.light {
     display: none;

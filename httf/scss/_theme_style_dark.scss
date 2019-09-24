@@ -11,14 +11,62 @@ html, body {
   color: $page-fg-dk;
 }
 
+hr {
+  border-color: $white;
+}
+
+
 a, a:active, a:link, a:visited, a:hover {
   color: $link-color-dk;
+}
+
+.text-muted {
+  color: #ccc !important;
+}
+
+
+
+
+.glass {
+  background: $gls-bg-dk;
+
+  ::before {
+    background: $gls-bg-dk;
+  }
 }
 
 header {
   -webkit-box-shadow: $hdr-shd-dk;
   -moz-box-shadow: $hdr-shd-dk;
   box-shadow: $hdr-shd-dk;
+
+  nav {
+    > ul > li {
+      > a {
+        color: $white !important;
+      }
+
+      > a:hover, > a[aria-expanded=true], > a:focus {
+        background: $nav-a-bg-hover-dk;
+      }
+    }
+
+    .nav-search {
+      input {
+        background: $nav-srch-bg-dk;
+        color: $white;
+      }
+
+      input:active, input:focus {
+        background: $nav-srch-bg-active-dk;
+        color: $white;
+      }
+
+      input::placeholder {
+        color: $white;
+      }
+    }
+  }
 }
 
 .main {
@@ -32,6 +80,12 @@ header {
   }
 
   article {
+    background: $main-bg-dk;
+
+    .card {
+      background: $main-bg-dk;
+    }
+
     .record-card {
       background: $main-crd-bg-dk;
       color: $main-crd-fg-dk;
@@ -71,29 +125,46 @@ header {
         }
       }
     }
+    #searchform-block {
+      input {
+        background: $nav-srch-bg-dk;
+        color: $white;
+      }
+
+      input:active, input:focus {
+        background: $nav-srch-bg-active-dk;
+        color: $white;
+      }
+    }
+
+    .btn-prg {
+      background-color: $prg-day-bg-dk;
+    }
   }
 
   .card {
     border-color: $aside-crd-bg-dk;
+    border-width: 3px;
   }
 
   .card-body {
-    background: $aside-crd-bg-dkl;
     color: $aside-crd-fg-dk;
   }
 
   .card-footer {
-    background: $aside-crd-bg-dk;
+    background: $aside-crd-act-bg-dk;
     color: $aside-crd-fg-dk;
   }
 
   #programme {
+
     .card-header {
-      background: $aside-crd-act-bg-dk;
+      background: $aside-crd-bg-dk;
+
     }
 
     .card-body {
-      background: $main-bg-dk;
+      background: $aside-crd-act-bg-dk;
     }
 
     .programme-past {
@@ -124,11 +195,17 @@ header {
 
   .session {
     background: $session-bg-dk;
+
+    li {
+      border-bottom: 2px solid $main-bg-dk !important;
+    }
   }
 
   .jumbotron {
     background: $jumobtron-bg-dk;
+    border: $main-crd-bdr;
   }
+
 
   .sponsors.light {
     display: none;
