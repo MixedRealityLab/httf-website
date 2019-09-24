@@ -92,7 +92,17 @@
 					{% endif %}
 				</div>
 			</div>
-				{% endif %}
+			{% endif %}
+			{% if record|taxonomy.tags|length > 0 %}
+			<div class="card shadow rounded" class="p-2">
+				<div class="card-body">
+					<h5 class="card-title">Author keywords</h5>
+					<p>{% for tag in record|taxonomy.tags|default -%}
+						{{- tag -}}{% if not loop.last %}, {% endif %}
+					{%- endfor -%}</p>
+				</div>
+			</div>
+			{% endif %}
 		</aside>
 
 {% endblock main %}
