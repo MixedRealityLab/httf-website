@@ -79,7 +79,7 @@
 					<hr>
 					{% endif %}
 					{% if record.download is not empty %}
-					<div class="media event-details {{ record.doi is empty and not record.doiactive ? 'mb-0' : 'mb-3' }}">
+					<div class="media event-details {{ record.doi is empty or not record.doiactive ? 'mb-0' : 'mb-3' }}">
 						<i class="fas fa-download mr-2 event-details-icon" title="Access a copy" aria-label="Access a copy"></i>
 						<div class="media-body"><a href="{{ record.download }}" title="Access a copy"><strong>Download</strong></a>{% if record.freedownload %} (free){% endif %}</div>
 					</div>
