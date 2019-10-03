@@ -319,6 +319,13 @@ header {
     color: $prg-day-fg;
   }
 
+  .btn-prgexpand {
+    font-weight: bold;
+    margin-bottom: -$spacer/3;
+    margin-top: -2*$spacer/3;
+    margin-left: -$spacer/3;
+  }
+
   #programme {
     margin-bottom: 1.5*$spacer;
 

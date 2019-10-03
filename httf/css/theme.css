@@ -11640,6 +11640,12 @@ header nav .nav-search input:focus {
   background-color: #272C35;
   color: #fff;
 }
+.main .btn-prgexpand {
+  font-weight: bold;
+  margin-bottom: -0.3333333333rem;
+  margin-top: -0.6666666667rem;
+  margin-left: -0.3333333333rem;
+}
 .main #programme {
   margin-bottom: 1.5rem;
 }
