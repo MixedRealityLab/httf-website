@@ -1,5 +1,5 @@
 {% setcontent sessions = 'sessions.' orderby 'starttime' %}
-{% setcontent events = 'programme' where { types: '!theme-setting' } %}
+{% setcontent events = 'programme' where { types: '!theme-setting' } orderby 'sessionoffset' %}
 {% if app.request.get('preview') == "true" %}
 {% set linktrailer = "?preview=true" %}
 {% endif %}

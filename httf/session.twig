@@ -33,7 +33,7 @@
             {{ record.teaser|markdown }}
             {{ record.detail|markdown }}
 
-            {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } %}
+            {% setcontent events = 'programme' where { 'relation.sessions': record.id, types: '!theme-setting' } orderby 'sessionoffset' %}
             
             {% set has_events = false %}
             {% for event in events if record.id in event.relation.sessions %}
