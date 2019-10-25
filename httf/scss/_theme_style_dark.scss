@@ -135,12 +135,12 @@ header {
     }
     #searchform-block {
       input {
-        background: $nav-srch-bg-dk;
+        background: $frm-inpt-bg;
         color: $white;
       }
 
       input:active, input:focus {
-        background: $nav-srch-bg-active-dk;
+        background: $frm-inpt-bg;
         color: $white;
       }
     }
@@ -166,14 +166,18 @@ header {
 
   #programme {
 
+    .card {
+      border: 0;
+    }
+
     .card-header {
-      border: $main-crd-bdr !important;
       margin-bottom: 0 !important;
     }
 
     .card-body {
-      background: $aside-crd-act-bg-dk;
+      border: 0;
     }
+
 
     .programme-past {
       .badge-time {

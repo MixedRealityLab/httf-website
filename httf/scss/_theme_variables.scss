@@ -20,11 +20,11 @@ $theme-colors: (
   main-fg:      $black,
   main-aux:     $gray-800,
   main-aux-lt:  #e9ecef,
-  main-aux-dk:  #272C35,
-  main-aux-dkr: #191B22,
+  main-aux-dk:  #272C35, 
+  main-aux-dkr: #272C35,
   link:         #B35600,
-  link-dk:      #F5A83D,
-  page-bg-dk:   #272C35,
+  link-dk:      #FF9E2B,
+  page-bg-dk:   #191b22,
   page-fg-dk:   $white,
   hdr-shd-dk:   rgba(0,0,0,.3),
   main-bg-dk:   #20252C,
@@ -170,8 +170,8 @@ $prg-now-bg-dk:         #22D430;
 $prg-now-fg-dk:         $white;
 $prg-past-bg-dk:        map-get($theme-colors, main-aux-dkr);
 $prg-past-fg-dk:        $gray-600;
-$prg-future-bg-dk:      $white;
-$prg-future-fg-dk:      $black;
+$prg-future-bg-dk:      $gls-bg-dk;
+$prg-future-fg-dk:      $white;
 
 $frm-lbl-wdth:          100%;
 $frm-lbl-wdth-md:       33%;
@@ -179,6 +179,7 @@ $frm-inpt-bdr:          1px inset map-get($theme-colors, main-aux-dk);
 $frm-inpt-shd:          0 0.5rem 1rem rgba(0, 0, 0, 0.125) !important;
 $frm-inpt-wdth:         100%;
 $frm-inpt-wdth-md:      66%;
+$frm-inpt-bg:           map-get($theme-colors, main-aux-dk);
 $frm-txt-hght:          8rem;
 
 $ftr-mg-t:              $spacer*1.5;
