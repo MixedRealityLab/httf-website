@@ -54,7 +54,7 @@ header {
         }
       }
 
-      > a:hover, > a[aria-expanded=true], > a:focus {
+      & a:hover, & a[aria-expanded=true], & a:focus {
         background: $nav-a-bg-hover-dk;
       }
     }
