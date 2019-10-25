@@ -1,11 +1,9 @@
 {% setcontent sessions = 'sessions.' orderby 'starttime' %}
 {% setcontent events = 'programme' where { types: '!theme-setting' } orderby 'sessionoffset' %}
-{% if app.request.get('preview') == "true" %}
-{% set linktrailer = "?preview=true" %}
-{% endif %}
 
 {% if app.request.get('showLatex') == "true" %}
 <pre><code>
+\ifshowProgramme
 {%- set currentday = "Unscheduled" -%}
 {%- set today = now|date('Y-m-d') -%}
 {%- for session in sessions -%}
@@ -41,12 +39,30 @@
     [
 {{- event.authors|replace({'&': '\\&', '{': '\\{', '}': '\\}'})|striptags -}}%
 ]%
-    {
-{{- event.teaser|replace({'&': '\\&', '{': '\\{', '}': '\\}'})|striptags -}}%
+    { {{ event.procpaperid > 0 ? event.procpaperid }}
 }
 {% endfor %}
 {% endfor %}
 \end{sessions}
+\fi
+
+\ifshowToC
+\begin{toc}
+{% for event in events|filter(e => e.procpaperid > 0)|order('procpaperid') %}
+    \tocpaper[
+{{- event.procpaperid -}}
+    ]%
+    {
+{{- event.title|replace({'&': '\\&', '{': '\\{', '}': '\\}'}) -}}%
+}%
+    {
+{{- event.authors|replace({'&': '\\&', '{': '\\{', '}': '\\}'})|striptags -}}%
+}%
+{% endfor %}
+
+\end{toc}
+\fi
+
 </code></pre>
 {% else %}
 
