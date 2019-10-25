@@ -11440,6 +11440,13 @@ body.dev header, body.dev .maintenance {
   background: linear-gradient(to bottom right, #F39D24, #C20C81);
 }
 
+header .header-inner-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 header button i, header button svg {
   margin-left: 1rem;
   margin-bottom: -0.25rem;
@@ -11878,13 +11885,37 @@ footer hr {
   width: 100%;
 }
 
+@media (min-width: 768px) and (min-width: 576px) {
+  header .header-inner-container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) {
+  header .header-inner-container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 768px) and (min-width: 992px) {
+  header .header-inner-container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 768px) and (min-width: 1200px) {
+  header .header-inner-container {
+    max-width: 1140px;
+  }
+}
 @media (min-width: 768px) {
   header .logo {
     height: 7.5rem;
   }
+}
+@media (min-width: 768px) {
   header .hashtag {
     height: 1.5rem;
   }
+}
+@media (min-width: 768px) {
   header h2, header nav {
     width: 100%;
     padding-right: 15px;
