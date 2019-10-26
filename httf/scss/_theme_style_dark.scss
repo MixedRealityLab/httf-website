@@ -45,6 +45,9 @@ header {
       a {
         color: $white !important;
       }
+      & a:hover, & a[aria-expanded=true], & a:focus {
+        background: $nav-a-bg-hover-dk;
+      }
       @include media-breakpoint-up(md) {
         a {
           color: $black !important;
@@ -52,10 +55,9 @@ header {
         > a {
           color: $white !important;
         }
-      }
-
-      & a:hover, & a[aria-expanded=true], & a:focus {
-        background: $nav-a-bg-hover-dk;
+        & ul a:hover, & ul a[aria-expanded=true], & ul a:focus {
+          background: $nav-a-bg-hover;
+        }
       }
     }
 

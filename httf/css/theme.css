@@ -12381,6 +12381,9 @@ footer hr {
   header nav > ul > li a {
     color: #fff !important;
   }
+  header nav > ul > li a:hover, header nav > ul > li a[aria-expanded=true], header nav > ul > li a:focus {
+    background: rgba(0, 0, 0, 0.5);
+  }
 }
 @media (prefers-color-scheme: dark) and (min-width: 768px) {
   header nav > ul > li a {
@@ -12389,10 +12392,8 @@ footer hr {
   header nav > ul > li > a {
     color: #fff !important;
   }
-}
-@media (prefers-color-scheme: dark) {
-  header nav > ul > li a:hover, header nav > ul > li a[aria-expanded=true], header nav > ul > li a:focus {
-    background: rgba(0, 0, 0, 0.5);
+  header nav > ul > li ul a:hover, header nav > ul > li ul a[aria-expanded=true], header nav > ul > li ul a:focus {
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 @media (prefers-color-scheme: dark) {
