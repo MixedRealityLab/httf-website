@@ -11994,6 +11994,14 @@ footer hr {
   header nav ul li ul.dropdown-menu li {
     text-align: left;
   }
+  header nav ul li ul.dropdown-menu li:last-child a {
+    -webkit-border-bottom-right-radius: 0.5rem;
+    -webkit-border-bottom-left-radius: 0.5rem;
+    -moz-border-radius-bottomright: 0.5rem;
+    -moz-border-radius-bottomleft: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
   header nav .nav-search {
     float: right;
     margin-top: -8.25rem;

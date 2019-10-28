@@ -702,6 +702,15 @@ footer {
 
           li {
             text-align: left;
+
+            &:last-child a {
+            -webkit-border-bottom-right-radius: $main-bdr-rad;
+            -webkit-border-bottom-left-radius: $main-bdr-rad;
+            -moz-border-radius-bottomright: $main-bdr-rad;
+            -moz-border-radius-bottomleft: $main-bdr-rad;
+            border-bottom-right-radius: $main-bdr-rad;
+            border-bottom-left-radius: $main-bdr-rad;
+            }
           }
         }
       }
