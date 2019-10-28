@@ -12509,6 +12509,9 @@ footer hr {
     background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
   }
+  .main #programme .btn-prgexpand {
+    color: #fff;
+  }
   .main .session {
     background: #272C35;
     border: 2px solid #F39D24 !important;
