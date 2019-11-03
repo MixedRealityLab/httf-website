@@ -84,6 +84,18 @@
                                 <div class="media-body"><strong>{{ record.lengthmins }}</strong> minutes long</div>
                             </div>
                             {% endif %}
+							{% if record.download is not empty %}
+							<div class="media event-details {{ record.doi is empty or not record.doiactive ? 'mb-0' : 'mb-3' }}">
+								<i class="fas fa-download mr-2 event-details-icon" title="Access a copy" aria-label="Download a copy"></i>
+								<div class="media-body"><a href="{{ record.download }}" title="Download a copy">Download</a>{% if record.freedownload %} (free){% endif %}</div>
+							</div>
+							{% endif %}
+							{% if record.doi is not empty and record.doiactive %}
+							<div class="media event-details mb-0">
+								<i class="fas fa-link mr-2 event-details-icon" title="{{ record.doititle ? record.doititle : 'DOI for this article' }}" aria-label="{{ record.doititle ? record.doititle : 'DOI for this article' }}"></i>
+								<div class="media-body"><a href="https://doi.org/{{ record.doi }}" title="{{ record.doititle ? record.doititle : 'DOI for this article' }}">{{ record.doilabel ? record.doilabel : 'DOI' }}</a></div>
+							</div>
+							{% endif %}
                             </div>
                         </div>
                     {% elseif record.contenttype.slug == "programme" %}
