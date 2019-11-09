@@ -122,7 +122,7 @@
         <ol class="session-events collapse p-0 pb-sm-0 pb-3" id="session-events-{{ eventsClass }}">
         {% for event in these_events %}
         <li class="d-flex flex-row align-items-start text-muted pt-2 pb-0 mb-0">
-            <a href="{{ event.link }}{{ linktrailer }}" title="Read about '{{ event.title }}'" class="text-muted"><b>{{ event.title }}</b><br>{% if event.firstauthor != "" %}<em>{{ event.authors }}</em>{% endif %}</a>
+            <a href="{{ event.link }}{{ linktrailer }}" title="Read about '{{ event.title }}'" class="text-muted"><b>{{ event.title }}</b><br>{% if event.authors != "" %}<em>{{ event.authors }}</em>{% endif %}</a>
         {% endfor %}
         </ol>
         {% else %}
