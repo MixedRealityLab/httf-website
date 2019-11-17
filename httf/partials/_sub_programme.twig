@@ -77,6 +77,7 @@
             <div class="card-header" id="headingUnscheduled">
                 <h2 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#programmeUnscheduled" aria-expanded="false" aria-controls="programmeUnscheduled">Not yet scheduled sessions</button>
+                    <button class="btn btn-prgexpand" type="button" data-toggle="collapse" data-target="#session-events-{{ eventsClass }}" aria-expanded="false" aria-controls="#session-events-{{ eventsClass }}"><span id="session-events-{{ eventsClass }}" class="collapse show" style="transition: none !important;">+</span><span id="session-events-{{ eventsClass }}" class="collapse" style="transition: none !important;">-</span></button>
                 </h2>
             </div>
 
@@ -94,6 +95,7 @@
                 <div class="card-header" id="heading{{ currentday }}">
                     <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="false" aria-controls="programme{{ currentday }}">{{ session.starttime|date('l jS F')  }}</button>
+                        <button class="btn btn-dayexpand" type="button" data-toggle="collapse" data-target="#programme{{ currentday }}" aria-expanded="false" aria-controls="#programme{{ currentday }}"><span id="programme{{ currentday }}" class="collapse  {{ not isFuture ? 'show' }}" style="transition: none !important;">+</span><span id="programme{{ currentday }}" class="collapse {{ isFuture ? 'show' : '' }}" style="transition: none !important;">-</span></button>
                     </h2>
                 </div>
                 <div id="programme{{ currentday }}" class="collapse {{ isFuture ? 'show' }}" aria-labelledby="heading{{ currentday }}" data-parent="#programme{{ currentday }}">

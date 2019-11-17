@@ -323,11 +323,17 @@ header {
     color: $prg-day-fg;
   }
 
-  .btn-prgexpand {
+  .btn-prgexpand{
     font-weight: bold;
     margin-bottom: -$spacer/3;
     margin-top: -2*$spacer/3;
     margin-left: -$spacer/3;
+  }
+
+  .btn-dayexpand {
+    color: $white;
+    font-weight: bold;
+    margin-left: -$spacer;
   }
 
   #programme {

@@ -11653,6 +11653,11 @@ header nav .nav-search input:focus {
   margin-top: -0.6666666667rem;
   margin-left: -0.3333333333rem;
 }
+.main .btn-dayexpand {
+  color: #fff;
+  font-weight: bold;
+  margin-left: -1rem;
+}
 .main #programme {
   margin-bottom: 1.5rem;
 }
