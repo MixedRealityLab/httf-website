@@ -30,3 +30,4 @@ rmdir index
 # replace https://www.halfwaytothefuture.org/sitemap.xml with https://www.halfwaytothefuture.org/sitemap.xml
 # replace <link rel="canonical" href="https://www.halfwaytothefuture.org/ with <link rel="canonical" href="https://www.halfwaytothefuture.org/2019/
 # remove caching values from files in the files/ and theme/* directories
+# remove form and extra JS from report/index.php and extensions directory
