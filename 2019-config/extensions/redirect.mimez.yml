@@ -1,0 +1,10 @@
+# primary domain (optional)
+domain: www.halfwaytothefuture.org
+
+# ssl (optional)
+ssl: true
+
+# redirects (option)
+# specify a array with paths to redirect
+#redirects:
+#    "foo.html": "bar.php?foo=xyz"

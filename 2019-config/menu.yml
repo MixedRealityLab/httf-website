@@ -1,0 +1,43 @@
+# This file defines the menus on the website. See the documentation for
+# details: https://docs.bolt.cm/configuration/menus
+
+main:
+    - label: Home
+      title: Halfway to the Future 2019 homepage
+      path: homepage
+      class: first
+    - label: Authors
+      title: Information for authors of submissions to HttF
+      path: #
+      list:
+          contenttype: pages
+          where:
+              categories: authors
+              in_menu: yes
+    - label: Attendees
+      title: Information for HttF attendees
+      path: #
+      list:
+          contenttype: pages
+          where:
+              categories: attending
+              in_menu: yes
+    - label: Programme
+      title: Programme information for the symposium
+      path: #
+      list:
+          contenttype: pages
+          where:
+              categories: programme
+              in_menu: yes
+    - label: Organisers
+      title: Details about the organising committee and programme committee
+      path: #
+      list:
+          contenttype: pages
+          where:
+              categories: organisers
+              in_menu: yes
+    - label: Sponsors
+      title: Details about sponsoring the symposium
+      path: /sponsorship

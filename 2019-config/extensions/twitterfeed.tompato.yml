@@ -1,0 +1,9 @@
+# Twitter Keys
+consumer_key: "TWITTERKEYREMOVED"
+consumer_secret: "TWITTERSECRETREMOVED"
+oauth_access_token: "TWITTEROAUTHTOKENREMOVED"
+oauth_access_token_secret: "TWITTEROAUTHTOKENSECRETREMOVED"
+
+# Settings
+cache_time: 1800
+

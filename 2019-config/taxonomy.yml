@@ -1,0 +1,46 @@
+# This file defines the different types of taxonomies in Bolt. See the
+# documentation for details: https://docs.bolt.cm/contenttypes/taxonomies
+
+
+tags:
+    slug: tags
+    singular_slug: tag
+    behaves_like: tags
+    allow_spaces: true
+
+types:
+    name: Event type
+    slug: types
+    singular_name: Event type
+    singular_slug: type
+    behaves_like: grouping
+    multiple: false
+    options: { keynote: "Keynote", reflective: "Reflective paper", prospective: "Future-looking paper", 'theme-setting': "Theme-setting paper", panel: "Panel", demo: "Demo"  }
+    has_sortorder: true
+    
+session_types:
+    name: Session types
+    singular_name: Session type
+    slug: session_types
+    behaves_like: grouping
+    multiple: false
+    options: { general: "Session", panel: "Panel", interactivity: "Demos and posters session", 'break': "Break", 'event': 'Event' }
+    has_sortorder: false
+    
+categories:
+    name: Content categories
+    singular_name: Content category
+    slug: categories
+    singular_slug: category
+    behaves_like: grouping
+    multiple: false
+    options: { authors: "Author information", attending: "Attendee information", programme: "Programme", organisers: "Organisers", emails: "Emails", other: "Other" }
+    has_sortorder: true
+
+in_menu:
+    name: Show in menu?
+    singular_name: Show in menu?
+    slug: in_menu
+    behaves_like: categories
+    multiple: false
+    options: { yes: "Yes", no: "No" }
