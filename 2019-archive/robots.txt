@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /2019/submission
+
+Sitemap: https://www.halfwaytothefuture.org/2019/sitemap.xml
